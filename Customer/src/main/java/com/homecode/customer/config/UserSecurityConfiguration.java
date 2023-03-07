@@ -28,14 +28,14 @@ public class UserSecurityConfiguration {
                 .authorizeHttpRequests().
                 requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 requestMatchers("/", "/login", "/register", "/login-error").permitAll().
-                anyRequest().permitAll().
+                anyRequest().authenticated().
                 and().
                 formLogin().
                 loginPage("/login").
                 usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
                 passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
                 defaultSuccessUrl("/index", true).
-                failureForwardUrl("/index")
+                failureForwardUrl("/login?error=true")
                 .and()
                 .csrf().disable();
 
