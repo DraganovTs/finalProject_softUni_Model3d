@@ -24,6 +24,7 @@ public class CustomerUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
         return userRepository.findUserEntitiesByEmail(username)
                 .map(this::map)
                 .orElseThrow(() -> new UsernameNotFoundException("username not found!"));

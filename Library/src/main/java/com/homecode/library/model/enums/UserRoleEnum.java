@@ -1,4 +1,4 @@
-package com.homecode.library.model;
+package com.homecode.library.model.enums;
 
 public enum UserRoleEnum {
     ADMIN,

@@ -1,5 +1,6 @@
 package com.homecode.library.model;
 
+import com.homecode.library.model.enums.UserRoleEnum;
 import jakarta.persistence.*;
 
 @Entity

@@ -5,7 +5,6 @@ import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,20 +25,21 @@ public class UserSecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-                .authorizeHttpRequests()
-                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/","/login","/register","/login-error").permitAll()
-                .anyRequest()
-                .permitAll()
+                .authorizeHttpRequests().
+                requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
+                requestMatchers("/", "/login", "/register", "/login-error").permitAll().
+                anyRequest().permitAll().
+                and().
+                formLogin().
+                loginPage("/login").
+                usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
+                passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
+                defaultSuccessUrl("/index", true).
+                failureForwardUrl("/index")
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
-                .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
-                .defaultSuccessUrl("/",true)
-                .failureForwardUrl("/login-error")
-                .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+                .csrf().disable();
+
+
 
         return http.build();
     }

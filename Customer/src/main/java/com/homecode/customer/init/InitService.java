@@ -1,10 +1,10 @@
 package com.homecode.customer.init;
 
 import com.homecode.library.model.UserEntity;
-import com.homecode.library.model.UserRoleEntity;
-import com.homecode.library.model.UserRoleEnum;
-import com.homecode.library.repository.RoleRepository;
+import com.homecode.library.model.enums.UserRoleEnum;
 import com.homecode.library.repository.UserRepository;
+import com.homecode.library.service.impl.CategoryModelServiceImpl;
+import com.homecode.library.service.impl.RoleServiceImpl;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,39 +14,34 @@ import java.util.List;
 
 @Service
 public class InitService {
-    private final RoleRepository roleRepository;
+    private final RoleServiceImpl roleService;
     private final UserRepository userRepository;
-
     private final PasswordEncoder passwordEncoder;
+    private final CategoryModelServiceImpl categoryModelService;
 
-    public InitService(RoleRepository roleRepository, UserRepository userRepository, @Value("${spring.security.user.password}") String defaultPassword, PasswordEncoder passwordEncoder) {
-        this.roleRepository = roleRepository;
+    public InitService(UserRepository userRepository, @Value("${spring.security.user.password}") String defaultPassword, RoleServiceImpl roleService, PasswordEncoder passwordEncoder, CategoryModelServiceImpl categoryModelService) {
+
         this.userRepository = userRepository;
+        this.roleService = roleService;
         this.passwordEncoder = passwordEncoder;
-
+        this.categoryModelService = categoryModelService;
     }
 
     @PostConstruct
-    public void startApp(){
-        initRoles();
-        initUsers();
-
-    }
-
-
-    private void initRoles(){
-        if (this.roleRepository.count()==0){
-            var moderatorRole = new UserRoleEntity().setRole(UserRoleEnum.MODERATOR);
-            var adminRole = new UserRoleEntity().setRole(UserRoleEnum.ADMIN);
-
-            roleRepository.save(adminRole);
-            roleRepository.save(moderatorRole);
+    public void startApp() {
+        if (this.roleService.isEmpty()) {
+            this.roleService.initRoles();
         }
+        if (this.categoryModelService.isEmpty()) {
+            this.categoryModelService.initCategories();
+        }
+
+        initUsers();
     }
 
 
-    private void initUsers(){
-        if (userRepository.count()==0){
+    private void initUsers() {
+        if (userRepository.count() == 0) {
             initAdmin();
             initModerator();
             initUserRegular();
@@ -59,7 +54,7 @@ public class InitService {
                 .setLastName("adminov")
                 .setEmail("admin@example.com")
                 .setPassword(passwordEncoder.encode("admin"))
-                .setRoles(roleRepository.findAll());
+                .setRoles(roleService.findAll());
 
         userRepository.save(adminUser);
     }
@@ -70,18 +65,17 @@ public class InitService {
                 .setLastName("moderator")
                 .setEmail("moderator@example.com")
                 .setPassword(passwordEncoder.encode("moderator"))
-                .setRoles(List.of(roleRepository.findByRole(UserRoleEnum.MODERATOR)));
+                .setRoles(List.of(roleService.findByRole(UserRoleEnum.MODERATOR)));
 
         userRepository.save(moderatorUser);
     }
+
     private void initUserRegular() {
         var adminUser = new UserEntity()
                 .setFirstName("user")
                 .setLastName("user")
                 .setEmail("user@example.com")
                 .setPassword(passwordEncoder.encode("user"));
-
-
         userRepository.save(adminUser);
     }
 }
