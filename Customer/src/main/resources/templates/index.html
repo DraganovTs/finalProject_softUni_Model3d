@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Furnitica - Minimalist Furniture HTML Template</title>
+
+    <meta name="keywords" content="Furniture, Decor, Interior">
+    <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
+    <meta name="author" content="tivatheme">
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+
+    <!-- Vendor CSS -->
+    <th:block th:insert="~{fragments/vendorCss}"></th:block>
+    <!-- Template CSS -->
+    <th:block th:insert="~{fragments/templateCss}"></th:block>
+</head>
+
+<body id="home">
+<header>
+    <!-- header left mobie -->
+    <th:block th:insert="~{fragments/header_left_mobile}"></th:block>
+
+    <!-- header desktop -->
+    <th:block th:insert="~{fragments/header_desktop}"></th:block>
+</header>
+
+<!-- main content -->
+<div class="main-content">
+    <div class="wrap-banner">
+        <!-- menu category -->
+        <div class="container position">
+            <div class="section menu-banner d-xs-none">
+                <div class="tiva-verticalmenu block">
+                    <div class="box-content">
+                        <div class="verticalmenu" role="navigation">
+                            <ul class="menu level1">
+                                <li class="item parent">
+                                    <a href="#" class="hasicon" title="SIDE TABLE">
+                                        <img th:src="@{images/home/table-lamp.png}" alt="img">SIDE TABLE</a>
+                                </li>
+                                <li class="item parent group">
+                                    <a href="#" class="hasicon" title="FI">
+                                        <img th:src="@{images/home/fireplace.png}" alt="img">FIREPLACE
+                                    </a>
+                                </li>
+                                <li class="item group-category-img parent group">
+                                    <a href="#" class="hasicon" title="TABLE LAMP">
+                                        <img th:src="@{images/home/table-lamp.png}" alt="img">TABLE LAMP
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="hasicon" title="OTTOMAN">
+                                        <img th:src="@{images/home/ottoman.png}" alt="img">OTTOMAN
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="hasicon" title="ARMCHAIR">
+                                        <img th:src="@{images/home/armchair.png}" alt="img">ARMCHAIR
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="hasicon" title="CUSHION">
+                                        <img th:src="@{images/home/cushion.png}" alt="img">CUSHION
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="hasicon" title="COFFEE TABLE">
+                                        <img th:src="@{images/home/coffee_table.png}" alt="img">COFFEE TABLE</a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="hasicon" title="SHELF">
+                                        <img th:src="@{images/home/shelf.png}" alt="img">SHELF
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="hasicon" title="SOFA">
+                                        <img th:src="@{images/home/sofa.png}" alt="img">SOFA
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="hasicon" title="DRESSING TABLE">
+                                        <img th:src="@{images/home/dressing.png}" alt="img">DRESSING TABLE</a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="hasicon" title="WINDOWN CURTAIN">
+                                        <img th:src="@{images/home/windown.png}" alt="img">WINDOWN CURTAIN</a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="hasicon" title="CHANDELIER">
+                                        <img th:src="@{images/home/chandelier.png}" alt="img">CHANDELIER
+                                    </a>
+                                </li>
+                                <li class="item toggleable menu-hidden">
+                                    <a href="#" class="hasicon" title="CEILING FAN">
+                                        <img th:src="@{images/home/ceiling_fan.png}" alt="img">CEILING FAN</a>
+                                </li>
+                                <li class="item toggleable menu-hidden">
+                                    <a href="#" class="hasicon" title="WARDROBE">
+                                        <img th:src="@{images/home/wardrobe.png}" alt="img">WARDROBE
+                                    </a>
+                                </li>
+                                <li class="item toggleable menu-hidden">
+                                    <a href="#" class="hasicon" title="FLOOR LAMP">
+                                        <img th:src="@{images/home/floor_lamp.png}" alt="img">FLOOR LAMP</a>
+                                </li>
+                                <li class="item toggleable menu-hidden">
+                                    <a href="#" class="hasicon" title="VASE-FLOWER">
+                                        <img th:src="@{images/home/vase-flower.png}" alt="img">VASE-FLOWER
+                                    </a>
+                                </li>
+                                <li class="item toggleable menu-hidden">
+                                    <a href="#" class="hasicon" title="BED">
+                                        <img th:src="@{images/home/bed.png}" alt="img">BED
+                                    </a>
+                                </li>
+                                <li class="item toggleable menu-hidden">
+                                    <a href="#" class="hasicon" title="BED GIRL">
+                                        <img th:src="@{images/home/bed.png}" alt="img">BED GIRL</a>
+                                </li>
+                                <li class="item toggleable menu-hidden">
+                                    <a href="#" class="hasicon" title="BED BOY">
+                                        <img th:src="@{images/home/bed.png}" alt="img">BED BOY</a>
+                                </li>
+                                <li class="more item">Show More</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- slide show -->
+        <div class="section banner">
+            <div class="tiva-slideshow-wrapper">
+                <div id="tiva-slideshow" class="nivoSlider">
+                    <a href="#">
+                        <img class="img-responsive" th:src="@{images/home/home1-banner1.jpg}" title="#caption1" alt="Slideshow image">
+                    </a>
+                    <a href="#">
+                        <img class="img-responsive" th:src="@{images/home/home1-banner2.jpg}" title="#caption2" alt="Slideshow image">
+                    </a>
+                    <a href="#">
+                        <img class="img-responsive" th:src="@{images/home/home1-banner3.jpg}" title="#caption3" alt="Slideshow image">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- main -->
+    <div id="wrapper-site">
+        <div id="content-wrapper" class="full-width">
+            <div id="main">
+                <section class="page-home">
+                    <div class="container">
+
+                        <!-- delivery form -->
+                    </div>
+
+                    <!-- product living room -->
+
+
+                    <div class="container">
+                        <!-- banner -->
+
+
+                        <!-- best seller -->
+                        <div class="section best-sellers col-lg-12 col-xs-12">
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12">
+                                    <div class="groupproductlist">
+                                        <div class="row d-flex align-items-center">
+                                            <!-- column 4 -->
+                                            <div class="flex-4 col-lg-4 flex-4">
+                                                <h2 class="title-block">
+                                                    <span class="sub-title">Latest models</span>Best Sellers
+                                                </h2>
+                                                <div class="content-text">
+                                                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                        tempor incididunt ut labore dolore magna aliqua.
+                                                    </p>
+                                                    <div>
+                                                        <a th:href="@{/models-all}"> View all product </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- column 8 -->
+                                            <div class="block-content col-lg-8 flex-8">
+                                                <div class="tab-content">
+                                                    <div class="tab-pane fade in active show">
+                                                        <div class="category-product-index owl-carousel owl-theme owl-loaded owl-drag">
+                                                            <div class="item text-center">
+                                                                <div class="product-miniature js-product-miniature item-one first-item">
+                                                                    <div class="thumbnail-container">
+                                                                        <a th:href="@{/products/detail}">
+                                                                            <img class="img-fluid image-cover" th:src="@{images/product/26.jpg}" alt="img">
+                                                                            <img class="img-fluid image-secondary" th:src="@{images/product/1.jpg}" alt="img">
+                                                                        </a>
+                                                                        <div class="highlighted-informations">
+                                                                            <div class="variant-links">
+                                                                                <a href="#" class="color beige" title="Beige"></a>
+                                                                                <a href="#" class="color orange" title="Orange"></a>
+                                                                                <a href="#" class="color green" title="Green"></a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="product-description">
+                                                                        <div class="product-groups">
+                                                                            <div class="product-title">
+                                                                                <a th:href="@{/products/detail}">Nulla et justo non augue</a>
+                                                                            </div>
+                                                                            <div class="product-group-price">
+                                                                                <div class="product-price-and-shipping">
+                                                                                    <span class="price">£20.08</span>
+                                                                                    <del class="regular-price">£28.68</del>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="product-buttons d-flex justify-content-center">
+                                                                            <form action="#" method="post" class="formAddToCart">
+                                                                                <input type="hidden" name="id_product" value="1">
+                                                                                <a class="add-to-cart" href="#" data-button-action="add-to-cart">
+                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </form>
+                                                                            <a class="addToWishlist" href="#" data-rel="1" onclick="">
+                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                            </a>
+                                                                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
+                                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-miniature js-product-miniature item-one first-item">
+                                                                    <div class="thumbnail-container">
+                                                                        <a href="product-detail.html">
+                                                                            <img class="img-fluid image-cover" th:src="@{images/product/25.jpg}" alt="img">
+                                                                            <img class="img-fluid image-secondary" th:src="@{images/product/2.jpg}" alt="img">
+                                                                        </a>
+                                                                        <div class="highlighted-informations">
+                                                                            <div class="variant-links">
+                                                                                <a href="#" class="color beige" title="Beige"></a>
+                                                                                <a href="#" class="color orange" title="Orange"></a>
+                                                                                <a href="#" class="color green" title="Green"></a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="product-description">
+                                                                        <div class="product-groups">
+                                                                            <div class="product-title">
+                                                                                <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            </div>
+                                                                            <div class="product-group-price">
+                                                                                <div class="product-price-and-shipping">
+                                                                                    <span class="price">£20.08</span>
+                                                                                    <del class="regular-price">£28.68</del>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="product-buttons d-flex justify-content-center">
+                                                                            <form action="#" method="post" class="formAddToCart">
+
+                                                                                <input type="hidden" name="id_product" value="1">
+                                                                                <a class="add-to-cart" href="#" data-button-action="add-to-cart">
+                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </form>
+                                                                            <a class="addToWishlist" href="#" data-rel="1" onclick="">
+                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                            </a>
+                                                                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
+                                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="item text-center">
+                                                                <div class="product-miniature js-product-miniature item-one first-item">
+                                                                    <div class="thumbnail-container">
+                                                                        <a href="product-detail.html">
+                                                                            <img class="img-fluid image-cover" th:src="@{images/product/10.jpg}" alt="img">
+                                                                            <img class="img-fluid image-secondary" th:src="@{images/product/9.jpg}" alt="img">
+                                                                        </a>
+                                                                        <div class="highlighted-informations">
+                                                                            <div class="variant-links">
+                                                                                <a href="#" class="color beige" title="Beige"></a>
+                                                                                <a href="#" class="color orange" title="Orange"></a>
+                                                                                <a href="#" class="color green" title="Green"></a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="product-description">
+                                                                        <div class="product-groups">
+                                                                            <div class="product-title">
+                                                                                <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            </div>
+                                                                            <div class="product-group-price">
+                                                                                <div class="product-price-and-shipping">
+                                                                                    <span class="price">£20.08</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="product-buttons d-flex justify-content-center">
+                                                                            <form action="#" method="post" class="formAddToCart">
+                                                                                <input type="hidden" name="id_product" value="1">
+                                                                                <a class="add-to-cart" href="#" data-button-action="add-to-cart">
+                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </form>
+                                                                            <a class="addToWishlist" href="#" data-rel="1" onclick="">
+                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                            </a>
+                                                                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
+                                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-miniature js-product-miniature item-one first-item">
+                                                                    <div class="thumbnail-container">
+                                                                        <a href="product-detail.html">
+                                                                            <img class="img-fluid image-cover" th:src="@{images/product/3.jpg}" alt="img">
+                                                                            <img class="img-fluid image-secondary" th:src="@{images/product/9.jpg}" alt="img">
+                                                                        </a>
+                                                                        <div class="highlighted-informations">
+                                                                            <div class="variant-links">
+                                                                                <a href="#" class="color beige" title="Beige"></a>
+                                                                                <a href="#" class="color orange" title="Orange"></a>
+                                                                                <a href="#" class="color green" title="Green"></a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="product-description">
+                                                                        <div class="product-groups">
+                                                                            <div class="product-title">
+                                                                                <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            </div>
+                                                                            <div class="product-group-price">
+                                                                                <div class="product-price-and-shipping">
+                                                                                    <span class="price">£20.08</span>
+                                                                                    <del class="regular-price">£28.68</del>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="product-buttons d-flex justify-content-center">
+                                                                            <form action="#" method="post" class="formAddToCart">
+                                                                                <input type="hidden" name="id_product" value="1">
+                                                                                <a class="add-to-cart" href="#" data-button-action="add-to-cart">
+                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </form>
+                                                                            <a class="addToWishlist" href="#" data-rel="1" onclick="">
+                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                            </a>
+                                                                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
+                                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="item text-center">
+                                                                <div class="product-miniature js-product-miniature item-one first-item">
+                                                                    <div class="thumbnail-container">
+                                                                        <a href="product-detail.html">
+                                                                            <img class="img-fluid image-cover" th:src="@{images/product/24.jpg}" alt="img">
+                                                                            <img class="img-fluid image-secondary" th:src="@{images/product/3.jpg}" alt="img">
+                                                                        </a>
+                                                                        <div class="highlighted-informations">
+                                                                            <div class="variant-links">
+                                                                                <a href="#" class="color beige" title="Beige"></a>
+                                                                                <a href="#" class="color orange" title="Orange"></a>
+                                                                                <a href="#" class="color green" title="Green"></a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="product-description">
+                                                                        <div class="product-groups">
+                                                                            <div class="product-title">
+                                                                                <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            </div>
+                                                                            <div class="product-group-price">
+                                                                                <div class="product-price-and-shipping">
+                                                                                    <span class="price">£20.08</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="product-buttons d-flex justify-content-center">
+                                                                            <form action="#" method="post" class="formAddToCart">
+                                                                                <input type="hidden" name="id_product" value="1">
+                                                                                <a class="add-to-cart" href="#" data-button-action="add-to-cart">
+                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </form>
+                                                                            <a class="addToWishlist" href="#" data-rel="1" onclick="">
+                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                            </a>
+                                                                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
+                                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-miniature js-product-miniature item-one first-item">
+                                                                    <div class="thumbnail-container">
+                                                                        <a href="product-detail.html">
+                                                                            <img class="img-fluid image-cover" th:src="@{images/product/23.jpg}" alt="img">
+                                                                            <img class="img-fluid image-secondary" th:src="@{images/product/4.jpg}" alt="img">
+                                                                        </a>
+                                                                        <div class="highlighted-informations">
+                                                                            <div class="variant-links">
+                                                                                <a href="#" class="color beige" title="Beige"></a>
+                                                                                <a href="#" class="color orange" title="Orange"></a>
+                                                                                <a href="#" class="color green" title="Green"></a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="product-description">
+                                                                        <div class="product-groups">
+                                                                            <div class="product-title">
+                                                                                <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            </div>
+                                                                            <div class="product-group-price">
+                                                                                <div class="product-price-and-shipping">
+                                                                                    <span class="price">£20.08</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="product-buttons d-flex justify-content-center">
+                                                                            <form action="#" method="post" class="formAddToCart">
+
+                                                                                <input type="hidden" name="id_product" value="1">
+                                                                                <a class="add-to-cart" href="#" data-button-action="add-to-cart">
+                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                                </a>
+                                                                            </form>
+                                                                            <a class="addToWishlist" href="#" data-rel="1" onclick="">
+                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                            </a>
+                                                                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
+                                                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- product kitchen -->
+
+
+                    <!-- banner -->
+
+
+                    <!-- SHOP THE LOOK -->
+
+
+                    <!-- recent posts -->
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<th:block th:insert="~{fragments/footer}"></th:block>
+
+<!-- back top top -->
+<th:block th:insert="~{fragments/back_to_top}"></th:block>
+
+<!-- menu mobie left -->
+<th:block th:insert="~{fragments/menu_mobie_left}"></th:block>
+
+<!-- menu mobie right -->
+<th:block th:insert="~{fragments/menu_mobie_right}"></th:block>
+
+<!-- Page Loader -->
+<th:block th:insert="~{fragments/page_loader}"></th:block>
+<!-- Vendor JS -->
+<th:block th:insert="~{fragments/vendor_Js_IndexPage}"></th:block>
+
+<!-- Template JS -->
+<th:block th:insert="~{fragments/template_Js}"></th:block>
+</body>
+
+
+</html>
