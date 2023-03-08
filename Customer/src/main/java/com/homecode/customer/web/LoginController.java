@@ -73,7 +73,6 @@ public class LoginController {
 
         } catch (Exception e) {
             System.out.println("server error");
-            e.printStackTrace();
             redirectAttributes.addAttribute("errors", "The server has been down!");
         }
 
