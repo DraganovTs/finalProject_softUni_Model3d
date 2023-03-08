@@ -36,7 +36,7 @@ public class LoginController {
 
     @PostMapping("/login-error")
     public String postLogin() {
-        return "/404";
+        return "error";
     }
 
     @GetMapping("/register")
