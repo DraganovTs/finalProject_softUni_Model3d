@@ -34,6 +34,11 @@ public class LoginController {
         return "user-login";
     }
 
+    @PostMapping("/login-error")
+    public String postLogin() {
+        return "/404";
+    }
+
     @GetMapping("/register")
     public String register() {
         return "user-register";
