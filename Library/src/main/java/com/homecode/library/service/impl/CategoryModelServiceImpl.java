@@ -3,7 +3,7 @@ package com.homecode.library.service.impl;
 import com.homecode.library.model.enums.CategoryEnum;
 import com.homecode.library.model.CategoryModelEntity;
 import com.homecode.library.repository.CategoryRepository;
-import com.homecode.library.service.categoryModelService;
+import com.homecode.library.service.CategoryModelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 
 @Service
-public class CategoryModelServiceImpl implements categoryModelService {
+public class CategoryModelServiceImpl implements CategoryModelService {
 
     private final CategoryRepository categoryRepository;
 
@@ -24,7 +24,7 @@ public class CategoryModelServiceImpl implements categoryModelService {
 
     @Override
     public boolean isEmpty() {
-        return this.categoryRepository.count()==0;
+        return this.categoryRepository.count() == 0;
     }
 
     @Override
@@ -34,5 +34,45 @@ public class CategoryModelServiceImpl implements categoryModelService {
                         .setName(categoryEnum)).collect(Collectors.toList());
 
         this.categoryRepository.saveAll(categoriesToSave);
+    }
+
+    @Override
+    public List<CategoryModelEntity> findAll() {
+        return this.categoryRepository.findAll();
+    }
+
+    @Override
+    public CategoryModelEntity save(CategoryModelEntity categoryModelEntity) {
+        return this.categoryRepository.save(categoryModelEntity);
+    }
+
+    @Override
+    public CategoryModelEntity getById(Long id) {
+        return this.categoryRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public CategoryModelEntity update(CategoryModelEntity categoryModelEntity) {
+        CategoryModelEntity categoryUpdated = new CategoryModelEntity()
+                .setName(categoryModelEntity.getName())
+                .setActive(categoryModelEntity.isActive())
+                .setDeleted(categoryModelEntity.isDeleted());
+        return this.categoryRepository.save(categoryUpdated);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        CategoryModelEntity categoryModel = getById(id);
+        categoryModel.setDeleted(true);
+        categoryModel.setActive(false);
+        this.categoryRepository.save(categoryModel);
+    }
+
+    @Override
+    public void enableById(Long id) {
+        CategoryModelEntity categoryModel = getById(id);
+        categoryModel.setDeleted(false);
+        categoryModel.setActive(true);
+        this.categoryRepository.save(categoryModel);
     }
 }

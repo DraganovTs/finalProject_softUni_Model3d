@@ -6,14 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Customer" />
         <module name="Soft_uni_FinalProject_Model3d" />
         <module name="Library" />
+        <module name="Admin" />
+        <module name="Customer" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Admin" options="-parameters" />
       <module name="Customer" options="-parameters" />
       <module name="Library" options="-parameters" />
     </option>

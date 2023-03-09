@@ -10,7 +10,12 @@ public class CategoryModelEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Enumerated(EnumType.STRING)
+    @Column(unique = true)
     private CategoryEnum name;
+
+    private boolean isDeleted = false;
+
+    private boolean isActive = true;
 
     public CategoryModelEntity() {
     }
@@ -30,6 +35,24 @@ public class CategoryModelEntity {
 
     public CategoryModelEntity setName(CategoryEnum name) {
         this.name = name;
+        return this;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public CategoryModelEntity setDeleted(boolean deleted) {
+        isDeleted = deleted;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public CategoryModelEntity setActive(boolean active) {
+        isActive = active;
         return this;
     }
 }

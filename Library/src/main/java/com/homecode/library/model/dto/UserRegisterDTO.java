@@ -11,6 +11,7 @@ public class UserRegisterDTO {
     private String lastName;
     @Size(min = 3, max = 10, message = "invalid password(Must be between 5 and 14 characters")
     private String password;
+    @Size(min = 3, max = 10, message = "invalid password(Must be between 5 and 14 characters")
     private String repeatPassword;
 
     public UserRegisterDTO() {

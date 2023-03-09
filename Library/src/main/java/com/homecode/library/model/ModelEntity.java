@@ -12,6 +12,9 @@ public class ModelEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
+    private String name;
     @Column(nullable = false)
     private String manufacturer;
     @Column(nullable = false)
@@ -110,6 +113,24 @@ public class ModelEntity {
 
     public ModelEntity setUploadedOn(LocalDateTime uploadedOn) {
         this.uploadedOn = uploadedOn;
+        return this;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ModelEntity setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public ModelEntity setImage(String image) {
+        this.image = image;
         return this;
     }
 }

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="~{fragments/head}">
+    <title>Register</title>
+</head>
+
+<body class="bg-gradient-primary">
+
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            <div>
+                                <small th:if="${serverErrors == false}"  class="text-danger">Oppps ... Server is down in this moment...</small>
+                            </div>
+                        </div>
+                        <form class="user" th:action="@{/register}" th:method="POST" th:object="${adminRegisterDTO}">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text"
+                                           class="form-control form-control-user"
+                                           id="firstName"
+                                           name="firstName"
+                                           placeholder="First Name"
+                                           th:field="*{firstName}"
+                                           th:errorclass="'is-invalid alert-danger'">
+                                    <small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger">error message</small>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text"
+                                           class="form-control form-control-user"
+                                           id="lastName"
+                                           name="lastName"
+                                           placeholder="Last Name"
+                                           th:field="*{lastName}"
+                                           th:errorclass="'is-invalid alert-danger'">
+                                    <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">error message</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email"
+                                       class="form-control form-control-user"
+                                       id="email"
+                                       name="email"
+                                       placeholder="Email Address"
+                                       th:field="*{email}"
+                                       th:errorclass="'is-invalid alert-danger'">
+                                <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">error message</small>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password"
+                                           class="form-control form-control-user"
+                                           id="password"
+                                           name="password"
+                                           placeholder="Password"
+                                           th:field="*{password}"
+                                           th:errorclass="'is-invalid alert-danger'">
+                                    <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">error message</small>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password"
+                                           class="form-control form-control-user"
+                                           id="repeatPassword"
+                                           name="repeatPassword"
+                                           placeholder="Repeat Password"
+                                           th:field="*{repeatPassword}"
+                                           th:errorclass="'is-invalid alert-danger'">
+                                    <small th:if="${#fields.hasErrors('repeatPassword')}" th:errors="*{repeatPassword}" class="text-danger">error message</small>
+                                </div>
+                            </div>
+                            <button type="submit" href="login.html" class="btn btn-primary btn-user btn-block">
+                                Register Account
+                            </button>
+                            <hr>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" th:href="@{/forgot-password}">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" th:href="@{/login}">Already have an account? Login!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<th:block th:replace="~{fragments/scripts}"></th:block>
+
+</body>
+
+</html>
