@@ -41,21 +41,24 @@
                 <span th:text="${existCategory}"></span>
             </div>
             <div th:each="error: ${#fields.errors()}" class="text-center alert alert-danger">
-                <span th:text="${error}" ></span>
+                <span th:text="${error}"></span>
             </div>
             <table class="table table-striped" th:if="${categories.size()>0}">
                 <thead>
                 <tr>
                     <th scope="col">Index</th>
                     <th scope="col">Category Name</th>
+                    <th scope="col">Edit Category Name</th>
                     <th scope="col">Action</th>
-
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="category : ${categories}">
                     <th scope="row" th:text="${category.id}"></th>
                     <td th:text="${category.name}">Mark</td>
+                    <td>
+                        <a id="editButton" th:href="@{/findById/{id}(id=*{category.id})}" class="btn btn-primary"></a>
+                    </td>
                     <td></td>
                 </tr>
                 </tbody>
@@ -81,7 +84,7 @@
 <!-- Logout Modal-->
 <th:block th:replace="~{fragments/logout_modal}"></th:block>
 
-<!--BOOTSTRAP 5 MODAL-->
+<!--BOOTSTRAP 5 MODAL Add Category-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <form th:action="@{/add-category}" th:method="POST" th:object="${categoryDTO}">
         <div class="modal-dialog">
@@ -106,8 +109,36 @@
 </div>
 <!--END of BOOTSTRAP 5 MODAL-->
 
-<th:block th:replace="~{fragments/scripts}"></th:block>
+<!--BOOTSTRAP 5 MODAL Change Name of Category-->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalExample" aria-hidden="true">
+    <form>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit category</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="idEdit" class="col-form-label">Id</label>
+                        <input type="text" class="form-control" id="idEdit" name="idEdit">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nameEdit" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="nameEdit" name="nameEdit">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!--END of BOOTSTRAP 5 MODAL-->
 
+<th:block th:replace="~{fragments/scripts}"></th:block>
+<script th:src="@{/js/categories.js}"></script>
 </body>
 
 </html>

@@ -15,7 +15,7 @@ public interface CategoryModelService {
 
     CategoryModelEntity save(CategoryDTO categoryDTO);
 
-    CategoryModelEntity getById(Long id);
+    CategoryDTO findById(Long id);
 
     CategoryModelEntity update(CategoryModelEntity categoryModelEntity);
 

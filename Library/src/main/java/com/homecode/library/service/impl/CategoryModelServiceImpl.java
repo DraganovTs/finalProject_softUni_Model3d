@@ -55,8 +55,12 @@ public class CategoryModelServiceImpl implements CategoryModelService {
     }
 
     @Override
-    public CategoryModelEntity getById(Long id) {
-        return this.categoryRepository.findById(id).orElseThrow();
+    public CategoryDTO findById(Long id) {
+        return this.categoryRepository
+                .findById(id)
+                .map(c->this.modelMapper
+                        .map(c,CategoryDTO.class))
+                .orElseThrow();
     }
 
     @Override
@@ -70,7 +74,7 @@ public class CategoryModelServiceImpl implements CategoryModelService {
 
     @Override
     public void deleteById(Long id) {
-        CategoryModelEntity categoryModel = getById(id);
+        CategoryModelEntity categoryModel = this.categoryRepository.findById(id).orElseThrow();
         categoryModel.setDeleted(true);
         categoryModel.setActive(false);
         this.categoryRepository.save(categoryModel);
@@ -78,7 +82,7 @@ public class CategoryModelServiceImpl implements CategoryModelService {
 
     @Override
     public void enableById(Long id) {
-        CategoryModelEntity categoryModel = getById(id);
+        CategoryModelEntity categoryModel = this.categoryRepository.findById(id).get();
         categoryModel.setDeleted(false);
         categoryModel.setActive(true);
         this.categoryRepository.save(categoryModel);
