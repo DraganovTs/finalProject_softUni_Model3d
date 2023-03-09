@@ -64,11 +64,11 @@ public class CategoryModelServiceImpl implements CategoryModelService {
     }
 
     @Override
-    public CategoryModelEntity update(CategoryModelEntity categoryModelEntity) {
-        CategoryModelEntity categoryUpdated = new CategoryModelEntity()
-                .setName(categoryModelEntity.getName())
-                .setActive(categoryModelEntity.isActive())
-                .setDeleted(categoryModelEntity.isDeleted());
+    public CategoryModelEntity update(CategoryDTO categoryDTO) {
+        CategoryModelEntity categoryUpdated = this.categoryRepository.findById(categoryDTO.getId()).orElseThrow()
+                .setName(categoryDTO.getName())
+                .setActive(categoryDTO.isActive())
+                .setDeleted(categoryDTO.isDeleted());
         return this.categoryRepository.save(categoryUpdated);
     }
 

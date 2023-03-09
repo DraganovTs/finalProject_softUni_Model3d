@@ -28,15 +28,14 @@ public class AdminSecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests().
-                requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
-                requestMatchers( "/","/login", "/register", "/error").permitAll().
+                requestMatchers("/", "/login", "/register", "/error", "/about-us","/index").permitAll().
                 anyRequest().permitAll().
                 and().
                 formLogin().
                 loginPage("/login").
                 usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
                 passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
-                defaultSuccessUrl("/",true).
+                defaultSuccessUrl("/").
                 failureForwardUrl("/error").
                 and()
                 .csrf().disable();

@@ -53,10 +53,27 @@ public class CategoryController {
         return "redirect:/categories";
     }
 
-    @GetMapping("/findById/{id}")
-    public String findById(@PathVariable("id") Long id){
-        System.out.println(this.categoryService.findById(id).getName());
+//    @GetMapping("/findById/{id}")
+//    public CategoryDTO findById(@PathVariable("id") Long id){
+//        System.out.println(this.categoryService.findById(id).getName());
+//
+//       return categoryService.findById(id);
+//    }
 
+    @RequestMapping(value = "/findById/", method = { RequestMethod.GET,RequestMethod.PUT})
+    @ResponseBody
+    public CategoryDTO findById(Long id){
+        System.out.println(this.categoryService.findById(id).getName());
+        return categoryService.findById(id);
+    }
+
+    @GetMapping("/update-category")
+    public String update(CategoryDTO categoryDTO, RedirectAttributes redirectAttributes) {
+        try {
+            this.categoryService.update(categoryDTO);
+        } catch (Exception e) {
+
+        }
         return "redirect:/categories";
     }
 

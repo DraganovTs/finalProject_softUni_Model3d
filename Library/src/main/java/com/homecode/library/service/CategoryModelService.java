@@ -17,7 +17,7 @@ public interface CategoryModelService {
 
     CategoryDTO findById(Long id);
 
-    CategoryModelEntity update(CategoryModelEntity categoryModelEntity);
+    CategoryModelEntity update(CategoryDTO categoryDTO);
 
     void  deleteById(Long id);
     void enableById(Long id);
