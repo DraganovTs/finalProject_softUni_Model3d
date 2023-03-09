@@ -1,6 +1,5 @@
 package com.homecode.library.model;
 
-import com.homecode.library.model.enums.CategoryEnum;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,9 +8,9 @@ public class CategoryModelEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Enumerated(EnumType.STRING)
-    @Column(unique = true)
-    private CategoryEnum name;
+
+    @Column(unique = true, nullable = false)
+    private String name;
 
     private boolean isDeleted = false;
 
@@ -29,11 +28,11 @@ public class CategoryModelEntity {
         return this;
     }
 
-    public CategoryEnum getName() {
+    public String getName() {
         return name;
     }
 
-    public CategoryModelEntity setName(CategoryEnum name) {
+    public CategoryModelEntity setName(String name) {
         this.name = name;
         return this;
     }

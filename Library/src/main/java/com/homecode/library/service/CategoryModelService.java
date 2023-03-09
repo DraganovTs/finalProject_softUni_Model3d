@@ -1,6 +1,7 @@
 package com.homecode.library.service;
 
 import com.homecode.library.model.CategoryModelEntity;
+import com.homecode.library.model.dto.CategoryDTO;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public interface CategoryModelService {
 
     void initCategories();
 
-    List<CategoryModelEntity> findAll();
+    List<CategoryDTO> findAll();
 
     CategoryModelEntity save(CategoryModelEntity categoryModelEntity);
 

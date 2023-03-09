@@ -30,7 +30,7 @@ public class AdminSecurityConfiguration {
                 .authorizeHttpRequests().
                 requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 requestMatchers( "/","/login", "/register", "/error").permitAll().
-                anyRequest().authenticated().
+                anyRequest().permitAll().
                 and().
                 formLogin().
                 loginPage("/login").

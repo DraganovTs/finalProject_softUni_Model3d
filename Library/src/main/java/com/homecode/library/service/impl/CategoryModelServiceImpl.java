@@ -1,13 +1,13 @@
 package com.homecode.library.service.impl;
 
-import com.homecode.library.model.enums.CategoryEnum;
 import com.homecode.library.model.CategoryModelEntity;
+import com.homecode.library.model.dto.CategoryDTO;
 import com.homecode.library.repository.CategoryRepository;
 import com.homecode.library.service.CategoryModelService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,10 +16,12 @@ import java.util.stream.Collectors;
 public class CategoryModelServiceImpl implements CategoryModelService {
 
     private final CategoryRepository categoryRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
-    public CategoryModelServiceImpl(CategoryRepository categoryRepository) {
+    public CategoryModelServiceImpl(CategoryRepository categoryRepository, ModelMapper modelMapper) {
         this.categoryRepository = categoryRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -29,17 +31,22 @@ public class CategoryModelServiceImpl implements CategoryModelService {
 
     @Override
     public void initCategories() {
-        List<CategoryModelEntity> categoriesToSave = Arrays.stream(CategoryEnum.values())
-                .map(categoryEnum -> new CategoryModelEntity()
-                        .setName(categoryEnum)).collect(Collectors.toList());
 
-        this.categoryRepository.saveAll(categoriesToSave);
+
+
     }
 
     @Override
-    public List<CategoryModelEntity> findAll() {
-        return this.categoryRepository.findAll();
-    }
+    public List<CategoryDTO> findAll() {
+
+
+        return this.categoryRepository
+                .findAll()
+                .stream()
+                .map(c -> this.modelMapper.map(c, CategoryDTO.class))
+                .collect(Collectors.toList());
+        }
+
 
     @Override
     public CategoryModelEntity save(CategoryModelEntity categoryModelEntity) {
