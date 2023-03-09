@@ -1,9 +1,12 @@
 package com.homecode.admin.web;
 
-import com.homecode.library.model.CategoryModelEntity;
+
+import com.homecode.library.model.dto.CategoryDTO;
 import com.homecode.library.service.impl.CategoryModelServiceImpl;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,26 +22,35 @@ public class CategoryController {
     }
 
     @GetMapping("/categories")
-    public String categories(Model model){
-        model.addAttribute("categories",this.categoryService.findAll());
+    public String categories(Model model) {
+        model.addAttribute("categories", this.categoryService.findAll());
         return "categories";
     }
 
 
     @PostMapping("/add-category")
-    public String add(CategoryModelEntity category,
-                      RedirectAttributes redirectAttributes){
+    public String add(@Valid CategoryDTO categoryDTO,
+                      BindingResult bindingResult,
+                      RedirectAttributes redirectAttributes) {
         try {
-            this.categoryService.save(category);
-            redirectAttributes.addFlashAttribute("success","Added successfully");
-        }catch (Exception e){
-            redirectAttributes.addFlashAttribute("failed","Failed");
+
+            if (bindingResult.hasErrors()) {
+                redirectAttributes.addFlashAttribute("categoryDTO", categoryDTO);
+                redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.categoryDTO", bindingResult);
+            }
+            if (!categoryService.findCategoryByName(categoryDTO)){
+                redirectAttributes.addFlashAttribute("existCategory", "Category already exist");
+            }
+            this.categoryService.save(categoryDTO);
+            redirectAttributes.addFlashAttribute("success", "Added successfully");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("failed", "Failed");
         }
         return "redirect:/categories";
     }
 
-    @ModelAttribute("categoryNew")
-    public CategoryModelEntity categoryNew(){
-        return new CategoryModelEntity();
+    @ModelAttribute("categoryDTO")
+    public CategoryDTO categoryDTO() {
+        return new CategoryDTO();
     }
 }

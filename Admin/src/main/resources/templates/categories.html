@@ -37,6 +37,12 @@
             <div th:if="${failed}" class="text-center alert alert-danger">
                 <span th:text="${failed}"></span>
             </div>
+            <div th:if="${existCategory}" class="text-center alert alert-danger">
+                <span th:text="${existCategory}"></span>
+            </div>
+            <div th:each="error: ${#fields.errors()}" class="text-center alert alert-danger">
+                <span th:text="${error}" ></span>
+            </div>
             <table class="table table-striped" th:if="${categories.size()>0}">
                 <thead>
                 <tr>
@@ -77,7 +83,7 @@
 
 <!--BOOTSTRAP 5 MODAL-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form th:action="@{/add-category}" th:method="POST" th:object="${categoryNew}">
+    <form th:action="@{/add-category}" th:method="POST" th:object="${categoryDTO}">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

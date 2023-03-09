@@ -49,8 +49,9 @@ public class CategoryModelServiceImpl implements CategoryModelService {
 
 
     @Override
-    public CategoryModelEntity save(CategoryModelEntity categoryModelEntity) {
-        return this.categoryRepository.save(categoryModelEntity);
+    public CategoryModelEntity save(CategoryDTO categoryDTO) {
+        CategoryModelEntity categoryToSave = this.modelMapper.map(categoryDTO,CategoryModelEntity.class);
+        return this.categoryRepository.save(categoryToSave);
     }
 
     @Override
@@ -81,5 +82,10 @@ public class CategoryModelServiceImpl implements CategoryModelService {
         categoryModel.setDeleted(false);
         categoryModel.setActive(true);
         this.categoryRepository.save(categoryModel);
+    }
+
+    @Override
+    public boolean findCategoryByName(CategoryDTO categoryDTO) {
+        return this.categoryRepository.findByName(categoryDTO.getName()).isEmpty();
     }
 }

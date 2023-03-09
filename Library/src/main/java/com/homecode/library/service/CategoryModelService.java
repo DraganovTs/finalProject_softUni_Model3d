@@ -13,7 +13,7 @@ public interface CategoryModelService {
 
     List<CategoryDTO> findAll();
 
-    CategoryModelEntity save(CategoryModelEntity categoryModelEntity);
+    CategoryModelEntity save(CategoryDTO categoryDTO);
 
     CategoryModelEntity getById(Long id);
 
@@ -22,4 +22,5 @@ public interface CategoryModelService {
     void  deleteById(Long id);
     void enableById(Long id);
 
+    boolean findCategoryByName(CategoryDTO categoryDTO);
 }
