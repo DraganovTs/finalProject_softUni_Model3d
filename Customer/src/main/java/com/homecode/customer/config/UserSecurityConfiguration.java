@@ -34,7 +34,7 @@ public class UserSecurityConfiguration {
                 .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                 .defaultSuccessUrl("/")
-                .failureForwardUrl("/error").
+                .failureUrl("/login?error=true").
                 and().
                 logout().
                 logoutUrl("/logout").
