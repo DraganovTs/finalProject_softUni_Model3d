@@ -4,18 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class PageController {
+public class ModeratorController {
 
-    @GetMapping("/about-us")
-    public String aboutUs(){
-        return "about-us";
-    }
-
-
-    @GetMapping("/user-acount")
+    @GetMapping("/moderator")
     public String accountUser(){
-        return "/user-acount";
+        return "/index-moderator";
     }
-
-
 }

@@ -24,18 +24,24 @@ public class UserSecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http
-                .authorizeHttpRequests().
+        http.
+                authorizeHttpRequests().
                 requestMatchers("/", "/login", "/register", "/error", "/about-us").permitAll().
                 anyRequest().authenticated().
                 and().
-                formLogin().
-                loginPage("/login").
-                usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
-                passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
-                defaultSuccessUrl("/").
-                failureForwardUrl("/error").
-                and()
+                formLogin()
+                .loginPage("/login")
+                .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
+                .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
+                .defaultSuccessUrl("/")
+                .failureForwardUrl("/error").
+                and().
+                logout().
+                logoutUrl("/logout").
+                logoutSuccessUrl("/").
+                deleteCookies("JSESSIONID").
+                clearAuthentication(true)
+                .and()
                 .csrf().disable();
 
         return http.build();
