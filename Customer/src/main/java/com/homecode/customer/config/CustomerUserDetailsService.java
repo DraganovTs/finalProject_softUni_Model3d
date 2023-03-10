@@ -32,11 +32,12 @@ public class CustomerUserDetailsService implements UserDetailsService {
 
 
     private UserDetails map(UserEntity entity) {
-        return new User(
+        return new AppUserDetails(
                 entity.getEmail(),
                 entity.getPassword(),
                 extractAuthorities(entity)
-        );
+        )
+                .setFirstName(entity.getFirstName());
     }
 
 

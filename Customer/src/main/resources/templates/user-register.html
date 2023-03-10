@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <!--<![endif]-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
@@ -31,91 +33,105 @@
 </head>
 
 <body class="user-register blog">
-    <header>
+<header>
 
-        <!-- header left mobie -->
-        <th:block th:insert="~{fragments/header_left_mobile}"></th:block>
+    <!-- header left mobie -->
+    <th:block th:insert="~{fragments/header_left_mobile}"></th:block>
 
-        <!-- header desktop -->
-        <th:block th:insert="~{fragments/header_desktop}"></th:block>
-    </header>
+    <!-- header desktop -->
+    <th:block th:insert="~{fragments/header_desktop}"></th:block>
+</header>
 
-    <!-- main content -->
-    <div class="main-content">
-        <div class="wrap-banner">
+<!-- main content -->
+<div class="main-content">
+    <div class="wrap-banner">
 
-            <!-- breadcrumb -->
-        </div>
+        <!-- breadcrumb -->
+    </div>
 
-        <!-- main -->
-        <div id="wrapper-site">
-            <div class="container">
-                <div class="row">
-                    <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
-                        <div id="main">
-                            <div id="content" class="page-content">
-                                <div class="register-form text-center">
-                                    <h1 class="text-center title-page">Create Account</h1>
-                                    <form th:action="@{/register}" id="customer-form" class="js-customer-form" th:method="post" th:object="${registerDTO}">
-                                        <div>
-                                            <div class="form-group">
-                                                <div>
-                                                    <input class="form-control" name="firstname" type="text"
-                                                           placeholder="First name" th:field="*{firstName}" th:errorclass="'is-invalid alert-danger'">
-                                                    <small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger">error message</small>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div>
-                                                    <input class="form-control" name="lastname" type="text"
-                                                           placeholder="Last name" th:field="*{lastName}" th:errorclass="'is-invalid alert-danger'">
-                                                    <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">error message</small>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div>
-                                                    <input class="form-control" name="email" type="text" id="email"
-                                                           placeholder="Email" th:field="*{email}" th:errorclass="'is-invalid alert-danger'">
-                                                    <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">error message</small>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div>
-                                                    <div class="input-group js-parent-focus">
-                                                        <input class="form-control js-child-focus js-visible-password"
-                                                               name="password" type="password" id="password"
-                                                               placeholder="Password" th:field="*{password}"
-                                                               th:errorclass="'is-invalid alert-danger'">
-                                                        <div>
-                                                            <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">error message</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div>
-                                                    <div class="input-group js-parent-focus">
-                                                        <input class="form-control js-child-focus js-visible-password"
-                                                               name="repeatPassword" type="password" id="repeatPassword"
-                                                               placeholder="Repeat Password" th:field="*{repeatPassword}"
-                                                               th:errorclass="'is-invalid alert-danger'">
-                                                        <div>
-                                                            <small th:if="${#fields.hasErrors('repeatPassword')}" th:errors="*{repeatPassword}" class="text-danger">error message</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix">
+    <!-- main -->
+    <div id="wrapper-site">
+        <div class="container">
+            <div class="row">
+                <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
+                    <div id="main">
+                        <div id="content" class="page-content">
+                            <div class="register-form text-center">
+                                <h1 class="text-center title-page">Create Account</h1>
+                                <form th:action="@{/register}" id="customer-form" class="js-customer-form"
+                                      th:method="post" th:object="${registerDTO}">
+                                    <div>
+                                        <div class="form-group">
                                             <div>
-                                                <button class="btn btn-primary" data-link-action="sign-in"
-                                                        type="submit">
-                                                    Create Account
-                                                </button>
+                                                <input class="form-control" name="firstname" type="text"
+                                                       placeholder="First name" th:field="*{firstName}"
+                                                       th:errorclass="'is-invalid alert-danger'">
+                                                <small th:if="${#fields.hasErrors('firstName')}"
+                                                       th:errors="*{firstName}" class="text-danger">error
+                                                    message</small>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <input class="form-control" name="lastname" type="text"
+                                                       placeholder="Last name" th:field="*{lastName}"
+                                                       th:errorclass="'is-invalid alert-danger'">
+                                                <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                                       class="text-danger">error message</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <input class="form-control" name="email" type="text" id="email"
+                                                       placeholder="Email" th:field="*{email}"
+                                                       th:errorclass="'is-invalid alert-danger'">
+                                                <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                                       class="text-danger">error message</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="input-group js-parent-focus">
+                                                    <input class="form-control js-child-focus js-visible-password"
+                                                           name="password" type="password" id="password"
+                                                           placeholder="Password" th:field="*{password}"
+                                                           th:errorclass="'is-invalid alert-danger'">
+                                                    <div>
+                                                        <small th:if="${#fields.hasErrors('password')}"
+                                                               th:errors="*{password}" class="text-danger">error
+                                                            message</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="input-group js-parent-focus">
+                                                    <input class="form-control js-child-focus js-visible-password"
+                                                           name="repeatPassword" type="password" id="repeatPassword"
+                                                           placeholder="Repeat Password" th:field="*{repeatPassword}"
+                                                           th:errorclass="'is-invalid alert-danger'">
+                                                    <div>
+                                                        <small th:if="${#fields.hasErrors('repeatPassword')}"
+                                                               th:errors="*{repeatPassword}" class="text-danger">error
+                                                            message</small>
+                                                    </div>
+                                                    <div th:if="${passwordDifferent}">
+                                                        <span th:text="${passwordDifferent}" class="text-danger">error message</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div>
+                                            <button class="btn btn-primary" data-link-action="sign-in"
+                                                    type="submit">
+                                                Create Account
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -123,27 +139,28 @@
             </div>
         </div>
     </div>
+</div>
 
-    <!-- footer -->
-    <th:block th:insert="~{fragments/footer}"></th:block>
+<!-- footer -->
+<th:block th:insert="~{fragments/footer}"></th:block>
 
-    <!-- back top top -->
-    <th:block th:insert="~{fragments/back_to_top}"></th:block>
+<!-- back top top -->
+<th:block th:insert="~{fragments/back_to_top}"></th:block>
 
-    <!-- menu mobie left -->
-    <th:block th:insert="~{fragments/menu_mobie_left}"></th:block>
+<!-- menu mobie left -->
+<th:block th:insert="~{fragments/menu_mobie_left}"></th:block>
 
-    <!-- menu mobie right -->
-    <th:block th:insert="~{fragments/menu_mobie_right}"></th:block>
+<!-- menu mobie right -->
+<th:block th:insert="~{fragments/menu_mobie_right}"></th:block>
 
-    <!-- Page Loader -->
-    <th:block th:insert="~{fragments/page_loader}"></th:block>
+<!-- Page Loader -->
+<th:block th:insert="~{fragments/page_loader}"></th:block>
 
-    <!-- Vendor JS -->
-    <th:block th:insert="~{fragments/vendor_Js}"></th:block>
+<!-- Vendor JS -->
+<th:block th:insert="~{fragments/vendor_Js}"></th:block>
 
-    <!-- Template JS -->
-    <th:block th:insert="~{fragments/template_Js}"></th:block>
+<!-- Template JS -->
+<th:block th:insert="~{fragments/template_Js}"></th:block>
 </body>
 
 

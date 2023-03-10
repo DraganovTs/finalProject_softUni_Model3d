@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class LoginController {
+public class AuthController {
 
     private final CustomerUserServiceImpl customerUserService;
     private final PasswordEncoder passwordEncoder;
 
-    public LoginController(CustomerUserServiceImpl customerUserService, PasswordEncoder passwordEncoder) {
+    public AuthController(CustomerUserServiceImpl customerUserService, PasswordEncoder passwordEncoder) {
         this.customerUserService = customerUserService;
         this.passwordEncoder = passwordEncoder;
     }
@@ -55,11 +55,11 @@ public class LoginController {
                 bindingResult.addError(
                         new FieldError(
                                 "differentConfirmPassword",
-                                "confirmPassword",
+                                "repeatPassword",
                                 "Passwords must be the same."));
 
                 System.out.println("Passwords must be the same.");
-                return "redirect:/register";
+
             }
 
             registerDTO.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
