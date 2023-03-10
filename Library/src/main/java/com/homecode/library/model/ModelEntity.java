@@ -7,13 +7,13 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@Table(name = "models")
+@Table(name = "models", uniqueConstraints = @UniqueConstraint(columnNames = {"name", "manufacturer"}))
 public class ModelEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column(nullable = false)
     private String name;
     @Column(nullable = false)
     private String manufacturer;
@@ -132,5 +132,22 @@ public class ModelEntity {
     public ModelEntity setImage(String image) {
         this.image = image;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "ModelEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", downloadLink='" + downloadLink + '\'' +
+                ", image='" + image + '\'' +
+                ", likes=" + likes +
+                ", sold=" + sold +
+                ", category=" + category +
+                ", isApproved=" + isApproved +
+                ", owner=" + owner +
+                ", uploadedOn=" + uploadedOn +
+                '}';
     }
 }

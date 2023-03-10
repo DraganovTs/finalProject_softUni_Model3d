@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- product-grid-sidebar-left10:54-->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Model 3d All Models</title>
+
+    <meta name="keywords" content="Furniture, Decor, Interior">
+    <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
+    <meta name="author" content="tivatheme">
+
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+
+    <!-- Vendor CSS -->
+    <th:block th:insert="~{fragments/vendorCss}"></th:block>
+    <link rel="stylesheet" th:href="@{libs/slider-range/css/jslider.css}">
+    <!-- Template CSS -->
+    <th:block th:insert="~{fragments/templateCss}"></th:block>
+</head>
+
+<body id="product-sidebar-left" class="product-grid-sidebar-left">
+<header>
+    <!-- header left mobie -->
+    <th:block th:insert="~{fragments/header_left_mobile}"></th:block>
+
+    <!-- header desktop -->
+    <th:block th:insert="~{fragments/header_desktop}"></th:block>
+</header>
+
+<!-- main content -->
+<div class="main-content">
+    <div id="wrapper-site">
+        <div id="content-wrapper" class="full-width">
+            <div id="main">
+                <div class="page-home">
+                    <!-- breadcrumb -->
+                    <!-- Form ADD MODEL  -->
+                    <div class="container">
+                        <div class="content">
+                            <div class="row">
+                                <form class="form-horizontal" th:method="post" th:action="@{/add-model}"
+                                      th:object="${modelUploadDTO}" >
+                                    <fieldset>
+                                        <!-- Form Name -->
+                                        <legend>Add Your Model</legend>
+                                        <div th:if="${failed}" class="text-center alert alert-danger">
+                                            <span th:text="${failed}"></span>
+                                        </div>
+                                        <div th:if="${success}" class="text-center alert alert-success">
+                                            <span th:text="${success}"></span>
+                                        </div>
+                                        <!-- Text input-->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="modelName">Model Name</label>
+                                            <div class="col-md-4">
+                                                <input id="modelName" name="modelName" placeholder="Model Name"
+                                                       class="form-control input-md" required="" type="text"
+                                                       th:field="*{name}"
+                                                       th:errorclass="'is-invalid alert-danger'">
+                                                <small th:if="${#fields.hasErrors('name')}"
+                                                       th:errors="*{name}" class="text-danger">error
+                                                    message</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label"
+                                                   for="manufacturer">Manufacturer</label>
+                                            <div class="col-md-4">
+                                                <input id="manufacturer" name="manufacturer" placeholder="Manufacturer"
+                                                       class="form-control input-md" required="" type="text"
+                                                       th:field="*{manufacturer}"
+                                                       th:errorclass="'is-invalid alert-danger'">
+                                                <small th:if="${#fields.hasErrors('manufacturer')}"
+                                                       th:errors="*{manufacturer}" class="text-danger">error
+                                                    message</small>
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group" th:object="${categories}">
+                                            <label class="col-md-4 control-label" for="category">PRODUCT
+                                                CATEGORY</label>
+                                            <div class="col-md-4" >
+                                                <select id="category" name="category" class="form-control" >
+                                                    <option>Choose Category</option>
+                                                    <option  th:each="category : ${categories}" th:text="${category.name}">1</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- File Button -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="model">Add Model</label>
+                                            <div class="col-md-4">
+                                                <input id="model" name="model" class="input-file" type="file">
+                                            </div>
+                                        </div>
+                                        <!-- File Button -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="image">Add Image</label>
+                                            <div class="col-md-4">
+                                                <input id="image" name="image" class="input-file" type="file">
+                                            </div>
+                                        </div>
+                                        <!-- Button -->
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label" for="singlebutton">Upload</label>
+                                            <div class="col-md-4">
+                                                <button id="singlebutton" name="singlebutton" class="btn btn-primary">
+                                                    Button
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of ADD MODEL -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<th:block th:insert="~{fragments/footer}"></th:block>
+
+
+<!-- back top top -->
+<th:block th:insert="~{fragments/back_to_top}"></th:block>
+
+<!-- menu mobie left -->
+<th:block th:insert="~{fragments/menu_mobie_left}"></th:block>
+
+<!-- menu mobie right -->
+<th:block th:insert="~{fragments/menu_mobie_right}"></th:block>
+
+<!-- Page Loader -->
+<th:block th:insert="~{fragments/page_loader}"></th:block>
+
+<!-- Vendor JS -->
+<th:block th:insert="~{fragments/vendor_Js_IndexPage}"></th:block>
+
+<!-- Template JS -->
+<th:block th:insert="~{fragments/template_Js}"></th:block>
+</body>
+
+
+<!-- product-grid-sidebar-left10:55-->
+</html>

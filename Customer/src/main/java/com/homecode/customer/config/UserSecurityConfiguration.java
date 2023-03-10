@@ -26,8 +26,8 @@ public class UserSecurityConfiguration {
 
         http.
                 authorizeHttpRequests().
-                requestMatchers("/", "/login", "/register", "/error", "/about-us").permitAll().
-                anyRequest().authenticated().
+                requestMatchers("/", "/login", "/register", "/error", "/about-us","product-grid-sidebar-left").permitAll().
+                anyRequest().permitAll().
                 and().
                 formLogin()
                 .loginPage("/login")
