@@ -54,7 +54,7 @@
                         <div class="content">
                             <div class="row">
                                 <form class="form-horizontal" th:method="post" th:action="@{/add-model}"
-                                      th:object="${modelUploadDTO}" >
+                                      th:object="${modelUploadDTO}" enctype="multipart/form-data">
                                     <fieldset>
                                         <!-- Form Name -->
                                         <legend>Add Your Model</legend>

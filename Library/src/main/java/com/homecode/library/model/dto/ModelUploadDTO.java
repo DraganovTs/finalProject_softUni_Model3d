@@ -13,7 +13,7 @@ public class ModelUploadDTO {
     public String manufacturer;
     @NotNull
     public String category;
-    public String image;
+
     public String downloadLink;
 
     public ModelUploadDTO() {
@@ -46,14 +46,7 @@ public class ModelUploadDTO {
         return this;
     }
 
-    public String getImage() {
-        return image;
-    }
 
-    public ModelUploadDTO setImage(String image) {
-        this.image = image;
-        return this;
-    }
 
     public String getDownloadLink() {
         return downloadLink;

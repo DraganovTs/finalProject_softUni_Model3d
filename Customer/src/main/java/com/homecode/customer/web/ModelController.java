@@ -10,6 +10,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
@@ -35,7 +37,8 @@ public class ModelController {
     public String uploadModel(@Valid ModelUploadDTO modelUploadDTO,
                               BindingResult bindingResult,
                               RedirectAttributes redirectAttributes,
-                              Principal principal) {
+                              Principal principal,
+                              @RequestParam("image") MultipartFile imageModel) {
 
         try {
             if (bindingResult.hasErrors()) {
@@ -44,10 +47,13 @@ public class ModelController {
                 System.out.println("Errors");
                 return "redirect:/add-model";
             }
-            if (!this.modelService.uploadModel(modelUploadDTO, principal.getName())) {
+            if (!this.modelService.isExistInDB(modelUploadDTO)) {
                 redirectAttributes.addFlashAttribute("alreadyInDb", "This model is already uploaded!");
                 return "redirect:/add-model";
             }
+
+            this.modelService.uploadModel(imageModel, modelUploadDTO, principal.getName());
+
 
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("failed", "Server is down!");
