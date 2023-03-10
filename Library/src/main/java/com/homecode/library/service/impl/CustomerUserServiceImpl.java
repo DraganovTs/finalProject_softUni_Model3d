@@ -37,4 +37,9 @@ public class CustomerUserServiceImpl implements CustomerUserService {
     public boolean confirmPassword(UserRegisterDTO userRegisterDTO) {
         return userRegisterDTO.getPassword().equals(userRegisterDTO.getRepeatPassword());
     }
+
+    @Override
+    public UserEntity findUserByUsername(String username) {
+        return this.userRepository.findUserEntitiesByEmail(username).get();
+    }
 }

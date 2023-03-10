@@ -20,8 +20,15 @@ public class UserEntity {
     @Column(nullable = false)
     private String password;
 
+    @Column
+    private String description;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<UserRoleEntity> roles = new ArrayList<>();
+    @ManyToMany
+    private List<ModelEntity> purchasedModels = new ArrayList<>();
+    @ManyToMany
+    private List<ModelEntity> likedModels = new ArrayList<>();
+
 
     public UserEntity() {
     }
@@ -77,6 +84,33 @@ public class UserEntity {
 
     public UserEntity setRoles(List<UserRoleEntity> roles) {
         this.roles = roles;
+        return this;
+    }
+
+    public List<ModelEntity> getPurchasedModels() {
+        return purchasedModels;
+    }
+
+    public UserEntity setPurchasedModels(List<ModelEntity> purchasedModels) {
+        this.purchasedModels = purchasedModels;
+        return this;
+    }
+
+    public List<ModelEntity> getLikedModels() {
+        return likedModels;
+    }
+
+    public UserEntity setLikedModels(List<ModelEntity> likedModels) {
+        this.likedModels = likedModels;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public UserEntity setDescription(String description) {
+        this.description = description;
         return this;
     }
 

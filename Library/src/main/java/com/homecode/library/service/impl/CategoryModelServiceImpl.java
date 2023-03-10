@@ -92,4 +92,9 @@ public class CategoryModelServiceImpl implements CategoryModelService {
     public boolean findCategoryByName(CategoryDTO categoryDTO) {
         return this.categoryRepository.findByName(categoryDTO.getName()).isEmpty();
     }
+
+    @Override
+    public CategoryModelEntity findCategoryByName(String name) {
+        return this.categoryRepository.findByName(name).orElseThrow();
+    }
 }

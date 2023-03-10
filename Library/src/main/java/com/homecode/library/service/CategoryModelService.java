@@ -23,4 +23,6 @@ public interface CategoryModelService {
     void enableById(Long id);
 
     boolean findCategoryByName(CategoryDTO categoryDTO);
+
+    CategoryModelEntity findCategoryByName(String name);
 }

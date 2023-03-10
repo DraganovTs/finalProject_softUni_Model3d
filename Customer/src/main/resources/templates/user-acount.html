@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- user-acount11:10-->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Model 3d UserProfile</title>
+
+    <meta name="keywords" content="Furniture, Decor, Interior">
+    <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
+    <meta name="author" content="tivatheme">
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+
+    <!-- libs CSS -->
+    <th:block th:insert="~{fragments/libsCss}"></th:block>
+
+
+    <!-- Template CSS -->
+    <th:block th:insert="~{fragments/templateCss}"></th:block>
+
+</head>
+
+<body class="user-acount">
+<header>
+    <!-- header left mobie -->
+    <th:block th:insert="~{fragments/header_left_mobile}"></th:block>
+
+    <!-- header desktop -->
+    <th:block th:insert="~{fragments/header_desktop}"></th:block>
+</header>
+
+<!-- main content -->
+<div class="main-content">
+    <div class="wrap-banner">
+
+        <!-- breadcrumb -->
+
+
+        <div class="acount head-acount">
+            <div class="container">
+                <div id="main">
+                    <h1 class="title-page">My Account</h1>
+                    <div th:object="${userProfile}" class="content" id="block-history">
+                        <table class="std table">
+                            <tbody>
+                            <tr>
+                                <th class="first_item">First Name :</th>
+                                <td th:text="*{fistName}">David James</td>
+                            </tr>
+                            <tr>
+                                <th class="first_item">Last Name :</th>
+                                <td th:text="*{lastName}">David James</td>
+                            </tr>
+                            <tr>
+                                <th class="first_item">My Email :</th>
+                                <td th:text="*{email}">David James</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--Purchased Models -->
+                    </div>
+                    <div class="order">
+                        <h4>Purchased
+                            <span class="detail">Models</span>
+                        </h4>
+                        <div>
+                            <p th:if="${userPurchasedModels.size()==0}">You haven't purchased any models yet.</p>
+                        </div>
+                        <table class="table table-hover" th:if="${userPurchasedModels.size()>0}">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Manufacturer</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Likes</th>
+                                <th scope="col">Sold</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="model : ${userPurchasedModels}">
+                                <td th:text="${model.name}"></td>
+                                <td th:text="${model.manufacturer}"></td>
+                                <td th:text="${model.image}"></td>
+                                <td th:text="${model.likes}"></td>
+                                <td th:text="${model.sold}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--End of Purchased Models -->
+                    <!-- Liked Models -->
+                    <div class="order">
+                        <h4>Liked
+                            <span class="detail">Models</span>
+                        </h4>
+                        <div>
+                            <p th:if="${userLikedModels.size()==0}">You haven't liked any models yet.</p>
+                        </div>
+                        <table class="table table-hover" th:if="${userLikedModels.size()>0}">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Manufacturer</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Likes</th>
+                                <th scope="col">Sold</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="model : ${userLikedModels}">
+                                <td th:text="${model.name}"></td>
+                                <td th:text="${model.manufacturer}"></td>
+                                <td th:text="${model.image}"></td>
+                                <td th:text="${model.likes}"></td>
+                                <td th:text="${model.sold}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--End of Liked Models -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- footer -->
+<th:block th:insert="~{fragments/footer}"></th:block>
+
+<!-- back top top -->
+<th:block th:insert="~{fragments/back_to_top}"></th:block>
+
+<!-- menu mobie left -->
+<th:block th:insert="~{fragments/menu_mobie_left}"></th:block>
+
+<!-- menu mobie right -->
+<th:block th:insert="~{fragments/menu_mobie_right}"></th:block>
+
+<!-- Page Loader -->
+<th:block th:insert="~{fragments/page_loader}"></th:block>
+
+<!-- Vendor JS -->
+<th:block th:insert="~{fragments/vendor_Js}"></th:block>
+
+
+<!-- Template JS -->
+<th:block th:insert="~{fragments/template_Js}"></th:block>
+
+</body>
+
+
+<!-- user-acount11:10-->
+</html>
