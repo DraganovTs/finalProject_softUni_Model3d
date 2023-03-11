@@ -30,7 +30,7 @@ public class ZipFileUpload {
             Files.copy(zipModel.getInputStream(), this.root.resolve(zipModel.getOriginalFilename()));
         } catch (Exception e) {
             if (e instanceof FileAlreadyExistsException) {
-                throw new RuntimeException("A file of that name already exists.");
+                throw new RuntimeException("A zip of that name already exists.");
             }
 
             throw new RuntimeException(e.getMessage());

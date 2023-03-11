@@ -23,9 +23,11 @@ public class UserAdminSecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+        //TODO change to authenticated
+
         http.
                 authorizeHttpRequests().
-                requestMatchers("/", "/login", "/register", "/error", "/about-us","product-grid-sidebar-left").permitAll().
+                requestMatchers( "/login", "/register", "/error" , "/categories").permitAll().
                 anyRequest().permitAll().
                 and().
                 formLogin()
@@ -33,9 +35,15 @@ public class UserAdminSecurityConfiguration {
                 .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
                 .defaultSuccessUrl("/")
-                .failureUrl("/login?error=true")
-                ;
-
+                .failureUrl("/login?error=true").
+                and().
+                logout().
+                logoutUrl("/logout").
+                logoutSuccessUrl("/").
+                deleteCookies("JSESSIONID").
+                clearAuthentication(true)
+                .and()
+                .csrf().disable();
 
         return http.build();
     }
@@ -43,7 +51,7 @@ public class UserAdminSecurityConfiguration {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.ignoring()
-                .requestMatchers("/css/**", "/dist/**","/less/**","/pages/**", "/js/**", "/images/**", "/scss/**","/vendor/**","/admin/**");
+                .requestMatchers("/css/**", "/js/**", "/images/**", "/libs/**");
     }
 
     @Bean

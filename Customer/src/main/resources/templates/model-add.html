@@ -96,21 +96,21 @@
                                                 CATEGORY</label>
                                             <div class="col-md-4" >
                                                 <select id="category" name="category" class="form-control" >
-                                                    <option>Choose Category</option>
+                                                    <option th:value="null">Choose Category</option>
                                                     <option  th:each="category : ${categories}" th:text="${category.name}">1</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <!-- File Button -->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="imageModel">Add Model</label>
+                                            <label class="col-md-4 control-label" for="imageModel">Add Image</label>
                                             <div class="col-md-4">
                                                 <input id="imageModel" name="imageModel" class="input-file" accept="image/png" type="file">
                                             </div>
                                         </div>
                                         <!-- File Button -->
                                         <div class="form-group">
-                                            <label class="col-md-4 control-label" for="zipModel">Add Image</label>
+                                            <label class="col-md-4 control-label" for="zipModel">Add Model</label>
                                             <div class="col-md-4">
                                                 <input id="zipModel" name="zipModel"  class="input-file" type="file">
                                             </div>

@@ -1,0 +1,38 @@
+<th:block>
+    <div class="header-top d-xs-none ">
+        <div class="container">
+            <div class="row">
+                <!-- logo -->
+                <div class="col-sm-2 col-md-2 d-flex align-items-center">
+                    <div id="logo">
+                        <a th:href="@{/}">
+                            <img class="img-fluid" th:src="@{images/home/logo2.png}" alt="logo">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- menu -->
+                <div class="main-menu col-sm-4 col-md-5 align-items-center justify-content-center navbar-expand-md">
+                    <div class="menu navbar collapse navbar-collapse">
+                        <ul class="menu-top navbar-nav">
+                            <li class="nav-link">
+                                <a th:href="@{/}" class="parent">Home</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/moderator-add}" class="parent">Add moderator</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/ban-users}" class="parent">Ban Users</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/categories}" class="parent">Add Categories</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- search-->
+            </div>
+        </div>
+    </div>
+</th:block>

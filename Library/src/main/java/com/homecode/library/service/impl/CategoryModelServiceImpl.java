@@ -39,7 +39,7 @@ public class CategoryModelServiceImpl implements CategoryModelService {
     @Override
     public List<CategoryDTO> findAll() {
 
-
+        //TODO filter only active categories
         return this.categoryRepository
                 .findAll()
                 .stream()

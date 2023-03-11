@@ -1,6 +1,7 @@
 package com.homecode.customer.web;
 
 import com.homecode.library.model.dto.ModelUploadDTO;
+import com.homecode.library.model.view.ModelsShowAllView;
 import com.homecode.library.service.impl.CategoryModelServiceImpl;
 import com.homecode.library.service.impl.ModelServiceImpl;
 import jakarta.validation.Valid;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 public class ModelController {
@@ -69,12 +71,23 @@ public class ModelController {
 
 
     @GetMapping("/models-all")
-    public String allModels() {
+    public String allModels(Model model) {
+        List<ModelsShowAllView> allModelsView = this.modelService.getAllModels();
+        model.addAttribute("modelsNumber", allModelsView.size());
+        model.addAttribute("allModels", allModelsView);
         return "model-all";
+    }
+
+
+    @GetMapping("/product-detail")
+    public String productDetail() {
+        return "product-detail";
     }
 
     @ModelAttribute("modelUploadDTO")
     public ModelUploadDTO modelUploadDTO() {
         return new ModelUploadDTO();
     }
+
+
 }

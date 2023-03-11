@@ -23,9 +23,9 @@ public class CategoryController {
 
     @GetMapping("/categories")
     public String categories(Model model, Principal principal) {
-       /*  if (principal == null) {
+        if (principal == null) {
             return "redirect:/login";
-        }*/ //TODO // ако се оправи логина!!!
+        }
         model.addAttribute("categories", this.categoryService.findAll());
         return "categories";
     }
@@ -53,27 +53,15 @@ public class CategoryController {
         return "redirect:/categories";
     }
 
-//    @GetMapping("/findById/{id}")
-//    public CategoryDTO findById(@PathVariable("id") Long id){
-//        System.out.println(this.categoryService.findById(id).getName());
-//
-//       return categoryService.findById(id);
-//    }
 
-    @RequestMapping(value = "/findById/", method = { RequestMethod.GET,RequestMethod.PUT})
-    @ResponseBody
-    public CategoryDTO findById(Long id){
-        System.out.println(this.categoryService.findById(id).getName());
-        return categoryService.findById(id);
+    @GetMapping("/delete-category/{id}")
+    public String deleteById(@PathVariable( value = "id") Long id){
+        this.categoryService.deleteById(id);
+        return "redirect:/categories";
     }
-
-    @GetMapping("/update-category")
-    public String update(CategoryDTO categoryDTO, RedirectAttributes redirectAttributes) {
-        try {
-            this.categoryService.update(categoryDTO);
-        } catch (Exception e) {
-
-        }
+    @GetMapping("/enable-category/{id}")
+    public String enableById(@PathVariable( value = "id") Long id){
+        this.categoryService.enableById(id);
         return "redirect:/categories";
     }
 

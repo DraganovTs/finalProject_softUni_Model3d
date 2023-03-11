@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- user-register11:10-->
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Furnitica - Minimalist Furniture HTML Template</title>
+
+    <meta name="keywords" content="Furniture, Decor, Interior">
+    <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
+    <meta name="author" content="tivatheme">
+
+    <!-- Mobile Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+
+    <!-- libs CSS -->
+    <th:block th:insert="~{fragments/libsCss}"></th:block>
+
+    <!-- Template CSS -->
+    <th:block th:insert="~{fragments/templateCss}"></th:block>
+</head>
+
+<body class="user-register blog">
+<header>
+
+    <!-- header left mobie -->
+
+    <!-- header desktop -->
+</header>
+
+<!-- main content -->
+<div class="main-content">
+    <div class="wrap-banner">
+
+        <!-- breadcrumb -->
+    </div>
+
+    <!-- main -->
+    <div id="wrapper-site">
+        <div class="container">
+            <div class="row">
+                <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 onecol">
+                    <div id="main">
+                        <div id="content" class="page-content">
+                            <div class="register-form text-center">
+                                <h1 class="text-center title-page">Create Account</h1>
+                                <form th:action="@{/register}" id="customer-form" class="js-customer-form"
+                                      th:method="post" th:object="${adminRegisterDTO}">
+                                    <div>
+                                        <div class="form-group">
+                                            <div>
+                                                <input class="form-control" name="firstname" type="text"
+                                                       placeholder="First name" th:field="*{firstName}"
+                                                       th:errorclass="'is-invalid alert-danger'">
+                                                <small th:if="${#fields.hasErrors('firstName')}"
+                                                       th:errors="*{firstName}" class="text-danger">error
+                                                    message</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <input class="form-control" name="lastname" type="text"
+                                                       placeholder="Last name" th:field="*{lastName}"
+                                                       th:errorclass="'is-invalid alert-danger'">
+                                                <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                                       class="text-danger">error message</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <input class="form-control" name="email" type="text" id="email"
+                                                       placeholder="Email" th:field="*{email}"
+                                                       th:errorclass="'is-invalid alert-danger'">
+                                                <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                                       class="text-danger">error message</small>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="input-group js-parent-focus">
+                                                    <input class="form-control js-child-focus js-visible-password"
+                                                           name="password" type="password" id="password"
+                                                           placeholder="Password" th:field="*{password}"
+                                                           th:errorclass="'is-invalid alert-danger'">
+                                                    <div>
+                                                        <small th:if="${#fields.hasErrors('password')}"
+                                                               th:errors="*{password}" class="text-danger">error
+                                                            message</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <div class="input-group js-parent-focus">
+                                                    <input class="form-control js-child-focus js-visible-password"
+                                                           name="repeatPassword" type="password" id="repeatPassword"
+                                                           placeholder="Repeat Password" th:field="*{repeatPassword}"
+                                                           th:errorclass="'is-invalid alert-danger'">
+                                                    <div>
+                                                        <small th:if="${#fields.hasErrors('repeatPassword')}"
+                                                               th:errors="*{repeatPassword}" class="text-danger">error
+                                                            message</small>
+                                                    </div>
+                                                    <div th:if="${passwordDifferent}">
+                                                        <span th:text="${passwordDifferent}" class="text-danger">error message</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix">
+                                        <div>
+                                            <button class="btn btn-primary" data-link-action="sign-in"
+                                                    type="submit">
+                                                Create Account
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+
+<!-- back top top -->
+
+<!-- menu mobie left -->
+
+<!-- menu mobie right -->
+
+<!-- Page Loader -->
+<th:block th:insert="~{fragments/page_loader}"></th:block>
+
+<!-- Vendor JS -->
+<th:block th:insert="~{fragments/vendor_Js}"></th:block>
+
+<!-- Template JS -->
+<th:block th:insert="~{fragments/template_Js}"></th:block>
+</body>
+
+
+<!-- user-register11:10-->
+</html>

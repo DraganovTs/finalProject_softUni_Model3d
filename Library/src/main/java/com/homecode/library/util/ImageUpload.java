@@ -26,7 +26,7 @@ public class ImageUpload {
             Files.copy(imageModel.getInputStream(), this.root.resolve(imageModel.getOriginalFilename()));
         } catch (Exception e) {
             if (e instanceof FileAlreadyExistsException) {
-                throw new RuntimeException("A file of that name already exists.");
+                throw new RuntimeException("A image of that name already exists.");
             }
 
             throw new RuntimeException(e.getMessage());
