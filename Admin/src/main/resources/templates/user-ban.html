@@ -13,7 +13,7 @@
   <!-- Basic Page Needs -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Model 3d CategoriesAdd</title>
+  <title>Model 3d BanUsers</title>
 
   <meta name="keywords" content="Furniture, Decor, Interior">
   <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
@@ -56,11 +56,11 @@
           <h1 class="title-page">Categories</h1>
           <div class="order">
             <div>
-              <p th:if="${categories.size()==0}" >No category</p>
+              <p th:if="${addresses.size()==0}" >No banned users</p>
             </div>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add new category</button>
-            <div th:if = "${existCategory}" class="text-center alert alert-danger">
-              <p th:text="${existCategory}"></p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Ban User Ip</button>
+            <div th:if = "${existIp}" class="text-center alert alert-danger">
+              <p th:text="${existIp}"></p>
             </div>
             <div th:if = "${success}" class="text-center alert alert-success">
               <p th:text="${success}"></p>
@@ -71,17 +71,16 @@
             <table class="table table-hover" >
               <thead>
               <tr>
-                <th scope="col">Category Index</th>
-                <th scope="col">Category Name</th>
+                <th scope="col">Index</th>
+                <th scope="col">User Ip</th>
                 <th scope="col">Action</th>
               </tr>
               </thead>
-              <tr th:each="category : ${categories}">
-                <th scope="row" th:text="${category.id}"></th>
-                <td th:text="${category.name}"></td>
+              <tr th:each="ip : ${addresses}">
+                <th scope="row" th:text="${ip.id}"></th>
+                <td th:text="${ip.ipAddress}"></td>
                 <td>
-                  <a th:if = "${category.isActive()} == true" th:href="@{/delete-category/{id}(id=*{category.id})}" class="btn btn-warning">Delete</a>
-                  <a th:if = "${category.isActive()} == false" th:href="@{/enable-category/{id}(id=*{category.id})}" class="btn btn-primary">Enable</a>
+                  <a  th:href="@{/delete-ip-from-list/{id}(id=*{ip.id})}" class="btn btn-primary">Enable User</a>
                 </td>
               </tr>
               </tbody>
@@ -99,7 +98,7 @@
 
 <!--Add Modal-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <form th:action="@{/add-category}" method="post" th:object="${categoryDTO}">
+  <form th:action="@{/user-ban}" method="post" th:object="${ipAddressDTO}">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -109,7 +108,7 @@
 
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Name:</label>
-            <input type="text" class="form-control" th:field = "*{name}" id="recipient-name">
+            <input type="text" class="form-control" th:field = "*{ipAddress}" id="recipient-name">
           </div>
         </div>
         <div class="modal-footer">

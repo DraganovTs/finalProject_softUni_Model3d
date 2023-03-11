@@ -19,6 +19,8 @@ public class AuthAdminController {
     private final AdminServiceImpl adminService;
     private final PasswordEncoder passwordEncoder;
 
+    //TODO logout
+
     public AuthAdminController(AdminServiceImpl adminService, PasswordEncoder passwordEncoder) {
         this.adminService = adminService;
         this.passwordEncoder = passwordEncoder;
