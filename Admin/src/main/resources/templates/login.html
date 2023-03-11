@@ -4,7 +4,7 @@
 
 <head th:replace="~{fragments/head}">
     <title>Login</title>
-    <link rel="icon" type="image/x-icon" th:href="@{../static/images/favicon.ico}">
+    <link rel="icon" type="image/x-icon" th:href="@{images/favicon.ico}">
 </head>
 
 <body class="bg-gradient-primary">
@@ -26,7 +26,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user" th:method="post" th:action="@{/login}">
+                                    <form class="user" th:action="@{/login}" th:method="POST" >
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"

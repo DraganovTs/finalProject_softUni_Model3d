@@ -14,5 +14,5 @@ public interface ModelService {
 
     boolean isExistInDB(ModelUploadDTO modelUploadDTO);
 
-    void uploadModel(MultipartFile imageModel, ModelUploadDTO modelUploadDTO, String username) throws IOException;
+    void uploadModel(MultipartFile imageModel,MultipartFile zipModel, ModelUploadDTO modelUploadDTO, String username) throws IOException;
 }

@@ -12,6 +12,8 @@ import com.homecode.library.repository.ModelRepository;
 import com.homecode.library.repository.UserRepository;
 import com.homecode.library.service.impl.CategoryModelServiceImpl;
 import com.homecode.library.service.impl.RoleServiceImpl;
+import com.homecode.library.util.ImageUpload;
+import com.homecode.library.util.ZipFileUpload;
 import jakarta.annotation.PostConstruct;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,8 +32,10 @@ public class CustomerInit {
 
     private final CategoryRepository categoryRepository;
     private final ModelRepository modelRepository;
+    private final ImageUpload imageUpload;
+    private final ZipFileUpload zipFileUpload;
 
-    public CustomerInit(RoleServiceImpl roleService, UserRepository userRepository, PasswordEncoder passwordEncoder, CategoryModelServiceImpl categoryModelService, AdminRepository adminRepository, CategoryRepository categoryRepository, ModelRepository modelRepository) {
+    public CustomerInit(RoleServiceImpl roleService, UserRepository userRepository, PasswordEncoder passwordEncoder, CategoryModelServiceImpl categoryModelService, AdminRepository adminRepository, CategoryRepository categoryRepository, ModelRepository modelRepository, ImageUpload imageUpload, ZipFileUpload zipFileUpload) {
         this.roleService = roleService;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -39,6 +43,8 @@ public class CustomerInit {
         this.adminRepository = adminRepository;
         this.categoryRepository = categoryRepository;
         this.modelRepository = modelRepository;
+        this.imageUpload = imageUpload;
+        this.zipFileUpload = zipFileUpload;
     }
 
 
@@ -52,18 +58,17 @@ public class CustomerInit {
         }
 
         if (this.userRepository.count() == 0) {
-
             initUsers();
         }
         if (this.categoryRepository.count() == 0) {
-
             initCategories();
         }
         if (this.modelRepository.count() == 0) {
-
-
             initModels();
         }
+
+        this.imageUpload.init();
+        this.zipFileUpload.init();
     }
 
 

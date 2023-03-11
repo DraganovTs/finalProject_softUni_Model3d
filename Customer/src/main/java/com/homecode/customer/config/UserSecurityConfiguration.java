@@ -26,7 +26,7 @@ public class UserSecurityConfiguration {
 
         http.
                 authorizeHttpRequests().
-                requestMatchers("/", "/login", "/register", "/error", "/about-us","product-grid-sidebar-left").permitAll().
+                requestMatchers("/", "/login", "/register", "/error", "/about-us","/model-all").permitAll().
                 anyRequest().permitAll().
                 and().
                 formLogin()
@@ -50,7 +50,7 @@ public class UserSecurityConfiguration {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.ignoring()
-                .requestMatchers("/css/**", "/js/**", "/images/**", "/libs/**");
+                .requestMatchers("/css/**", "/js/**", "/images/**", "/libs/**","/upload/**");
     }
 
     @Bean

@@ -17,7 +17,8 @@ public class ModelEntity {
     private String name;
     @Column(nullable = false)
     private String manufacturer;
-    @Column(nullable = false)
+    @Lob
+    @Column(columnDefinition = "BLOB")
     private String downloadLink;
     @Column(columnDefinition = "MEDIUMBLOB")
     private String image;

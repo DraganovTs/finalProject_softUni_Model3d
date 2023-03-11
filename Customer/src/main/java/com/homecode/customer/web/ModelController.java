@@ -38,7 +38,8 @@ public class ModelController {
                               BindingResult bindingResult,
                               RedirectAttributes redirectAttributes,
                               Principal principal,
-                              @RequestParam("image") MultipartFile imageModel) {
+                              @RequestParam("imageModel") MultipartFile imageModel,
+                              @RequestParam("zipModel") MultipartFile zipModel) {
 
         try {
             if (bindingResult.hasErrors()) {
@@ -52,7 +53,7 @@ public class ModelController {
                 return "redirect:/add-model";
             }
 
-            this.modelService.uploadModel(imageModel, modelUploadDTO, principal.getName());
+            this.modelService.uploadModel(imageModel, zipModel, modelUploadDTO, principal.getName());
 
 
         } catch (Exception e) {

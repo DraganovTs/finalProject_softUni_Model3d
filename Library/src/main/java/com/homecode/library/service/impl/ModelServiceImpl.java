@@ -8,6 +8,7 @@ import com.homecode.library.model.view.CustomerProfileModelsView;
 import com.homecode.library.repository.ModelRepository;
 import com.homecode.library.service.ModelService;
 import com.homecode.library.util.ImageUpload;
+import com.homecode.library.util.ZipFileUpload;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,15 +26,17 @@ public class ModelServiceImpl implements ModelService {
     private final ModelRepository modelRepository;
     private final CustomerUserServiceImpl userService;
     private final CategoryModelServiceImpl categoryModelService;
-    private ImageUpload imageUpload;
+    private final ImageUpload imageUpload;
+    private final ZipFileUpload zipFileUpload;
 
     @Autowired
-    public ModelServiceImpl(ModelMapper modelMapper, ModelRepository modelRepository, CustomerUserServiceImpl userService, CategoryModelServiceImpl categoryModelService, ImageUpload imageUpload) {
+    public ModelServiceImpl(ModelMapper modelMapper, ModelRepository modelRepository, CustomerUserServiceImpl userService, CategoryModelServiceImpl categoryModelService, ImageUpload imageUpload, ZipFileUpload zipFileUpload) {
         this.modelMapper = modelMapper;
         this.modelRepository = modelRepository;
         this.userService = userService;
         this.categoryModelService = categoryModelService;
         this.imageUpload = imageUpload;
+        this.zipFileUpload = zipFileUpload;
     }
 
 
@@ -57,26 +60,26 @@ public class ModelServiceImpl implements ModelService {
     }
 
     @Override
-    public void uploadModel(MultipartFile imageModel, ModelUploadDTO modelUploadDTO, String username) throws IOException {
+    public void uploadModel(MultipartFile imageModel, MultipartFile zipModel, ModelUploadDTO modelUploadDTO, String username) throws IOException {
 
         try {
-        imageUpload.uploadImage(imageModel);
+            this.imageUpload.uploadImage(imageModel);
+            this.zipFileUpload.uploadZipFile(zipModel);
+            UserEntity user = this.userService.findUserByUsername(username);
+            CategoryModelEntity category = this.categoryModelService.findCategoryByName(modelUploadDTO.getCategory());
 
-        UserEntity user = this.userService.findUserByUsername(username);
-        CategoryModelEntity category = this.categoryModelService.findCategoryByName(modelUploadDTO.getCategory());
-
-        ModelEntity modelToSave = new ModelEntity()
-                .setName(modelUploadDTO.getName())
-                .setManufacturer(modelUploadDTO.getManufacturer())
-                .setCategory(category)
-                .setDownloadLink("txt")
-                .setImage(Base64.getEncoder().encodeToString(imageModel.getBytes()))
-                .setOwner(user);
+            ModelEntity modelToSave = new ModelEntity()
+                    .setName(modelUploadDTO.getName())
+                    .setManufacturer(modelUploadDTO.getManufacturer())
+                    .setCategory(category)
+                    .setDownloadLink(Base64.getEncoder().encodeToString(zipModel.getBytes()))
+                    .setImage(Base64.getEncoder().encodeToString(imageModel.getBytes()))
+                    .setOwner(user);
 
 
-        this.modelRepository.save(modelToSave);
+            this.modelRepository.save(modelToSave);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
 
         }

@@ -23,19 +23,19 @@ public class UserAdminSecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        http
-                .authorizeHttpRequests()
-                .requestMatchers("/", "/login", "/register", "/error").permitAll()
-                .anyRequest().permitAll()
-                .and()
-                .formLogin()
+        http.
+                authorizeHttpRequests().
+                requestMatchers("/", "/login", "/register", "/error", "/about-us","product-grid-sidebar-left").permitAll().
+                anyRequest().permitAll().
+                and().
+                formLogin()
                 .loginPage("/login")
                 .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
                 .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
-                .defaultSuccessUrl("/",true)
-                .failureForwardUrl("/error")
-                .and()
-                .csrf().disable();
+                .defaultSuccessUrl("/")
+                .failureUrl("/login?error=true")
+                ;
+
 
         return http.build();
     }
@@ -43,7 +43,7 @@ public class UserAdminSecurityConfiguration {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.ignoring()
-                .requestMatchers("/css/**", "/js/**", "/images/**", "/scss/**","/vendor/**");
+                .requestMatchers("/css/**", "/dist/**","/less/**","/pages/**", "/js/**", "/images/**", "/scss/**","/vendor/**","/admin/**");
     }
 
     @Bean

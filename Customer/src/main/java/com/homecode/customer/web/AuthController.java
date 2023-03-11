@@ -81,6 +81,8 @@ public class AuthController {
     }
 
 
+
+
     @ModelAttribute("registerDTO")
     public UserRegisterDTO registerDTO() {
         return new UserRegisterDTO();
