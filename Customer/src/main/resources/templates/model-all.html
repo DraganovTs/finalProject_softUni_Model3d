@@ -82,7 +82,7 @@
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
                                                                 <a th:href="@{product-detail}" >
-                                                                    <img class="img-fluid image-cover" alt="img" th:src="*{'data:image/jpeg;base64,'+${model.image}}">
+                                                                    <img class="img-fluid image-cover" alt="img" th:src="|data:image/jpeg;base64,+${model.image}|">
                                                                 </a>
                                                             </div>
                                                             <div class="product-description">
