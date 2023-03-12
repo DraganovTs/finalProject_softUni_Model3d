@@ -26,6 +26,8 @@ public class UserEntity {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<UserRoleEntity> roles = new ArrayList<>();
     @ManyToMany
+    private List<ModelEntity> userUploadedModels = new ArrayList<>();
+    @ManyToMany
     private List<ModelEntity> purchasedModels = new ArrayList<>();
     @ManyToMany
     private List<ModelEntity> likedModels = new ArrayList<>();
@@ -117,6 +119,15 @@ public class UserEntity {
 
     public UserEntity setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public List<ModelEntity> getUserUploadedModels() {
+        return userUploadedModels;
+    }
+
+    public UserEntity setUserUploadedModels(List<ModelEntity> userUploadedModels) {
+        this.userUploadedModels = userUploadedModels;
         return this;
     }
 

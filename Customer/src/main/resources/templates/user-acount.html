@@ -71,6 +71,37 @@
                             </tr>
                             </tbody>
                         </table>
+                        <!--My Models -->
+                    </div>
+                    <div class="order">
+                        <h4>My
+                            <span class="detail">Models</span>
+                        </h4>
+                        <div>
+                            <p th:if="${userModels.size()==0}">You haven't  any models uploaded.</p>
+                        </div>
+                        <table class="table table-hover" th:if="${userPurchasedModels.size()>0}">
+                            <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Manufacturer</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Likes</th>
+                                <th scope="col">Sold</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="model : ${userPurchasedModels}">
+                                <td th:text="${model.name}"></td>
+                                <td th:text="${model.manufacturer}"></td>
+                                <td th:text="${model.image}"></td>
+                                <td th:text="${model.likes}"></td>
+                                <td th:text="${model.sold}"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--End of Purchased Models -->
                         <!--Purchased Models -->
                     </div>
                     <div class="order">

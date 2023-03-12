@@ -38,6 +38,9 @@ public class PageController {
                 .setLastName(user.getLastName());
         model.addAttribute("userProfile", profileView);
 
+        List<CustomerProfileModelsView> userModels = this.modelService.getUserModels(user.getUserUploadedModels());
+        model.addAttribute("userModels", userModels);
+
         List<CustomerProfileModelsView> userPurchasedModels = this.modelService.getUserModels(user.getPurchasedModels());
         model.addAttribute("userPurchasedModels", userPurchasedModels);
 

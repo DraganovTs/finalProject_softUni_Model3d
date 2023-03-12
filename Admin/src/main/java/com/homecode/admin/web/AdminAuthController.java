@@ -30,41 +30,41 @@ public class AdminAuthController {
         return "/user-login";
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "/user-register";
-    }
+//    @GetMapping("/register")
+//    public String register() {
+//        return "/user-register";
+//    }
 
-    @PostMapping("/register")
-    public String adminRegister(@Valid AdminRegisterDTO adminRegisterDTO,
-                                BindingResult bindingResult,
-                                RedirectAttributes redirectAttributes) {
-
-        try {
-            if (!this.adminService.confirmPassword(adminRegisterDTO)) {
-                bindingResult.addError(
-                        new FieldError(
-                                "differentConfirmPassword",
-                                "confirmPassword",
-                                "Passwords must be the same."));
-                return "redirect:/register";
-            }
-
-            adminRegisterDTO.setPassword(passwordEncoder.encode(adminRegisterDTO.getPassword()));
-
-            if (bindingResult.hasErrors() || !this.adminService.register(adminRegisterDTO)) {
-                redirectAttributes.addFlashAttribute("adminRegisterDTO", adminRegisterDTO);
-                redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.adminRegisterDTO", bindingResult);
-                System.out.println("Errors");
-                return "redirect:/register";
-            }
-
-        } catch (Exception e) {
-            redirectAttributes.addAttribute("serverErrors", false);
-        }
-
-        return "redirect:/login";
-    }
+//    @PostMapping("/register")
+//    public String adminRegister(@Valid AdminRegisterDTO adminRegisterDTO,
+//                                BindingResult bindingResult,
+//                                RedirectAttributes redirectAttributes) {
+//
+//        try {
+//            if (!this.adminService.confirmPassword(adminRegisterDTO)) {
+//                bindingResult.addError(
+//                        new FieldError(
+//                                "differentConfirmPassword",
+//                                "confirmPassword",
+//                                "Passwords must be the same."));
+//                return "redirect:/register";
+//            }
+//
+//            adminRegisterDTO.setPassword(passwordEncoder.encode(adminRegisterDTO.getPassword()));
+//
+//            if (bindingResult.hasErrors() || !this.adminService.register(adminRegisterDTO)) {
+//                redirectAttributes.addFlashAttribute("adminRegisterDTO", adminRegisterDTO);
+//                redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.adminRegisterDTO", bindingResult);
+//                System.out.println("Errors");
+//                return "redirect:/register";
+//            }
+//
+//        } catch (Exception e) {
+//            redirectAttributes.addAttribute("serverErrors", false);
+//        }
+//
+//        return "redirect:/login";
+//    }
 
     @ModelAttribute("adminRegisterDTO")
     public AdminRegisterDTO adminRegisterDTO(){
