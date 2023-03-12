@@ -12,6 +12,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 
+import static com.homecode.admin.constants.Messages.*;
+
 @Controller
 public class AdminIpController {
 
@@ -36,13 +38,13 @@ public class AdminIpController {
 
         try {
             if (this.blackListService.isBlacklisted(ipAddressDTO.getIpAddress())) {
-                redirectAttributes.addFlashAttribute("existIp", "User already banned");
+                redirectAttributes.addFlashAttribute("existIp", USER_ALREADY_BANNED);
                 return "redirect:/user-ban";
             }
             this.blackListService.addIpAddress(ipAddressDTO.getIpAddress());
-            redirectAttributes.addFlashAttribute("success", "Added successfully");
+            redirectAttributes.addFlashAttribute("success", ADD_SUCCESSFULLY);
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("failed", "Server is down!");
+            redirectAttributes.addFlashAttribute("failed", SERVER_NOT_WORKING);
         }
 
 

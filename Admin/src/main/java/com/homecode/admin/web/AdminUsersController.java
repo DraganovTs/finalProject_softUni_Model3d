@@ -13,12 +13,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 
+import static com.homecode.admin.constants.Messages.*;
+
 @Controller
-public class UsersController {
+public class AdminUsersController {
     private final AdminServiceImpl adminService;
     private final CustomerUserServiceImpl customerUserService;
 
-    public UsersController(AdminServiceImpl adminService, CustomerUserServiceImpl customerUserService) {
+    public AdminUsersController(AdminServiceImpl adminService, CustomerUserServiceImpl customerUserService) {
         this.adminService = adminService;
         this.customerUserService = customerUserService;
     }
@@ -38,13 +40,13 @@ public class UsersController {
                                  RedirectAttributes redirectAttributes) {
         try {
             if (this.adminService.findAdminEntityByEmail(adminAddRolesDto)) {
-                redirectAttributes.addFlashAttribute("existAdmin", "User is already admin");
+                redirectAttributes.addFlashAttribute("existAdmin", USER_ALREADY_ADMIN);
                 return "redirect:/user-roles-admin";
             }
             this.adminService.addAdminRole(adminAddRolesDto);
-            redirectAttributes.addFlashAttribute("successAdmin", "Added successfully");
+            redirectAttributes.addFlashAttribute("successAdmin", ADD_SUCCESSFULLY);
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("failedAdmin", "Server is down!");
+            redirectAttributes.addFlashAttribute("failedAdmin", SERVER_NOT_WORKING);
         }
 
         return "redirect:/user-roles-admin";
@@ -68,13 +70,13 @@ public class UsersController {
                                 RedirectAttributes redirectAttributes) {
         try {
             if (this.customerUserService.findUserByUsername(userAddRolesDto)) {
-                redirectAttributes.addFlashAttribute("existModerator", "User already is moderator");
+                redirectAttributes.addFlashAttribute("existModerator", USER_ALREADY_MODERATOR);
                 return "redirect:/user-roles-moderator";
             }
             this.customerUserService.createModerator(userAddRolesDto);
-            redirectAttributes.addFlashAttribute("successModerator", "Added successfully");
+            redirectAttributes.addFlashAttribute("successModerator", ADD_SUCCESSFULLY);
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("failedModerator", "Server is down!");
+            redirectAttributes.addFlashAttribute("failedModerator", SERVER_NOT_WORKING);
         }
 
         return "redirect:/user-roles-moderator";

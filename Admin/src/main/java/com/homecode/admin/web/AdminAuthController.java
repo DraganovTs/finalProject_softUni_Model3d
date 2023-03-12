@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class AuthAdminController {
+public class AdminAuthController {
 
     private final AdminServiceImpl adminService;
     private final PasswordEncoder passwordEncoder;
 
 
-    public AuthAdminController(AdminServiceImpl adminService, PasswordEncoder passwordEncoder) {
+    public AdminAuthController(AdminServiceImpl adminService, PasswordEncoder passwordEncoder) {
         this.adminService = adminService;
         this.passwordEncoder = passwordEncoder;
     }
@@ -47,8 +47,6 @@ public class AuthAdminController {
                                 "differentConfirmPassword",
                                 "confirmPassword",
                                 "Passwords must be the same."));
-
-                System.out.println("Passwords must be the same.");
                 return "redirect:/register";
             }
 
@@ -62,16 +60,10 @@ public class AuthAdminController {
             }
 
         } catch (Exception e) {
-            System.out.println("server error");
             redirectAttributes.addAttribute("serverErrors", false);
         }
 
         return "redirect:/login";
-    }
-
-    @GetMapping("/forgot-password")
-    public String forgotPassword() {
-        return "forgot-password";
     }
 
     @ModelAttribute("adminRegisterDTO")

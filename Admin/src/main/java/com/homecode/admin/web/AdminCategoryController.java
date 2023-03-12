@@ -12,12 +12,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 
+import static com.homecode.admin.constants.Messages.*;
+
 @Controller
-public class CategoryController {
+public class AdminCategoryController {
 
     private final CategoryModelServiceImpl categoryService;
 
-    public CategoryController(CategoryModelServiceImpl categoryService) {
+    public AdminCategoryController(CategoryModelServiceImpl categoryService) {
         this.categoryService = categoryService;
     }
 
@@ -42,13 +44,13 @@ public class CategoryController {
                 return "redirect:/categories";
             }
             if (!categoryService.findCategoryByName(categoryDTO)) {
-                redirectAttributes.addFlashAttribute("existCategory", "Category already exist");
+                redirectAttributes.addFlashAttribute("existCategory", CATEGORY_EXIST);
                 return "redirect:/categories";
             }
             this.categoryService.save(categoryDTO);
-            redirectAttributes.addFlashAttribute("success", "Added successfully");
+            redirectAttributes.addFlashAttribute("success", ADD_SUCCESSFULLY);
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("failed", "Server is down!");
+            redirectAttributes.addFlashAttribute("failed", SERVER_NOT_WORKING);
         }
         return "redirect:/categories";
     }

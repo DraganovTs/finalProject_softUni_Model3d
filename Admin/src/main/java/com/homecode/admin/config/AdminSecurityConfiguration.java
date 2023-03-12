@@ -11,24 +11,26 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static com.homecode.admin.constants.UrlConstants.STATIC_RESOURCES;
+import static com.homecode.admin.constants.UrlConstants.STATIC_URL_PERMIT;
+
 @Configuration
-public class UserAdminSecurityConfiguration {
+public class AdminSecurityConfiguration {
 
     private final AdminRepository adminRepository;
 
-    public UserAdminSecurityConfiguration(AdminRepository adminRepository) {
+    public AdminSecurityConfiguration(AdminRepository adminRepository) {
         this.adminRepository = adminRepository;
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        //TODO change to authenticated
 
         http.
                 authorizeHttpRequests().
-                requestMatchers( "/login", "/register", "/error" , "/categories").permitAll().
-                anyRequest().permitAll().
+                requestMatchers(STATIC_URL_PERMIT).permitAll().
+                anyRequest().authenticated().
                 and().
                 formLogin()
                 .loginPage("/login")
@@ -39,7 +41,7 @@ public class UserAdminSecurityConfiguration {
                 and().
                 logout().
                 logoutUrl("/logout").
-                logoutSuccessUrl("/").
+                logoutSuccessUrl("/login").
                 deleteCookies("JSESSIONID").
                 clearAuthentication(true)
                 .and()
@@ -51,7 +53,7 @@ public class UserAdminSecurityConfiguration {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web.ignoring()
-                .requestMatchers("/css/**", "/js/**", "/images/**", "/libs/**");
+                .requestMatchers(STATIC_RESOURCES);
     }
 
     @Bean
@@ -61,6 +63,6 @@ public class UserAdminSecurityConfiguration {
 
     @Bean
     public UserDetailsService userDetailsService(){
-        return new UserAdminDetailsService(adminRepository);
+        return new AdminDetailsService(adminRepository);
     }
 }
