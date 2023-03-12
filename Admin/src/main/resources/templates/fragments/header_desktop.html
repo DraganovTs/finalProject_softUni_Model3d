@@ -19,13 +19,23 @@
                                 <a th:href="@{/}" class="parent">Home</a>
                             </li>
                             <li>
-                                <a th:href="@{/moderator-add}" class="parent">Add moderator</a>
+                                <a th:href="@{/user-roles-admin}" class="parent">Add Admin</a>
+                            </li>
+                            <li>
+                                <a th:href="@{/user-roles-moderator}" class="parent">Add Moderator</a>
                             </li>
                             <li>
                                 <a th:href="@{/user-ban}" class="parent">Ban Users</a>
                             </li>
                             <li>
                                 <a th:href="@{/categories}" class="parent">Add Categories</a>
+                            </li>
+                            <li>
+                                <form th:action="@{/logout}" th:method="post">
+                                    <a  title="Logout">
+                                        <button type="submit" class="btn btn-toolbar parent">Logout</button>
+                                    </a>
+                                </form>
                             </li>
                         </ul>
                     </div>

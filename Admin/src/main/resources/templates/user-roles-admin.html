@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- user-acount11:10-->
+<head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Model 3d BanUsers</title>
+
+  <meta name="keywords" content="Furniture, Decor, Interior">
+  <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
+  <meta name="author" content="tivatheme">
+
+  <!-- Mobile Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+
+  <!-- libs CSS -->
+  <th:block th:insert="~{fragments/libsCss}"></th:block>
+
+
+  <!-- Template CSS -->
+  <th:block th:insert="~{fragments/templateCss}"></th:block>
+
+</head>
+
+<body class="user-acount">
+<header>
+  <!-- header left mobie -->
+
+  <!-- header desktop -->
+  <th:block th:insert="~{fragments/header_desktop}"></th:block>
+
+</header>
+
+<!-- main content -->
+<div class="main-content">
+  <div class="wrap-banner">
+
+    <!-- breadcrumb -->
+
+    <!-- Admins -->
+    <div class="acount head-acount">
+      <div class="container">
+        <div id="main">
+          <h1 class="title-page">Manage Users Roles</h1>
+          <div class="order">
+            <div>
+              <p th:if="${userAdmins.size()==0}" >No Admins yet</p>
+            </div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Admin</button>
+            <div th:if = "${existAdmin}" class="text-center alert alert-danger">
+              <p th:text="${existAdmin}"></p>
+            </div>
+            <div th:if = "${successAdmin}" class="text-center alert alert-success">
+              <p th:text="${successAdmin}"></p>
+            </div>
+            <div th:if = "${failedAdmin}" class="text-center alert alert-danger">
+              <p th:text="${failedAdmin}"></p>
+            </div>
+            <table class="table table-hover" >
+              <thead>
+              <tr>
+                <th scope="col">Index</th>
+                <th scope="col">Email</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Action</th>
+              </tr>
+              </thead>
+              <tr th:each="admin : ${userAdmins}">
+                <th scope="row" th:text="${admin.id}"></th>
+                <td th:text="${admin.email}"></td>
+                <td th:text="${admin.firstName}"></td>
+                <td th:text="${admin.lastName}"></td>
+                <td>
+                  <a  th:href="@{/delete-admin-from-list/{id}(id=*{admin.id})}" class="btn btn-primary">Disable Admin</a>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--End of Admins -->
+
+
+          <!--End of Liked Models -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Add Modal Admin-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form th:action="@{/user-roles-admin}" method="post" th:object="${adminAddRolesDto}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Admin</h5>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Email:</label>
+            <input type="text" class="form-control" th:field = "*{email}" id="recipient-name">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<!--end-->
+
+
+<!-- footer -->
+
+<!-- back top top -->
+
+<!-- menu mobie left -->
+
+<!-- menu mobie right -->
+
+<!-- Page Loader -->
+<th:block th:insert="~{fragments/page_loader}"></th:block>
+
+<!-- Vendor JS -->
+<th:block th:insert="~{fragments/vendor_Js}"></th:block>
+
+
+<!-- Template JS -->
+<th:block th:insert="~{fragments/template_Js}"></th:block>
+
+</body>
+
+
+<!-- user-acount11:10-->
+</html>

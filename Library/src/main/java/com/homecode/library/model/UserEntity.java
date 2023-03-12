@@ -1,5 +1,6 @@
 package com.homecode.library.model;
 
+import com.homecode.library.model.enums.UserRoleEnum;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -31,6 +32,11 @@ public class UserEntity {
 
 
     public UserEntity() {
+    }
+
+    public UserEntity addRole(UserRoleEntity roleEntity) {
+        this.roles.add(roleEntity);
+        return this;
     }
 
     public Long getId() {
