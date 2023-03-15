@@ -2,9 +2,7 @@ package com.homecode.library.model;
 
 import jakarta.persistence.*;
 
-
 import java.time.LocalDateTime;
-
 
 @Entity
 @Table(name = "models", uniqueConstraints = @UniqueConstraint(columnNames = {"name", "manufacturer"}))
@@ -18,10 +16,10 @@ public class ModelEntity {
     @Column(nullable = false)
     private String manufacturer;
 
-    @Column(columnDefinition = "BLOB")
-    private String downloadLink;
-    @Column(columnDefinition = "MEDIUMBLOB")
-    private String image;
+    @OneToOne
+    private ZipFileEntity zipModel;
+    @OneToOne(fetch = FetchType.EAGER)
+    private ImageFileEntity imageModel;
     @Column
     private int likes = 0;
     private int sold = 0;
@@ -45,6 +43,15 @@ public class ModelEntity {
         return this;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public ModelEntity setName(String name) {
+        this.name = name;
+        return this;
+    }
+
     public String getManufacturer() {
         return manufacturer;
     }
@@ -54,12 +61,21 @@ public class ModelEntity {
         return this;
     }
 
-    public String getDownloadLink() {
-        return downloadLink;
+    public ZipFileEntity getZipModel() {
+        return zipModel;
     }
 
-    public ModelEntity setDownloadLink(String downloadLink) {
-        this.downloadLink = downloadLink;
+    public ModelEntity setZipModel(ZipFileEntity zipModel) {
+        this.zipModel = zipModel;
+        return this;
+    }
+
+    public ImageFileEntity getImageModel() {
+        return imageModel;
+    }
+
+    public ModelEntity setImageModel(ImageFileEntity imageModel) {
+        this.imageModel = imageModel;
         return this;
     }
 
@@ -115,40 +131,5 @@ public class ModelEntity {
     public ModelEntity setUploadedOn(LocalDateTime uploadedOn) {
         this.uploadedOn = uploadedOn;
         return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ModelEntity setName(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public ModelEntity setImage(String image) {
-        this.image = image;
-        return this;
-    }
-
-    @Override
-    public String toString() {
-        return "ModelEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", downloadLink='" + downloadLink + '\'' +
-                ", image='" + image + '\'' +
-                ", likes=" + likes +
-                ", sold=" + sold +
-                ", category=" + category +
-                ", isApproved=" + isApproved +
-                ", owner=" + owner +
-                ", uploadedOn=" + uploadedOn +
-                '}';
     }
 }

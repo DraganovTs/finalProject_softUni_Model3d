@@ -81,14 +81,15 @@
                                                     <div class="item text-center col-md-4" >
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
-                                                                <a th:href="@{product-detail}" >
-                                                                    <img class="img-fluid image-cover" alt="img" th:src="|data:image/jpeg;base64,+${model.image}|">
+                                                                <a th:href="@{/product-detail/{id}(id=${model.getId()})}" >
+                                                                    <img class="img-fluid image-cover" alt="img" th:src="@{/download-model/{id}(id=${model.getId()})}">
+                                                                    <img class="img-fluid image-secondary" alt="img" th:src="@{/download-model/{id}(id=${model.getId()})}">
                                                                 </a>
                                                             </div>
                                                             <div class="product-description">
                                                                 <div class="product-groups">
                                                                     <div class="product-title">
-                                                                        <a th:href="@{/product-detail}" th:text="${model.name}" >Nulla et justo
+                                                                        <a th:href="@{/product-detail/{id}(id=${model.getId()})}" th:text="${model.name}" >Nulla et justo
                                                                             non
                                                                             augue</a>
 
@@ -113,17 +114,12 @@
                                                                           class="formAddToCart">
                                                                         <input type="hidden" name="id_product"
                                                                                value="1">
-                                                                        <a class="add-to-cart" href="#"
-                                                                           data-button-action="add-to-cart">
-                                                                            <i class="fa fa-shopping-cart"
-                                                                               aria-hidden="true"></i>
-                                                                        </a>
-                                                                    </form>
                                                                     <a class="addToWishlist" href="#" data-rel="1"
                                                                        onclick="">
                                                                         <i class="fa fa-heart" aria-hidden="true"></i>
                                                                     </a>
-                                                                    <a href="#" class="quick-view hidden-sm-down"
+                                                                    </form>
+                                                                    <a th:href="@{/product-detail/{id}(id=${model.getId()})}" class="quick-view hidden-sm-down"
                                                                        data-link-action="quickview">
                                                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                                                     </a>

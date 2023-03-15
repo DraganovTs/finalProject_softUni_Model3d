@@ -25,11 +25,21 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
 
     <!-- Vendor CSS -->
-    <th:block th:insert="~{fragments/vendorCss}"></th:block>
+    <link rel="stylesheet" href="../libs/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../libs/nivo-slider/css/nivo-slider.css">
+    <link rel="stylesheet" href="../libs/nivo-slider/css/animate.css">
+    <link rel="stylesheet" href="../libs/nivo-slider/css/style.css">
+    <link rel="stylesheet" href="../libs/font-material/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="../libs/slider-range/css/jslider.css">
+    <link rel="stylesheet" href="../libs/owl-carousel/assets/owl.carousel.min.css">
+
 
 
     <!-- Template CSS -->
-    <th:block th:insert="~{fragments/templateCss}"></th:block>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/reponsive.css">
+
 
 </head>
 
@@ -50,281 +60,13 @@
                     <div class="page-home">
 
                         <!-- breadcrumb -->
-                        <nav class="breadcrumb-bg">
-                            <div class="container no-index">
-                                <div class="breadcrumb">
-                                    <ol>
-                                        <li>
-                                            <a href="#">
-                                                <span>Home</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span>Living Room</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span>Sofa</span>
-                                            </a>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </nav>
-                        <div class="container">
-                            <div class="content">
-                                <div class="row">
-                                    <div class="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
+
 
                                         <!-- category -->
-                                        <div class="sidebar-block">
-                                            <div class="title-block">Categories</div>
-                                            <div class="block-content">
-                                                <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapse-icons collapsed" data-toggle="collapse" data-target="#livingroom">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                    <a class="cateItem" href="#">Living Room</a>
-                                                    <div class="subCategory collapse" id="livingroom" aria-expanded="true" role="status">
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">Side Table</a>
-                                                            <div class="subCategory collapse" id="subCategory-fruits" aria-expanded="true" role="status">
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">Side Table</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">FIREPLACE</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">FIREPLACE</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">floor lamp</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">ottoman</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">armchair</a>
-                                                                </div>
-                                                                <div class="cateTitle">
-                                                                    <a href="#" class="cateItem">cushion</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">FIREPLACE</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">FIREPLACE</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">floor lamp</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">ottoman</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">armchair</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">cushion</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#bathroom">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                    <a class="cateItem" href="#">Bathroom</a>
-                                                    <div class="subCategory collapse" id="bathroom">
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">TOMATO</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">BROCCOLI</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">CABBAGE</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">CUCUMBER</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">EGGPLANT</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#diningroom">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                    <a class="cateItem" href="#">Dining Rooom</a>
-                                                    <div class="subCategory collapse" id="diningroom" aria-expanded="true" role="status">
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">DRY BREAD</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">BREAD SLICES</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">FRENCH BREAD</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">BLACK BREAD</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#bedroom">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                    <a class="cateItem" href="#">BedRoom</a>
-                                                    <div class="subCategory collapse" id="bedroom" aria-expanded="true" role="status">
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">ORANGE JUICES</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">TOMATO JUICES</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">APPLE JUICES</a>
-                                                        </div>
 
-                                                    </div>
-                                                </div>
-                                                <div class="cateTitle hasSubCategory open level1">
-                                                    <span class="arrow collapsed collapse-icons" data-toggle="collapse" data-target="#kitchen">
-                                                        <i class="zmdi zmdi-minus"></i>
-                                                        <i class="zmdi zmdi-plus"></i>
-                                                    </span>
-                                                    <a class="cateItem" href="#">Kitchen</a>
-                                                    <div class="subCategory collapse" id="kitchen" aria-expanded="true" role="status">
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">ORANGE JUICES</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">TOMATO JUICES</a>
-                                                        </div>
-                                                        <div class="cateTitle">
-                                                            <a href="#" class="cateItem">APPLE JUICES</a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <!-- best seller -->
-                                        <div class="sidebar-block">
-                                            <div class="title-block">
-                                                Best seller
-                                            </div>
-                                            <div class="product-content tab-content">
-                                                <div class="row">
-                                                    <div class="item col-md-12">
-                                                        <div class="product-miniature item-one first-item d-flex">
-                                                            <div class="thumbnail-container border">
-                                                                <a href="product-detail.html">
-                                                                    <img class="img-fluid image-cover" src="img/product/1.jpg" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="img/product/22.jpg" alt="img">
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-description">
-                                                                <div class="product-groups">
-                                                                    <div class="product-title">
-                                                                        <a href="product-detail.html">Nulla et justo augue</a>
-                                                                    </div>
-                                                                    <div class="rating">
-                                                                        <div class="star-content">
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-group-price">
-                                                                        <div class="product-price-and-shipping">
-                                                                            <span class="price">£28.08</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item col-md-12">
-                                                        <div class="product-miniature item-one first-item d-flex">
-                                                            <div class="thumbnail-container border">
-                                                                <a href="product-detail.html">
-                                                                    <img class="img-fluid image-cover" src="img/product/2.jpg" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="img/product/11.jpg" alt="img">
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-description">
-                                                                <div class="product-groups">
-                                                                    <div class="product-title">
-                                                                        <a href="product-detail.html">Nulla et justo augue</a>
-                                                                    </div>
-                                                                    <div class="rating">
-                                                                        <div class="star-content">
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-group-price">
-                                                                        <div class="product-price-and-shipping">
-                                                                            <span class="price">£31.08</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="item col-md-12">
-                                                        <div class="product-miniature item-one first-item d-flex">
-                                                            <div class="thumbnail-container border">
-                                                                <a href="product-detail.html">
-                                                                    <img class="img-fluid image-cover" src="img/product/3.jpg" alt="img">
-                                                                    <img class="img-fluid image-secondary" src="img/product/14.jpg" alt="img">
-                                                                </a>
-                                                            </div>
-                                                            <div class="product-description">
-                                                                <div class="product-groups">
-                                                                    <div class="product-title">
-                                                                        <a href="product-detail.html">Nulla et justo augue</a>
-                                                                    </div>
-                                                                    <div class="rating">
-                                                                        <div class="star-content">
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                            <div class="star"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-group-price">
-                                                                        <div class="product-price-and-shipping">
-                                                                            <span class="price">£20.08</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                        </div>
 
                                         <!-- product tag -->
                                         <div class="sidebar-block product-tags">
@@ -935,23 +677,32 @@
     </div>
 
     <!-- footer -->
-    <th:block th:insert="~{fragments/footer}"></th:block>
+    <th:block th:insert="~{/fragments/footer}"></th:block>
 
     <!-- back top top -->
-    <th:block th:insert="~{fragments/back_to_top}"></th:block>
+    <th:block th:insert="~{/fragments/back_to_top}"></th:block>
 
     <!-- menu mobie left -->
-    <th:block th:insert="~{fragments/menu_mobie_left}"></th:block>
+    <th:block th:insert="~{/fragments/menu_mobie_left}"></th:block>
 
     <!-- menu mobie right -->
-    <th:block th:insert="~{fragments/menu_mobie_right}"></th:block>
+    <th:block th:insert="~{/fragments/menu_mobie_right}"></th:block>
 
     <!-- Vendor JS -->
-    <th:block th:insert="~{fragments/vendor_Js_IndexPage}"></th:block>
+    <script src="../libs/jquery/jquery.min.js"></script>
+    <script src="../libs/popper/popper.min.js"></script>
+    <script src="../libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../libs/nivo-slider/js/jquery.nivo.slider.js"></script>
+    <script src="../libs/owl-carousel/owl.carousel.min.js"></script>
+    <script src="../libs/slider-range/js/tmpl.js"></script>
+    <script src="../libs/slider-range/js/jquery.dependClass-0.1.js"></script>
+    <script src="../libs/slider-range/js/draggable-0.1.js"></script>
+    <script src="../libs/slider-range/js/jquery.slider.js"></script>
 
 
     <!-- Template JS -->
-    <th:block th:insert="~{fragments/template_Js}"></th:block>
+    <script src="../js/theme.js"></script>
+
 </body>
 
 

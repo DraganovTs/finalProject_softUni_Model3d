@@ -1,10 +1,12 @@
 package com.homecode.library.model.view;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ModelsShowAllView {
 
     public Long id;
     public String name;
-    public String image;
+    public MultipartFile image;
 
     public Long getId() {
         return id;
@@ -27,11 +29,11 @@ public class ModelsShowAllView {
         return this;
     }
 
-    public String getImage() {
+    public MultipartFile getImage() {
         return image;
     }
 
-    public ModelsShowAllView setImage(String image) {
+    public ModelsShowAllView setImage(MultipartFile image) {
         this.image = image;
         return this;
     }

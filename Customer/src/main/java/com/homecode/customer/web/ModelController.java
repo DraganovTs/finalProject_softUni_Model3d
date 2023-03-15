@@ -1,17 +1,19 @@
 package com.homecode.customer.web;
 
+import com.homecode.library.model.ModelEntity;
 import com.homecode.library.model.dto.ModelUploadDTO;
-import com.homecode.library.model.view.ModelsShowAllView;
+import com.homecode.library.service.FileService;
 import com.homecode.library.service.impl.CategoryModelServiceImpl;
 import com.homecode.library.service.impl.ModelServiceImpl;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -23,10 +25,12 @@ public class ModelController {
 
     private final ModelServiceImpl modelService;
     private final CategoryModelServiceImpl categoryModelService;
+    private final FileService fileService;
 
-    public ModelController(ModelServiceImpl modelService, CategoryModelServiceImpl categoryModelService) {
+    public ModelController(ModelServiceImpl modelService, CategoryModelServiceImpl categoryModelService, FileService fileService) {
         this.modelService = modelService;
         this.categoryModelService = categoryModelService;
+        this.fileService = fileService;
     }
 
     @GetMapping("/add-model")
@@ -72,15 +76,29 @@ public class ModelController {
 
     @GetMapping("/models-all")
     public String allModels(Model model) {
-        List<ModelsShowAllView> allModelsView = this.modelService.getAllModels();
+        List<ModelEntity> allModelsView = this.modelService.getAllModels();
         model.addAttribute("modelsNumber", allModelsView.size());
         model.addAttribute("allModels", allModelsView);
         return "model-all";
     }
 
+    @GetMapping("/download-model/{fileId}")
+    public HttpEntity<byte[]> downloadZipModel(@PathVariable(value = "fileId") Long fileId) {
 
-    @GetMapping("/product-detail")
-    public String productDetail() {
+        var fileDownloadModel = this.fileService.getFileById(fileId).orElseThrow();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(new MediaType(MimeTypeUtils.parseMimeType(fileDownloadModel.getContentType())));
+        headers.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename="+fileDownloadModel.getFileName());
+        headers.setContentLength(fileDownloadModel.getFileData().length);
+
+
+        return new HttpEntity<>(fileDownloadModel.getFileData(),headers);
+    }
+
+
+    @GetMapping("/product-detail/{id}")
+    public String productDetail(@PathVariable(value = "id") Long id) {
         return "product-detail";
     }
 

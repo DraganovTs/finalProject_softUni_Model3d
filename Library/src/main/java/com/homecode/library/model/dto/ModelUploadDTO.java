@@ -3,18 +3,20 @@ package com.homecode.library.model.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.web.multipart.MultipartFile;
 
 public class ModelUploadDTO {
-    @Size(min = 2,max = 20,message = "name must be between 2 and 20 characters")
+    @Size(min = 2, max = 20, message = "name must be between 2 and 20 characters")
     @NotBlank
-    public String name;
-    @Size(min = 2,max = 20,message = "name must be between 2 and 20 characters")
+    private String name;
+    @Size(min = 2, max = 20, message = "name must be between 2 and 20 characters")
     @NotBlank
-    public String manufacturer;
+    private String manufacturer;
     @NotNull
-    public String category;
+    private String category;
 
-    public String downloadLink;
+    private MultipartFile imageFile;
+    private MultipartFile zipFile;
 
     public ModelUploadDTO() {
     }
@@ -46,14 +48,21 @@ public class ModelUploadDTO {
         return this;
     }
 
-
-
-    public String getDownloadLink() {
-        return downloadLink;
+    public MultipartFile getImageFile() {
+        return imageFile;
     }
 
-    public ModelUploadDTO setDownloadLink(String downloadLink) {
-        this.downloadLink = downloadLink;
+    public ModelUploadDTO setImageFile(MultipartFile imageFile) {
+        this.imageFile = imageFile;
+        return this;
+    }
+
+    public MultipartFile getZipFile() {
+        return zipFile;
+    }
+
+    public ModelUploadDTO setZipFile(MultipartFile zipFile) {
+        this.zipFile = zipFile;
         return this;
     }
 }

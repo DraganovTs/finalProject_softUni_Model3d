@@ -12,8 +12,6 @@ import com.homecode.library.repository.ModelRepository;
 import com.homecode.library.repository.UserRepository;
 import com.homecode.library.service.impl.CategoryModelServiceImpl;
 import com.homecode.library.service.impl.RoleServiceImpl;
-import com.homecode.library.util.ImageUpload;
-import com.homecode.library.util.ZipFileUpload;
 import jakarta.annotation.PostConstruct;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,10 +30,9 @@ public class CustomerInit {
 
     private final CategoryRepository categoryRepository;
     private final ModelRepository modelRepository;
-    private final ImageUpload imageUpload;
-    private final ZipFileUpload zipFileUpload;
 
-    public CustomerInit(RoleServiceImpl roleService, UserRepository userRepository, PasswordEncoder passwordEncoder, CategoryModelServiceImpl categoryModelService, AdminRepository adminRepository, CategoryRepository categoryRepository, ModelRepository modelRepository, ImageUpload imageUpload, ZipFileUpload zipFileUpload) {
+
+    public CustomerInit(RoleServiceImpl roleService, UserRepository userRepository, PasswordEncoder passwordEncoder, CategoryModelServiceImpl categoryModelService, AdminRepository adminRepository, CategoryRepository categoryRepository, ModelRepository modelRepository) {
         this.roleService = roleService;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -43,8 +40,7 @@ public class CustomerInit {
         this.adminRepository = adminRepository;
         this.categoryRepository = categoryRepository;
         this.modelRepository = modelRepository;
-        this.imageUpload = imageUpload;
-        this.zipFileUpload = zipFileUpload;
+
     }
 
 
@@ -63,12 +59,11 @@ public class CustomerInit {
         if (this.categoryRepository.count() == 0) {
             initCategories();
         }
-        if (this.modelRepository.count() == 0) {
-            initModels();
-        }
+//        if (this.modelRepository.count() == 0) {
+//            initModels();
+//        }
 
-        this.imageUpload.init();
-        this.zipFileUpload.init();
+
     }
 
 
@@ -104,29 +99,21 @@ public class CustomerInit {
         var model01 = new ModelEntity()
                 .setName("bed")
                 .setManufacturer("fendy")
-                .setDownloadLink("dox")
-                .setImage("image")
                 .setCategory(this.categoryModelService.findCategoryByName("Bedroom"))
                 .setOwner(this.userRepository.findUserEntitiesByEmail("moderator@example.com").get());
         var model02 = new ModelEntity()
                 .setName("table")
                 .setManufacturer("gucci")
-                .setDownloadLink("dox")
-                .setImage("image")
                 .setCategory(this.categoryModelService.findCategoryByName("LivingRoom"))
                 .setOwner(this.userRepository.findUserEntitiesByEmail("moderator@example.com").get());
         var model03 = new ModelEntity()
                 .setName("chair")
                 .setManufacturer("vissionare")
-                .setDownloadLink("dox")
-                .setImage("image")
                 .setCategory(this.categoryModelService.findCategoryByName("Kitchen"))
                 .setOwner(this.userRepository.findUserEntitiesByEmail("moderator@example.com").get());
         var model04 = new ModelEntity()
                 .setName("mirror")
                 .setManufacturer("mirror")
-                .setDownloadLink("dox")
-                .setImage("image")
                 .setCategory(this.categoryModelService.findCategoryByName("Bathroom"))
                 .setOwner(this.userRepository.findUserEntitiesByEmail("moderator@example.com").get());
 
