@@ -17,4 +17,6 @@ public interface FileService {
     Object findById(Long id);
 
      public Optional<FileDownloadModelDTO> getFileById(Long fileId);
+
+
 }

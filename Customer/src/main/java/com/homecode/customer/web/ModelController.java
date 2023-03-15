@@ -98,7 +98,8 @@ public class ModelController {
 
 
     @GetMapping("/product-detail/{id}")
-    public String productDetail(@PathVariable(value = "id") Long id) {
+    public String productDetail(@PathVariable(value = "id") Long id, Model model) {
+        model.addAttribute("product",this.modelService.findById(id));
         return "product-detail";
     }
 
