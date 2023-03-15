@@ -11,7 +11,7 @@ public class ScheduledService {
 
     private Logger LOGGER = LoggerFactory.getLogger(ScheduledService.class);
 
-    @Scheduled(cron = "0 0 0 ? * * *")
+    @Scheduled(cron = "0 0 0 * * *")
     public void sendNewsletter(){
         LOGGER.info("test");
     }

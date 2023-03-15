@@ -5,6 +5,8 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.spi.MappingContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,6 +30,12 @@ public class ApplicationBeanConfiguration {
 
 
         return modelMapper;
+    }
+
+
+    @Bean
+    public JavaMailSender javaMailSender(){
+        return new JavaMailSenderImpl();
     }
 
 }
