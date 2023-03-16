@@ -53,7 +53,7 @@ public class PageController {
 
         List<CustomerProfileModelsView> userLikedModels = this.modelService.getUserModels(user.getLikedModels());
         model.addAttribute("userLikedModels", userLikedModels);
-
+        //TODO visualize picture in HTML
         return "/user-acount";
     }
 

@@ -25,20 +25,13 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
 
     <!-- Vendor CSS -->
-    <link rel="stylesheet" href="../libs/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../libs/nivo-slider/css/nivo-slider.css">
-    <link rel="stylesheet" href="../libs/nivo-slider/css/animate.css">
-    <link rel="stylesheet" href="../libs/nivo-slider/css/style.css">
-    <link rel="stylesheet" href="../libs/font-material/css/material-design-iconic-font.min.css">
-    <link rel="stylesheet" href="../libs/slider-range/css/jslider.css">
-    <link rel="stylesheet" href="../libs/owl-carousel/assets/owl.carousel.min.css">
+    <th:block th:insert="~{/fragments/vendorCss}"></th:block>
+    <link rel="stylesheet" th:href="@{/libs/slider-range/css/jslider.css}">
 
 
 
     <!-- Template CSS -->
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../css/reponsive.css">
+    <th:block th:insert="~{/fragments/templateCss}"></th:block>
 
 
 </head>
@@ -512,7 +505,7 @@
                                                         <div class="item text-center col-md-4">
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border border">
-                                                                    <a href="product-detail.html">
+                                                                    <a href="model-detail.html">
                                                                         <img class="img-fluid image-cover" src="img/product/1.jpg" alt="img">
                                                                         <img class="img-fluid image-secondary" src="img/product/22.jpg" alt="img">
                                                                     </a>
@@ -527,7 +520,7 @@
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="model-detail.html">Nulla et justo non augue</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -563,7 +556,7 @@
                                                         <div class="item text-center col-md-4">
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
-                                                                    <a href="product-detail.html">
+                                                                    <a href="model-detail.html">
                                                                         <img class="img-fluid image-cover" src="img/product/2.jpg" alt="img">
                                                                         <img class="img-fluid image-secondary" src="img/product/11.jpg" alt="img">
                                                                     </a>
@@ -578,7 +571,7 @@
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="model-detail.html">Nulla et justo non augue</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -614,7 +607,7 @@
                                                         <div class="item text-center col-md-4">
                                                             <div class="product-miniature js-product-miniature item-one first-item">
                                                                 <div class="thumbnail-container border">
-                                                                    <a href="product-detail.html">
+                                                                    <a href="model-detail.html">
                                                                         <img class="img-fluid image-cover" src="img/product/3.jpg" alt="img">
                                                                         <img class="img-fluid image-secondary" src="img/product/14.jpg" alt="img">
                                                                     </a>
@@ -629,7 +622,7 @@
                                                                 <div class="product-description">
                                                                     <div class="product-groups">
                                                                         <div class="product-title">
-                                                                            <a href="product-detail.html">Nulla et justo non augue</a>
+                                                                            <a href="model-detail.html">Nulla et justo non augue</a>
                                                                         </div>
                                                                         <div class="rating">
                                                                             <div class="star-content">
@@ -689,19 +682,13 @@
     <th:block th:insert="~{/fragments/menu_mobie_right}"></th:block>
 
     <!-- Vendor JS -->
-    <script src="../libs/jquery/jquery.min.js"></script>
-    <script src="../libs/popper/popper.min.js"></script>
-    <script src="../libs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../libs/nivo-slider/js/jquery.nivo.slider.js"></script>
-    <script src="../libs/owl-carousel/owl.carousel.min.js"></script>
-    <script src="../libs/slider-range/js/tmpl.js"></script>
-    <script src="../libs/slider-range/js/jquery.dependClass-0.1.js"></script>
-    <script src="../libs/slider-range/js/draggable-0.1.js"></script>
-    <script src="../libs/slider-range/js/jquery.slider.js"></script>
+    <th:block th:insert="~{/fragments/vendor_Js_IndexPage}"></th:block>
+
 
 
     <!-- Template JS -->
-    <script src="../js/theme.js"></script>
+    <th:block th:insert="~{/fragments/template_Js}"></th:block>
+
 
 </body>
 

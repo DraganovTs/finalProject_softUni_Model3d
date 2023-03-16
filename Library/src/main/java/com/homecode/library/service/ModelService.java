@@ -18,8 +18,10 @@ public interface ModelService {
     void uploadModel(MultipartFile imageModel,MultipartFile zipModel, ModelUploadDTO modelUploadDTO, String username) throws IOException;
 
     //List<ModelsShowAllView> getAllModels();
-
+    //TODO fix to use DTO
     public List<ModelEntity> getAllModels();
 
     ModelEntity findById(Long id);
+
+    void likeModel(ModelEntity model);
 }

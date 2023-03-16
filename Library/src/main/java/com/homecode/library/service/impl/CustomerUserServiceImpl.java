@@ -1,5 +1,6 @@
 package com.homecode.library.service.impl;
 
+import com.homecode.library.model.ModelEntity;
 import com.homecode.library.model.UserEntity;
 import com.homecode.library.model.UserRoleEntity;
 import com.homecode.library.model.dto.UserAddRolesDto;
@@ -11,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -95,5 +97,11 @@ public class CustomerUserServiceImpl implements CustomerUserService {
         List<UserEntity> users = this.userRepository.findAll();
         users.forEach(user -> user.setCredits(3));
         this.userRepository.saveAll(users);
+    }
+
+    @Override
+    public void likeModel(String username,  ModelEntity model) {
+        UserEntity user = this.userRepository.findUserEntitiesByEmail(username).get();
+        this.userRepository.save(user.addLikedModel(model));
     }
 }

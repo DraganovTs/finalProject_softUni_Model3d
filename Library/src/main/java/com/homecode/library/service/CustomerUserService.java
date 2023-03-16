@@ -1,10 +1,12 @@
 package com.homecode.library.service;
 
 
+import com.homecode.library.model.ModelEntity;
 import com.homecode.library.model.UserEntity;
 import com.homecode.library.model.dto.UserAddRolesDto;
 import com.homecode.library.model.dto.UserRegisterDTO;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface CustomerUserService {
@@ -25,4 +27,6 @@ public interface CustomerUserService {
     void createModerator(UserAddRolesDto userAddRolesDto);
 
     void dailyResetCredits();
+
+    void likeModel(String username, ModelEntity model);
 }

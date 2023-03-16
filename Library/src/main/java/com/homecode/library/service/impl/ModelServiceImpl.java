@@ -85,6 +85,7 @@ public class ModelServiceImpl implements ModelService {
 
     }
 
+    //TODO fix method to use DTO
 //    @Override
 //    public List<ModelsShowAllView> getAllModels() {
 //        return this.modelRepository.findAll().stream().filter(ModelEntity::isApproved).map(m -> this.modelMapper.map(m, ModelsShowAllView.class)).collect(Collectors.toList());
@@ -97,5 +98,10 @@ public class ModelServiceImpl implements ModelService {
     @Override
     public ModelEntity findById(Long id) {
         return this.modelRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public void likeModel(ModelEntity model) {
+        this.modelRepository.save(model.setLikes(model.getLikes() + 1));
     }
 }

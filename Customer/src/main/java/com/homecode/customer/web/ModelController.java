@@ -5,6 +5,7 @@ import com.homecode.library.model.dto.EmailDTO;
 import com.homecode.library.model.dto.ModelUploadDTO;
 import com.homecode.library.service.FileService;
 import com.homecode.library.service.impl.CategoryModelServiceImpl;
+import com.homecode.library.service.impl.CustomerUserServiceImpl;
 import com.homecode.library.service.impl.ModelServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpEntity;
@@ -28,10 +29,13 @@ public class ModelController {
     private final CategoryModelServiceImpl categoryModelService;
     private final FileService fileService;
 
-    public ModelController(ModelServiceImpl modelService, CategoryModelServiceImpl categoryModelService, FileService fileService) {
+    private final CustomerUserServiceImpl customerUserService;
+
+    public ModelController(ModelServiceImpl modelService, CategoryModelServiceImpl categoryModelService, FileService fileService, CustomerUserServiceImpl customerUserService) {
         this.modelService = modelService;
         this.categoryModelService = categoryModelService;
         this.fileService = fileService;
+        this.customerUserService = customerUserService;
     }
 
     @GetMapping("/add-model")
@@ -68,6 +72,7 @@ public class ModelController {
             return "redirect:/add-model";
         }
 
+        //TODO get send user to modelservice and send user to userService
         redirectAttributes.addFlashAttribute("success", "Your model is uploaded and waiting to be approved");
 
 
@@ -90,18 +95,31 @@ public class ModelController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(new MediaType(MimeTypeUtils.parseMimeType(fileDownloadModel.getContentType())));
-        headers.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename="+fileDownloadModel.getFileName());
+        headers.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileDownloadModel.getFileName());
         headers.setContentLength(fileDownloadModel.getFileData().length);
 
 
-        return new HttpEntity<>(fileDownloadModel.getFileData(),headers);
+        return new HttpEntity<>(fileDownloadModel.getFileData(), headers);
     }
 
 
     @GetMapping("/product-detail/{id}")
     public String productDetail(@PathVariable(value = "id") Long id, Model model) {
-        model.addAttribute("product",this.modelService.findById(id));
-        return "product-detail";
+        model.addAttribute("product", this.modelService.findById(id));
+        return "model-detail";
+    }
+
+    @GetMapping("/model-like/{modelId}")
+    public String likeModel(Principal principal, @PathVariable(value = "modelId") Long modelId) {
+
+        if (principal == null) {
+            return "redirect:/login";
+        }
+
+        ModelEntity model = this.modelService.findById(modelId);
+        this.customerUserService.likeModel(principal.getName(), model);
+        this.modelService.likeModel(model);
+        return "redirect:/models-all";
     }
 
     @ModelAttribute("modelUploadDTO")
@@ -113,7 +131,6 @@ public class ModelController {
     public EmailDTO emailDTO() {
         return new EmailDTO();
     }
-
 
 
 }

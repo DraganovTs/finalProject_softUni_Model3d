@@ -42,6 +42,11 @@ public class UserEntity {
         return this;
     }
 
+    public UserEntity addLikedModel(ModelEntity model) {
+        this.likedModels.add(model);
+        return this;
+    }
+
     public Long getId() {
         return id;
     }

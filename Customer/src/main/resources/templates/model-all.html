@@ -110,15 +110,10 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="product-buttons d-flex justify-content-center">
-                                                                    <form action="#" method="post"
-                                                                          class="formAddToCart">
-                                                                        <input type="hidden" name="id_product"
-                                                                               value="1">
-                                                                    <a class="addToWishlist" href="#" data-rel="1"
+                                                                    <a class="addToWishlist" th:href="@{/model-like/{id}(id=${model.getId()})}" data-rel="1"
                                                                        onclick="">
                                                                         <i class="fa fa-heart" aria-hidden="true"></i>
                                                                     </a>
-                                                                    </form>
                                                                     <a th:href="@{/product-detail/{id}(id=${model.getId()})}" class="quick-view hidden-sm-down"
                                                                        data-link-action="quickview">
                                                                         <i class="fa fa-eye" aria-hidden="true"></i>
