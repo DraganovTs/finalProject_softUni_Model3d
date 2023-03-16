@@ -14,6 +14,7 @@ public interface CustomerUserService {
     boolean confirmPassword(UserRegisterDTO userDTO);
 
     UserEntity findUserByUsername(String username);
+
     boolean findUserByUsername(UserAddRolesDto userAddRolesDto);
 
 
@@ -22,4 +23,6 @@ public interface CustomerUserService {
     void deleteModeratorRoleById(Long id);
 
     void createModerator(UserAddRolesDto userAddRolesDto);
+
+    void dailyResetCredits();
 }

@@ -27,20 +27,20 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
 
     <!-- Vendor CSS -->
-    <th:block th:include="~{fragments/vendorCss}"></th:block>
+    <th:block th:include="~{/fragments/vendorCss}"></th:block>
 
     <!-- Template CSS -->
-    <th:block th:include="~{fragments/templateCss}"></th:block>
+    <th:block th:include="~{/fragments/templateCss}"></th:block>
 </head>
 
 <body id="about-us" class="blog">
 <header>
 
     <!-- header left mobie -->
-    <th:block th:insert="~{fragments/header_left_mobile}"></th:block>
+    <th:block th:insert="~{/fragments/header_left_mobile}"></th:block>
 
     <!-- header desktop -->
-    <th:block th:insert="~{fragments/header_desktop}"></th:block>
+    <th:block th:insert="~{/fragments/header_desktop}"></th:block>
 </header>
 
 <!-- main content -->
@@ -59,7 +59,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 right">
                                     <a href="#">
-                                        <img class="img-fluid" th:src="@{images/other/1.jpg}" alt="#"/>
+                                        <img class="img-fluid" th:src="@{/images/other/1.jpg}" alt="#"/>
                                     </a>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 left">
@@ -74,7 +74,7 @@
                                             had the solution needed, so we decided to create one for ourselves.
                                             Initially, it was an internal source of 3D models accessed only by our internal design team.</p>
                                         <a>
-                                            <img class="img-fluid" th:src="@{images/other/4.png}" alt="#"/>
+                                            <img class="img-fluid" th:src="@{/images/other/4.png}" alt="#"/>
                                             <span>Mr. kwang shang - CEO</span>
                                         </a>
                                     </div>
@@ -91,12 +91,12 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 left">
                                     <a href="#">
-                                        <img class="img-fluid" th:src="@{images/other/2.jpg}" alt="#"/>
+                                        <img class="img-fluid" th:src="@{/images/other/2.jpg}" alt="#"/>
                                     </a>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 right">
                                     <a href="#">
-                                        <img class="img-fluid" th:src="@{images/other/3.jpg}" alt="#"/>
+                                        <img class="img-fluid" th:src="@{/images/other/3.jpg}" alt="#"/>
                                     </a>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 left">
@@ -159,25 +159,25 @@
     </div>
 </div>
 <!-- footer -->
-<th:block th:insert="~{fragments/footer}"></th:block>
+<th:block th:insert="~{/fragments/footer}"></th:block>
 
 <!-- back top top -->
-<th:block th:insert="~{fragments/back_to_top}"></th:block>
+<th:block th:insert="~{/fragments/back_to_top}"></th:block>
 
 
 <!-- menu mobie left -->
-<th:block th:insert="~{fragments/menu_mobie_left}"></th:block>
+<th:block th:insert="~{/fragments/menu_mobie_left}"></th:block>
 
 <!-- menu mobie right -->
-<th:block th:insert="~{fragments/menu_mobie_right}"></th:block>
+<th:block th:insert="~{/fragments/menu_mobie_right}"></th:block>
 <!-- Page Loader -->
-<th:block th:insert="~{fragments/page_loader}"></th:block>
+<th:block th:insert="~{/fragments/page_loader}"></th:block>
 
 <!-- Vendor JS -->
-<th:block th:insert="~{fragments/vendor_Js}"></th:block>
+<th:block th:insert="~{/fragments/vendor_Js}"></th:block>
 
 <!-- Template JS -->
-<th:block th:insert="~{fragments/template_Js}"></th:block>
+<th:block th:insert="~{/fragments/template_Js}"></th:block>
 </body>
 
 

@@ -1,13 +1,17 @@
 package com.homecode.customer.web;
 
 import com.homecode.library.model.UserEntity;
+import com.homecode.library.model.dto.EmailDTO;
 import com.homecode.library.model.view.CustomerProfileModelsView;
 import com.homecode.library.model.view.CustomerProfileView;
 import com.homecode.library.service.CustomerUserService;
+import com.homecode.library.service.impl.EmailServiceImpl;
 import com.homecode.library.service.impl.ModelServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
 import java.util.List;
@@ -18,9 +22,12 @@ public class PageController {
     private final CustomerUserService customerUserService;
     private final ModelServiceImpl modelService;
 
-    public PageController(CustomerUserService customerUserService, ModelServiceImpl modelService) {
+    private final EmailServiceImpl emailService;
+
+    public PageController(CustomerUserService customerUserService, ModelServiceImpl modelService, EmailServiceImpl emailService) {
         this.customerUserService = customerUserService;
         this.modelService = modelService;
+        this.emailService = emailService;
     }
 
     @GetMapping("/about-us")
@@ -48,6 +55,17 @@ public class PageController {
         model.addAttribute("userLikedModels", userLikedModels);
 
         return "/user-acount";
+    }
+
+    @PostMapping("/subscribe")
+    public String subscribe(EmailDTO emailDTO) {
+        this.emailService.saveEmail(emailDTO);
+        return "redirect:/";
+    }
+
+    @ModelAttribute("emailDTO")
+    public EmailDTO emailDTO() {
+        return new EmailDTO();
     }
 
 

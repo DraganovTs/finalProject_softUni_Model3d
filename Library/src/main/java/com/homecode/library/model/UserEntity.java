@@ -1,6 +1,6 @@
 package com.homecode.library.model;
 
-import com.homecode.library.model.enums.UserRoleEnum;
+
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -20,7 +20,8 @@ public class UserEntity {
     private String lastName;
     @Column(nullable = false)
     private String password;
-
+    @Column
+    private int credits = 3;
     @Column
     private String description;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -128,6 +129,15 @@ public class UserEntity {
 
     public UserEntity setUserUploadedModels(List<ModelEntity> userUploadedModels) {
         this.userUploadedModels = userUploadedModels;
+        return this;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public UserEntity setCredits(int credits) {
+        this.credits = credits;
         return this;
     }
 

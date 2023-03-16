@@ -8,7 +8,7 @@
               <div class="block">
                 <div class="block-content">
                   <p class="logo-footer">
-                    <img th:src="@{images/home/logo.png}" alt="img">
+                    <img th:src="@{/images/home/logo.png}" alt="img">
                   </p>
                   <p class="content-logo">Best 3d Models on market
                   </p>
@@ -18,19 +18,19 @@
                 <div class="block-content">
                   <ul>
                     <li>
-                      <a href="#">About Us</a>
+                      <a th:href="@{/about-us}">About Us</a>
                     </li>
                     <li>
-                      <a href="#">Reasons to shop</a>
+                      <a th:href="@{/about-us}">Reasons to shop</a>
                     </li>
                     <li>
-                      <a href="#">What our customers say</a>
+                      <a th:href="@{/about-us}">What our customers say</a>
                     </li>
                     <li>
-                      <a href="#">Meet the teaml</a>
+                      <a th:href="@{/about-us}">Meet the teaml</a>
                     </li>
                     <li>
-                      <a href="#">Contact our buyers</a>
+                      <a th:href="@{/about-us}">Contact our buyers</a>
                     </li>
                   </ul>
                 </div>
@@ -38,7 +38,7 @@
               <div class="block">
                 <div class="block-content">
                   <p class="img-payment ">
-                    <img class="img-fluid" th:src="@{images/home/payment-footer.png}" alt="img">
+                    <img class="img-fluid" th:src="@{/images/home/payment-footer.png}" alt="img">
                   </p>
                 </div>
               </div>
@@ -98,9 +98,9 @@
                     to your inbox
                   </div>
                   <div class="block-newsletter">
-                    <form action="#" method="post">
+                    <form th:action="@{/subscribe}" method="post" >
                       <div class="input-group">
-                        <input type="text" class="form-control" name="email" value="" placeholder="Enter Your Email">
+                        <input  type="text" class="form-control" name="email" value="" placeholder="Enter Your Email">
                         <span class="input-group-btn">
                                                     <button class="effect-btn btn btn-secondary " name="submitNewsletter" type="submit">
                                                         <span>subscribe</span>
@@ -154,7 +154,7 @@
                       Payment accept
                     </div>
                     <div class="payment-image">
-                      <img class="img-fluid" th:src="@{images/home/payment.png}" alt="img">
+                      <img class="img-fluid" th:src="@{/images/home/payment.png}" alt="img">
                     </div>
                   </div>
                   <!-- Popup newsletter -->

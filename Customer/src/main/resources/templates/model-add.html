@@ -27,19 +27,19 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
 
     <!-- Vendor CSS -->
-    <th:block th:insert="~{fragments/vendorCss}"></th:block>
-    <link rel="stylesheet" th:href="@{libs/slider-range/css/jslider.css}">
+    <th:block th:insert="~{/fragments/vendorCss}"></th:block>
+    <link rel="stylesheet" th:href="@{/libs/slider-range/css/jslider.css}">
     <!-- Template CSS -->
-    <th:block th:insert="~{fragments/templateCss}"></th:block>
+    <th:block th:insert="~{/fragments/templateCss}"></th:block>
 </head>
 
 <body id="product-sidebar-left" class="product-grid-sidebar-left">
 <header>
     <!-- header left mobie -->
-    <th:block th:insert="~{fragments/header_left_mobile}"></th:block>
+    <th:block th:insert="~{/fragments/header_left_mobile}"></th:block>
 
     <!-- header desktop -->
-    <th:block th:insert="~{fragments/header_desktop}"></th:block>
+    <th:block th:insert="~{/fragments/header_desktop}"></th:block>
 </header>
 
 <!-- main content -->
@@ -138,26 +138,26 @@
 </div>
 
 <!-- footer -->
-<th:block th:insert="~{fragments/footer}"></th:block>
+<th:block th:insert="~{/fragments/footer}"></th:block>
 
 
 <!-- back top top -->
-<th:block th:insert="~{fragments/back_to_top}"></th:block>
+<th:block th:insert="~{/fragments/back_to_top}"></th:block>
 
 <!-- menu mobie left -->
-<th:block th:insert="~{fragments/menu_mobie_left}"></th:block>
+<th:block th:insert="~{/fragments/menu_mobie_left}"></th:block>
 
 <!-- menu mobie right -->
-<th:block th:insert="~{fragments/menu_mobie_right}"></th:block>
+<th:block th:insert="~{/fragments/menu_mobie_right}"></th:block>
 
 <!-- Page Loader -->
-<th:block th:insert="~{fragments/page_loader}"></th:block>
+<th:block th:insert="~{/fragments/page_loader}"></th:block>
 
 <!-- Vendor JS -->
-<th:block th:insert="~{fragments/vendor_Js_IndexPage}"></th:block>
+<th:block th:insert="~{/fragments/vendor_Js_IndexPage}"></th:block>
 
 <!-- Template JS -->
-<th:block th:insert="~{fragments/template_Js}"></th:block>
+<th:block th:insert="~{/fragments/template_Js}"></th:block>
 </body>
 
 

@@ -1,6 +1,7 @@
 package com.homecode.customer.web;
 
 import com.homecode.library.model.ModelEntity;
+import com.homecode.library.model.dto.EmailDTO;
 import com.homecode.library.model.dto.ModelUploadDTO;
 import com.homecode.library.service.FileService;
 import com.homecode.library.service.impl.CategoryModelServiceImpl;
@@ -107,6 +108,12 @@ public class ModelController {
     public ModelUploadDTO modelUploadDTO() {
         return new ModelUploadDTO();
     }
+
+    @ModelAttribute("emailDTO")
+    public EmailDTO emailDTO() {
+        return new EmailDTO();
+    }
+
 
 
 }

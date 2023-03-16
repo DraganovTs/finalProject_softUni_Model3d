@@ -89,4 +89,11 @@ public class CustomerUserServiceImpl implements CustomerUserService {
         user.addRole(moderatorRole);
         this.userRepository.save(user);
     }
+
+    @Override
+    public void dailyResetCredits() {
+        List<UserEntity> users = this.userRepository.findAll();
+        users.forEach(user -> user.setCredits(3));
+        this.userRepository.saveAll(users);
+    }
 }

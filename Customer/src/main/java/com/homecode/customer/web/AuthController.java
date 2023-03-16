@@ -1,5 +1,6 @@
 package com.homecode.customer.web;
 
+import com.homecode.library.model.dto.EmailDTO;
 import com.homecode.library.model.dto.UserRegisterDTO;
 import com.homecode.library.service.impl.CustomerUserServiceImpl;
 import jakarta.validation.Valid;
@@ -26,6 +27,11 @@ public class AuthController {
 
     @GetMapping("/")
     public String home() {
+        return "index";
+    }
+
+    @GetMapping("/index")
+    public String index() {
         return "index";
     }
 
@@ -86,5 +92,10 @@ public class AuthController {
     @ModelAttribute("registerDTO")
     public UserRegisterDTO registerDTO() {
         return new UserRegisterDTO();
+    }
+
+    @ModelAttribute("emailDTO")
+    public EmailDTO emailDTO() {
+        return new EmailDTO();
     }
 }

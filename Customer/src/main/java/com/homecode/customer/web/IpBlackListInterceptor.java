@@ -1,11 +1,13 @@
 package com.homecode.customer.web;
 
 
+import com.homecode.library.model.dto.EmailDTO;
 import com.homecode.library.service.impl.BlackListServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.View;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
@@ -60,5 +62,10 @@ public class IpBlackListInterceptor implements HandlerInterceptor {
         }
 
         return ipAddress;
+    }
+
+    @ModelAttribute("emailDTO")
+    public EmailDTO emailDTO() {
+        return new EmailDTO();
     }
 }
