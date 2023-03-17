@@ -3,6 +3,7 @@ package com.homecode.library.service.impl;
 import com.homecode.library.model.*;
 import com.homecode.library.model.dto.ModelUploadDTO;
 import com.homecode.library.model.view.CustomerProfileModelsView;
+import com.homecode.library.model.view.ModelsShowAllView;
 import com.homecode.library.repository.ModelRepository;
 import com.homecode.library.service.FileService;
 import com.homecode.library.service.ModelService;
@@ -20,16 +21,15 @@ public class ModelServiceImpl implements ModelService {
 
     private final ModelMapper modelMapper;
     private final ModelRepository modelRepository;
-    private final CustomerUserServiceImpl userService;
+
     private final CategoryModelServiceImpl categoryModelService;
     private final FileService fileService;
 
 
     @Autowired
-    public ModelServiceImpl(ModelMapper modelMapper, ModelRepository modelRepository, CustomerUserServiceImpl userService, CategoryModelServiceImpl categoryModelService, FileService fileService) {
+    public ModelServiceImpl(ModelMapper modelMapper, ModelRepository modelRepository, CategoryModelServiceImpl categoryModelService, FileService fileService) {
         this.modelMapper = modelMapper;
         this.modelRepository = modelRepository;
-        this.userService = userService;
         this.categoryModelService = categoryModelService;
         this.fileService = fileService;
     }
@@ -45,21 +45,18 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public boolean isExistInDB(ModelUploadDTO modelUploadDTO) {
-        if (this.modelRepository.findByName(modelUploadDTO.getName()).isPresent()) {
-            return false;
-        }
-        if (this.modelRepository.findByManufacturer(modelUploadDTO.getManufacturer()).isPresent()) {
+        if (this.modelRepository.findByNameAndManufacturer(modelUploadDTO.getName(), modelUploadDTO.getManufacturer()).isPresent()) {
             return false;
         }
         return true;
     }
 
     @Override
-    public void uploadModel(MultipartFile imageModel, MultipartFile zipModel, ModelUploadDTO modelUploadDTO, String username) throws IOException {
+    public ModelEntity uploadModel(MultipartFile imageModel, MultipartFile zipModel, ModelUploadDTO modelUploadDTO, UserEntity user) throws IOException {
 
         try {
 
-            UserEntity user = this.userService.findUserByUsername(username);
+
             CategoryModelEntity category = this.categoryModelService.findCategoryByName(modelUploadDTO.getCategory());
             ImageFileEntity image = this.fileService.saveImageFile(imageModel);
             ZipFileEntity zip = this.fileService.saveZipFile(zipModel);
@@ -68,6 +65,7 @@ public class ModelServiceImpl implements ModelService {
                     .setName(modelUploadDTO.getName())
                     .setManufacturer(modelUploadDTO.getManufacturer())
                     .setCategory(category)
+                    .setDescription(modelUploadDTO.getDescription())
                     .setZipModel(zip)
                     .setImageModel(image)
                     .setOwner(user)
@@ -82,18 +80,14 @@ public class ModelServiceImpl implements ModelService {
 
         }
 
-
+        return this.modelRepository.findByNameAndManufacturer(modelUploadDTO.getName(), modelUploadDTO.getManufacturer()).get();
     }
 
-    //TODO fix method to use DTO
-//    @Override
-//    public List<ModelsShowAllView> getAllModels() {
-//        return this.modelRepository.findAll().stream().filter(ModelEntity::isApproved).map(m -> this.modelMapper.map(m, ModelsShowAllView.class)).collect(Collectors.toList());
-//    }
     @Override
-    public List<ModelEntity> getAllModels() {
-        return this.modelRepository.findAll();
+    public List<ModelsShowAllView> getAllModels() {
+        return this.modelRepository.findAll().stream().filter(ModelEntity::isApproved).map(m -> this.modelMapper.map(m, ModelsShowAllView.class)).collect(Collectors.toList());
     }
+
 
     @Override
     public ModelEntity findById(Long id) {
@@ -103,5 +97,10 @@ public class ModelServiceImpl implements ModelService {
     @Override
     public void likeModel(ModelEntity model) {
         this.modelRepository.save(model.setLikes(model.getLikes() + 1));
+    }
+
+    @Override
+    public ModelEntity findByModelNameAndManufacturer(ModelUploadDTO modelUploadDTO) {
+        return this.modelRepository.findByNameAndManufacturer(modelUploadDTO.getName(), modelUploadDTO.getManufacturer()).orElseThrow();
     }
 }

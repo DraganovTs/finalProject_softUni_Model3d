@@ -9,8 +9,8 @@ import java.util.Optional;
 @Repository
 public interface ModelRepository extends JpaRepository<ModelEntity, Long> {
 
-    Optional<ModelEntity> findByName(String name);
-    Optional<ModelEntity> findByManufacturer(String manufacturer);
+
+    Optional<ModelEntity>findByNameAndManufacturer(String name,String manufacturer);
 
 
 

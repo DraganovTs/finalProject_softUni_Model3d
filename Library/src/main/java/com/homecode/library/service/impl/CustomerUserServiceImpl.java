@@ -3,6 +3,7 @@ package com.homecode.library.service.impl;
 import com.homecode.library.model.ModelEntity;
 import com.homecode.library.model.UserEntity;
 import com.homecode.library.model.UserRoleEntity;
+import com.homecode.library.model.dto.ModelUploadDTO;
 import com.homecode.library.model.dto.UserAddRolesDto;
 import com.homecode.library.model.dto.UserRegisterDTO;
 import com.homecode.library.model.enums.UserRoleEnum;
@@ -12,7 +13,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,12 +24,14 @@ public class CustomerUserServiceImpl implements CustomerUserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final RoleServiceImpl roleService;
+    private final ModelServiceImpl modelService;
 
     @Autowired
-    public CustomerUserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, RoleServiceImpl roleService) {
+    public CustomerUserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, RoleServiceImpl roleService, ModelServiceImpl modelService) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
         this.roleService = roleService;
+        this.modelService = modelService;
     }
 
     @Override
@@ -100,8 +102,23 @@ public class CustomerUserServiceImpl implements CustomerUserService {
     }
 
     @Override
-    public void likeModel(String username,  ModelEntity model) {
+    public void likeModel(String username, ModelEntity model) {
         UserEntity user = this.userRepository.findUserEntitiesByEmail(username).get();
         this.userRepository.save(user.addLikedModel(model));
     }
+
+    @Override
+    public void userAddModel(String username, ModelUploadDTO modelUploadDTO) {
+        try {
+            UserEntity user = findUserByUsername(username);
+            ModelEntity model = this.modelService.findByModelNameAndManufacturer(modelUploadDTO);
+            user.addUploadedModel(model);
+            this.userRepository.save(user);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
 }

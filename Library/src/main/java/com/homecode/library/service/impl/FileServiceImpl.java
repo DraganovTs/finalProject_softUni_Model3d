@@ -53,10 +53,6 @@ public class FileServiceImpl implements FileService {
         return this.zipFileRepository.save(fileZip);
     }
 
-    @Override
-    public Object findById(Long id) {
-        return this.imageFileRepository.findById(id);
-    }
 
     @Override
     public Optional<FileDownloadModelDTO> getFileById(Long fileId) {

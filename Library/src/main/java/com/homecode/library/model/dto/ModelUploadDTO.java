@@ -12,6 +12,9 @@ public class ModelUploadDTO {
     @Size(min = 2, max = 20, message = "name must be between 2 and 20 characters")
     @NotBlank
     private String manufacturer;
+
+    @Size(min = 5, max = 50,message = "description must be between 5 and 50 characters")
+    private String description;
     @NotNull
     private String category;
 
@@ -63,6 +66,15 @@ public class ModelUploadDTO {
 
     public ModelUploadDTO setZipFile(MultipartFile zipFile) {
         this.zipFile = zipFile;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public ModelUploadDTO setDescription(String description) {
+        this.description = description;
         return this;
     }
 }

@@ -47,6 +47,11 @@ public class UserEntity {
         return this;
     }
 
+    public UserEntity addUploadedModel(ModelEntity model) {
+        this.userUploadedModels.add(model);
+        return this;
+    }
+
     public Long getId() {
         return id;
     }
@@ -157,4 +162,5 @@ public class UserEntity {
                 ", roles=" + roles +
                 '}';
     }
+
 }

@@ -26,9 +26,9 @@
     <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
 
     <!-- Vendor CSS -->
-    <th:block th:insert="~{fragments/vendorCss}"></th:block>
+    <th:block th:insert="~{/fragments/vendorCss}"></th:block>
     <!-- Template CSS -->
-    <th:block th:insert="~{fragments/templateCss}"></th:block>
+    <th:block th:insert="~{/fragments/templateCss}"></th:block>
 </head>
 
 <body id="home">
@@ -36,7 +36,7 @@
     <!-- header left mobie -->
 
     <!-- header desktop -->
-    <th:block th:insert="~{fragments/header_desktop}"></th:block>
+    <th:block th:insert="~{/fragments/header_desktop}"></th:block>
 </header>
 
 <!-- main content -->
@@ -49,7 +49,7 @@
             <div class="tiva-slideshow-wrapper">
                 <div id="tiva-slideshow" class="nivoSlider">
                     <a href="#">
-                        <img class="img-responsive" th:src="@{images/home/home1-background3.jpg}" title="#caption1" alt="Slideshow image">
+                        <img class="img-responsive" th:src="@{/images/home/home1-background3.jpg}" title="#caption1" alt="Slideshow image">
                     </a>
                 </div>
             </div>

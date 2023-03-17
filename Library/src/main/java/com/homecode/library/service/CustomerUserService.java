@@ -3,8 +3,10 @@ package com.homecode.library.service;
 
 import com.homecode.library.model.ModelEntity;
 import com.homecode.library.model.UserEntity;
+import com.homecode.library.model.dto.ModelUploadDTO;
 import com.homecode.library.model.dto.UserAddRolesDto;
 import com.homecode.library.model.dto.UserRegisterDTO;
+import com.homecode.library.model.view.CustomerProfileView;
 
 import java.security.Principal;
 import java.util.List;
@@ -29,4 +31,7 @@ public interface CustomerUserService {
     void dailyResetCredits();
 
     void likeModel(String username, ModelEntity model);
+
+
+    void userAddModel(String name, ModelUploadDTO modelUploadDTO);
 }

@@ -38,6 +38,11 @@ public class PageController {
 
     @GetMapping("/user-acount")
     public String accountUser(Principal principal, Model model) {
+
+        if (principal == null) {
+            return "redirect:/login";
+        }
+
         UserEntity user = this.customerUserService.findUserByUsername(principal.getName());
         CustomerProfileView profileView = new CustomerProfileView()
                 .setEmail(user.getEmail())
@@ -48,12 +53,12 @@ public class PageController {
         List<CustomerProfileModelsView> userModels = this.modelService.getUserModels(user.getUserUploadedModels());
         model.addAttribute("userModels", userModels);
 
-        List<CustomerProfileModelsView> userPurchasedModels = this.modelService.getUserModels(user.getPurchasedModels());
-        model.addAttribute("userPurchasedModels", userPurchasedModels);
+        List<CustomerProfileModelsView> userDownloadedModels = this.modelService.getUserModels(user.getPurchasedModels());
+        model.addAttribute("userDownloadedModels", userDownloadedModels);
 
         List<CustomerProfileModelsView> userLikedModels = this.modelService.getUserModels(user.getLikedModels());
         model.addAttribute("userLikedModels", userLikedModels);
-        //TODO visualize picture in HTML
+        //TODO refactoring get all from userService
         return "/user-acount";
     }
 

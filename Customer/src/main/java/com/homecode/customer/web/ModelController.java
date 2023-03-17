@@ -1,8 +1,10 @@
 package com.homecode.customer.web;
 
 import com.homecode.library.model.ModelEntity;
+import com.homecode.library.model.UserEntity;
 import com.homecode.library.model.dto.EmailDTO;
 import com.homecode.library.model.dto.ModelUploadDTO;
+import com.homecode.library.model.view.ModelsShowAllView;
 import com.homecode.library.service.FileService;
 import com.homecode.library.service.impl.CategoryModelServiceImpl;
 import com.homecode.library.service.impl.CustomerUserServiceImpl;
@@ -64,7 +66,8 @@ public class ModelController {
                 return "redirect:/add-model";
             }
 
-            this.modelService.uploadModel(imageModel, zipModel, modelUploadDTO, principal.getName());
+            UserEntity user = this.customerUserService.findUserByUsername(principal.getName());
+            this.modelService.uploadModel(imageModel, zipModel, modelUploadDTO, user);
 
 
         } catch (Exception e) {
@@ -72,6 +75,7 @@ public class ModelController {
             return "redirect:/add-model";
         }
 
+        this.customerUserService.userAddModel(principal.getName(),modelUploadDTO);
         //TODO get send user to modelservice and send user to userService
         redirectAttributes.addFlashAttribute("success", "Your model is uploaded and waiting to be approved");
 
@@ -82,7 +86,7 @@ public class ModelController {
 
     @GetMapping("/models-all")
     public String allModels(Model model) {
-        List<ModelEntity> allModelsView = this.modelService.getAllModels();
+        List<ModelsShowAllView> allModelsView = this.modelService.getAllModels();
         model.addAttribute("modelsNumber", allModelsView.size());
         model.addAttribute("allModels", allModelsView);
         return "model-all";

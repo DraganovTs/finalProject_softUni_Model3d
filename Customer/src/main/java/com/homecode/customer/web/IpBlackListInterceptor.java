@@ -64,8 +64,4 @@ public class IpBlackListInterceptor implements HandlerInterceptor {
         return ipAddress;
     }
 
-    @ModelAttribute("emailDTO")
-    public EmailDTO emailDTO() {
-        return new EmailDTO();
-    }
 }

@@ -9,8 +9,9 @@ public class CustomerProfileView {
     private String email;
     private String fistName;
     private String lastName;
-    private List<ModelEntity> purchaseModels;
+    private List<ModelEntity> downloadedModels;
     private List<ModelEntity> likedModels;
+    private List<ModelEntity> userModels;
 
     public CustomerProfileView() {
     }
@@ -42,12 +43,12 @@ public class CustomerProfileView {
         return this;
     }
 
-    public List<ModelEntity> getPurchaseModels() {
-        return purchaseModels;
+    public List<ModelEntity> getDownloadedModels() {
+        return downloadedModels;
     }
 
-    public CustomerProfileView setPurchaseModels(List<ModelEntity> purchaseModels) {
-        this.purchaseModels = purchaseModels;
+    public CustomerProfileView setDownloadedModels(List<ModelEntity> downloadedModels) {
+        this.downloadedModels = downloadedModels;
         return this;
     }
 
@@ -57,6 +58,15 @@ public class CustomerProfileView {
 
     public CustomerProfileView setLikedModels(List<ModelEntity> likedModels) {
         this.likedModels = likedModels;
+        return this;
+    }
+
+    public List<ModelEntity> getUserModels() {
+        return userModels;
+    }
+
+    public CustomerProfileView setUserModels(List<ModelEntity> userModels) {
+        this.userModels = userModels;
         return this;
     }
 }

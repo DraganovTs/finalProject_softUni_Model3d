@@ -1,6 +1,7 @@
 package com.homecode.library.service;
 
 import com.homecode.library.model.ModelEntity;
+import com.homecode.library.model.UserEntity;
 import com.homecode.library.model.dto.ModelUploadDTO;
 import com.homecode.library.model.view.CustomerProfileModelsView;
 import com.homecode.library.model.view.ModelsShowAllView;
@@ -15,13 +16,14 @@ public interface ModelService {
 
     boolean isExistInDB(ModelUploadDTO modelUploadDTO);
 
-    void uploadModel(MultipartFile imageModel,MultipartFile zipModel, ModelUploadDTO modelUploadDTO, String username) throws IOException;
+    ModelEntity uploadModel(MultipartFile imageModel,MultipartFile zipModel, ModelUploadDTO modelUploadDTO, UserEntity user) throws IOException;
 
-    //List<ModelsShowAllView> getAllModels();
-    //TODO fix to use DTO
-    public List<ModelEntity> getAllModels();
+   List<ModelsShowAllView> getAllModels();
+
 
     ModelEntity findById(Long id);
 
     void likeModel(ModelEntity model);
+
+    ModelEntity findByModelNameAndManufacturer(ModelUploadDTO modelUploadDTO);
 }

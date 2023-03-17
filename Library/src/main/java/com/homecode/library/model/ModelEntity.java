@@ -15,7 +15,8 @@ public class ModelEntity {
     private String name;
     @Column(nullable = false)
     private String manufacturer;
-
+    @Column
+    private String description;
     @OneToOne
     private ZipFileEntity zipModel;
     @OneToOne(fetch = FetchType.EAGER)
@@ -130,6 +131,15 @@ public class ModelEntity {
 
     public ModelEntity setUploadedOn(LocalDateTime uploadedOn) {
         this.uploadedOn = uploadedOn;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public ModelEntity setDescription(String description) {
+        this.description = description;
         return this;
     }
 }

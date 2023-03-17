@@ -11,12 +11,12 @@ import java.util.Optional;
 
 public interface FileService {
 
-     ImageFileEntity saveImageFile(MultipartFile multipartFile) throws IOException;
+    ImageFileEntity saveImageFile(MultipartFile multipartFile) throws IOException;
+
     ZipFileEntity saveZipFile(MultipartFile multipartFile) throws IOException;
 
-    Object findById(Long id);
 
-     public Optional<FileDownloadModelDTO> getFileById(Long fileId);
+    public Optional<FileDownloadModelDTO> getFileById(Long fileId);
 
 
 }

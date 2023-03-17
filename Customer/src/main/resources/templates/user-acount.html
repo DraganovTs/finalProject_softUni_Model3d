@@ -80,21 +80,23 @@
                         <div>
                             <p th:if="${userModels.size()==0}">You haven't  any models uploaded.</p>
                         </div>
-                        <table class="table table-hover" th:if="${userPurchasedModels.size()>0}">
+                        <table class="table table-hover" th:if="${userModels.size()>0}">
                             <thead>
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Manufacturer</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Likes</th>
                                 <th scope="col">Sold</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="model : ${userPurchasedModels}">
+                            <tr th:each="model : ${userModels}">
                                 <td th:text="${model.name}"></td>
                                 <td th:text="${model.manufacturer}"></td>
-                                <td th:text="${model.image}"></td>
+                                <td th:text="${model.description}"></td>
+                                <td><img src="" style="height: 48px; width: 40px;" th:src="@{/download-model/{id}(id=${model.getId()})}"></td>
                                 <td th:text="${model.likes}"></td>
                                 <td th:text="${model.sold}"></td>
                             </tr>
@@ -109,23 +111,25 @@
                             <span class="detail">Models</span>
                         </h4>
                         <div>
-                            <p th:if="${userPurchasedModels.size()==0}">You haven't purchased any models yet.</p>
+                            <p th:if="${userDownloadedModels.size()==0}">You haven't purchased any models yet.</p>
                         </div>
-                        <table class="table table-hover" th:if="${userPurchasedModels.size()>0}">
+                        <table class="table table-hover" th:if="${userDownloadedModels.size()>0}">
                             <thead>
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Manufacturer</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Likes</th>
                                 <th scope="col">Sold</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="model : ${userPurchasedModels}">
+                            <tr th:each="model : ${userDownloadedModels}">
                                 <td th:text="${model.name}"></td>
                                 <td th:text="${model.manufacturer}"></td>
-                                <td th:text="${model.image}"></td>
+                                <td th:text="${model.description}"></td>
+                                <td><img src="" style="height: 48px; width: 40px;" th:src="@{/download-model/{id}(id=${model.getId()})}"></td>
                                 <td th:text="${model.likes}"></td>
                                 <td th:text="${model.sold}"></td>
                             </tr>
@@ -146,6 +150,7 @@
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Manufacturer</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Likes</th>
                                 <th scope="col">Sold</th>
@@ -155,7 +160,8 @@
                             <tr th:each="model : ${userLikedModels}">
                                 <td th:text="${model.name}"></td>
                                 <td th:text="${model.manufacturer}"></td>
-                                <td th:text="${model.image}"></td>
+                                <td th:text="${model.description}"></td>
+                                <td><img src="" style="height: 48px; width: 40px;" th:src="@{/download-model/{id}(id=${model.getId()})}"></td>
                                 <td th:text="${model.likes}"></td>
                                 <td th:text="${model.sold}"></td>
                             </tr>
