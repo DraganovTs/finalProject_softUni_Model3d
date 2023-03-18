@@ -91,9 +91,8 @@ public class ModelController {
 
     @GetMapping("/models-all")
     public String allModels(Model model, @RequestParam Optional<String> keyword) {
-        List<ModelsShowAllView> allModelsView;
 
-            allModelsView = this.modelService.getAllModelsByKeyword(keyword.orElse("_"));
+        List<ModelsShowAllView> allModelsView = this.modelService.getAllModelsByKeyword(keyword.orElse("_"));
 
         model.addAttribute("modelsNumber", allModelsView.size());
         model.addAttribute("allModels", allModelsView);
