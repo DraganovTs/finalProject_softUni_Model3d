@@ -27,10 +27,10 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
 
     <!-- Vendor CSS -->
-    <th:block th:include="~{/fragments/vendorCss}"></th:block>
+    <th:block th:insert="~{/fragments/vendorCss}"></th:block>
 
     <!-- Template CSS -->
-    <th:block th:include="~{/fragments/templateCss}"></th:block>
+    <th:block th:insert="~{/fragments/templateCss}"></th:block>
 </head>
 
 <body id="about-us" class="blog">
@@ -126,22 +126,22 @@
                                             <div class="social">
                                                 <ul class="list-inline mb-0 justify-content-end">
                                                     <li class="list-inline-item mb-0">
-                                                        <a href="#" target="_blank">
+                                                        <a th:href="@{www.facebook.com}" target="_blank">
                                                             <i class="fa fa-facebook"></i>
                                                         </a>
                                                     </li>
                                                     <li class="list-inline-item mb-0">
-                                                        <a href="#" target="_blank">
+                                                        <a th:href="@{www.twitter.com}" target="_blank">
                                                             <i class="fa fa-twitter"></i>
                                                         </a>
                                                     </li>
                                                     <li class="list-inline-item mb-0">
-                                                        <a href="#" target="_blank">
+                                                        <a th:href="@{www.google.com}" target="_blank">
                                                             <i class="fa fa-google"></i>
                                                         </a>
                                                     </li>
                                                     <li class="list-inline-item mb-0">
-                                                        <a href="#" target="_blank">
+                                                        <a th:href="@{www.instagram.com}" target="_blank">
                                                             <i class="fa fa-instagram"></i>
                                                         </a>
                                                     </li>

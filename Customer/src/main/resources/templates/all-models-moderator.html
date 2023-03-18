@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--<![endif]-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<!-- product-grid-sidebar-left10:54-->
+<head>
+  <!-- Basic Page Needs -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Model 3d All Models Moderators</title>
+
+  <meta name="keywords" content="Furniture, Decor, Interior">
+  <meta name="description" content="Furnitica - Minimalist Furniture HTML Template">
+  <meta name="author" content="tivatheme">
+
+
+  <!-- Mobile Meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS -->
+  <th:block th:insert="~{/fragments/vendorCss}"></th:block>
+  <link rel="stylesheet" th:href="@{/libs/slider-range/css/jslider.css}">
+  <!-- Template CSS -->
+  <th:block th:insert="~{/fragments/templateCss}"></th:block>
+</head>
+
+<body id="product-sidebar-left" class="product-grid-sidebar-left">
+<header>
+  <!-- header left mobie -->
+  <th:block th:insert="~{/fragments/header_left_mobile}"></th:block>
+
+  <!-- header desktop -->
+  <th:block th:insert="~{/fragments/header_desktop}"></th:block>
+</header>
+
+<!-- main content -->
+<div class="main-content">
+  <div id="wrapper-site">
+    <div id="content-wrapper" class="full-width">
+      <div id="main">
+        <div class="page-home">
+          <!-- breadcrumb -->
+
+          <div class="container">
+            <div class="content">
+              <div class="row">
+                <div class="sidebar-3 sidebar-collection col-lg-3 col-md-4 col-sm-4">
+
+                  <!-- category menu -->
+
+                  <!-- best seller -->
+
+                  <!-- product tag -->
+                </div>
+                <div class="col-sm-8 col-lg-9 col-md-8 product-container">
+                  <h1>All Models</h1>
+                  <div class="js-product-list-top firt nav-top">
+                    <div class="d-flex justify-content-around row">
+                      <div class="col col-xs-12">
+                        <div class="hidden-sm-down total-products" th:object="${modelsNumber}">
+                          <p th:if="modelsNumber==0">We dont have any models yet</p>
+                          <p th:if="modelsNumber!=0" th:text="|${modelsNumber} Models in our list|">There are 12
+                            products.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-content product-items">
+                    <div id="grid" class="related tab-pane fade in active show">
+                      <div class="row" th:object="${allModels}">
+                        <th:block th:each="model : ${allModels}">
+                          <div class="item text-center col-md-4" >
+                            <div class="product-miniature js-product-miniature item-one first-item">
+                              <div class="thumbnail-container border">
+                                <a th:href="@{/model-detail/{id}(id=${model.getId()})}" >
+                                  <img class="img-fluid image-cover" alt="img" th:src="@{/download-model/{id}(id=${model.getId()})}">
+                                  <img class="img-fluid image-secondary" alt="img" th:src="@{/download-model/{id}(id=${model.getId()})}">
+                                </a>
+                              </div>
+                              <div class="product-description">
+                                <div class="product-groups">
+                                  <div class="product-title">
+                                    <a th:href="@{/product-detail/{id}(id=${model.getId()})}" th:text="${model.name}" >Nulla et justo
+                                      non
+                                      augue</a>
+
+                                  </div>
+                                  <div class="rating">
+                                    <div class="star-content">
+                                      <div class="star"></div>
+                                      <div class="star"></div>
+                                      <div class="star"></div>
+                                      <div class="star"></div>
+                                      <div class="star"></div>
+                                    </div>
+                                  </div>
+                                  <div class="product-group-price">
+                                    <div class="product-price-and-shipping">
+                                      <span class="price">1 credit</span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="product-buttons d-flex justify-content-center">
+                                  <a class="addToWishlist" th:href="@{/model-like/{id}(id=${model.getId()})}" data-rel="1"
+                                     onclick="">
+                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                  </a>
+                                  <a th:href="@{/model-detail/{id}(id=${model.getId()})}" class="quick-view hidden-sm-down"
+                                     data-link-action="quickview">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </th:block>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- pagination -->
+                  <div class="pagination">
+                    <div class="js-product-list-top ">
+                      <div class="d-flex justify-content-around row">
+                        <div class="showing col col-xs-12">
+                          <span>SHOWING 1-3 OF 3 ITEM(S)</span>
+                        </div>
+                        <div class="page-list col col-xs-12">
+                          <ul>
+                            <li>
+                              <a rel="prev" href="#"
+                                 class="previous disabled js-search-link">
+                                Previous
+                              </a>
+                            </li>
+                            <li class="current active">
+                              <a rel="nofollow" href="#" class="disabled js-search-link">
+                                1
+                              </a>
+                            </li>
+                            <li>
+                              <a rel="nofollow" href="#" class="disabled js-search-link">
+                                2
+                              </a>
+                            </li>
+                            <li>
+                              <a rel="nofollow" href="#" class="disabled js-search-link">
+                                3
+                              </a>
+                            </li>
+
+                            <li>
+                              <a rel="next" href="#" class="next disabled js-search-link">
+                                Next
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- end col-md-9-1 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<th:block th:insert="~{/fragments/footer}"></th:block>
+
+
+<!-- back top top -->
+<th:block th:insert="~{/fragments/back_to_top}"></th:block>
+
+<!-- menu mobie left -->
+<th:block th:insert="~{/fragments/menu_mobie_left}"></th:block>
+
+<!-- menu mobie right -->
+<th:block th:insert="~{/fragments/menu_mobie_right}"></th:block>
+
+<!-- Page Loader -->
+<th:block th:insert="~{/fragments/page_loader}"></th:block>
+
+<!-- Vendor JS -->
+<th:block th:insert="~{/fragments/vendor_Js_IndexPage}"></th:block>
+
+<!-- Template JS -->
+<th:block th:insert="~{/fragments/template_Js}"></th:block>
+</body>
+
+
+<!-- product-grid-sidebar-left10:55-->
+</html>

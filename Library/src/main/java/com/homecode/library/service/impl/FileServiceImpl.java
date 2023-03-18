@@ -29,29 +29,31 @@ public class FileServiceImpl implements FileService {
 
 
     @Override
-    public ImageFileEntity saveImageFile(MultipartFile multipartFile) throws IOException {
+    public ImageFileEntity saveImageFile(String contentType, String fileName , byte[] fileData) throws IOException {
 
 
         ImageFileEntity fileImage = new ImageFileEntity()
-                .setFileName(multipartFile.getOriginalFilename())
-                .setContentType(multipartFile.getContentType())
-                .setFileData(multipartFile.getBytes());
+                .setContentType(contentType)
+                .setFileName(fileName)
+                .setFileData(fileData);
 
 
         return this.imageFileRepository.save(fileImage);
 
     }
 
+
     @Override
-    public ZipFileEntity saveZipFile(MultipartFile multipartFile) throws IOException {
+    public ZipFileEntity saveZipFile(String contentType, String fileName , byte[] fileData) throws IOException {
         ZipFileEntity fileZip = new ZipFileEntity()
-                .setFileName(multipartFile.getOriginalFilename())
-                .setContentType(multipartFile.getContentType())
-                .setFileData(multipartFile.getBytes());
+                .setContentType(fileName)
+                .setFileName(contentType)
+                .setFileData(fileData);
 
 
         return this.zipFileRepository.save(fileZip);
     }
+
 
 
     @Override

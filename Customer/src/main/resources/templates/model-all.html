@@ -81,7 +81,7 @@
                                                     <div class="item text-center col-md-4" >
                                                         <div class="product-miniature js-product-miniature item-one first-item">
                                                             <div class="thumbnail-container border">
-                                                                <a th:href="@{/product-detail/{id}(id=${model.getId()})}" >
+                                                                <a th:href="@{/model-detail/{id}(id=${model.getId()})}" >
                                                                     <img class="img-fluid image-cover" alt="img" th:src="@{/download-model/{id}(id=${model.getId()})}">
                                                                     <img class="img-fluid image-secondary" alt="img" th:src="@{/download-model/{id}(id=${model.getId()})}">
                                                                 </a>
@@ -114,7 +114,7 @@
                                                                        onclick="">
                                                                         <i class="fa fa-heart" aria-hidden="true"></i>
                                                                     </a>
-                                                                    <a th:href="@{/product-detail/{id}(id=${model.getId()})}" class="quick-view hidden-sm-down"
+                                                                    <a th:href="@{/model-detail/{id}(id=${model.getId()})}" class="quick-view hidden-sm-down"
                                                                        data-link-action="quickview">
                                                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                                                     </a>

@@ -9,6 +9,7 @@ public class CustomerProfileView {
     private String email;
     private String fistName;
     private String lastName;
+    private int credits;
     private List<ModelEntity> downloadedModels;
     private List<ModelEntity> likedModels;
     private List<ModelEntity> userModels;
@@ -67,6 +68,15 @@ public class CustomerProfileView {
 
     public CustomerProfileView setUserModels(List<ModelEntity> userModels) {
         this.userModels = userModels;
+        return this;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public CustomerProfileView setCredits(int credits) {
+        this.credits = credits;
         return this;
     }
 }

@@ -25,15 +25,7 @@ public class AuthController {
     }
 
 
-    @GetMapping("/")
-    public String home() {
-        return "index";
-    }
 
-    @GetMapping("/index")
-    public String index() {
-        return "index";
-    }
 
     @GetMapping("/login")
     public String login() {

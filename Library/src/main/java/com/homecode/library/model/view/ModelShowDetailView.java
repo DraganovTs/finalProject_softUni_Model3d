@@ -1,45 +1,45 @@
-package com.homecode.library.model;
+package com.homecode.library.model.view;
 
-import jakarta.persistence.*;
+
+import com.homecode.library.model.CategoryModelEntity;
+import com.homecode.library.model.ImageFileEntity;
+import com.homecode.library.model.UserEntity;
+import com.homecode.library.model.ZipFileEntity;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "models", uniqueConstraints = @UniqueConstraint(columnNames = {"name", "manufacturer"}))
-public class ModelEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ModelShowDetailView {
+
+
     private Long id;
-
-    @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
+
     private String manufacturer;
-    @Column
+
     private String description;
-    @OneToOne
+
     private ZipFileEntity zipModel;
-    @OneToOne(fetch = FetchType.EAGER)
+
     private ImageFileEntity imageModel;
-    @Column
-    private int likes = 0;
-    private int downloaded = 0;
-    @ManyToOne(fetch = FetchType.EAGER)
+
+    private int likes;
+    private int downloaded;
+
     private CategoryModelEntity category;
-    private boolean isApproved = false;
-    @ManyToOne
+    private boolean isApproved;
+
     private UserEntity owner;
-    private LocalDateTime uploadedOn = LocalDateTime.now();
+    private LocalDateTime uploadedOn;
 
-
-    public ModelEntity() {
+    public ModelShowDetailView() {
     }
+
 
     public Long getId() {
         return id;
     }
 
-    public ModelEntity setId(Long id) {
+    public ModelShowDetailView setId(Long id) {
         this.id = id;
         return this;
     }
@@ -48,7 +48,7 @@ public class ModelEntity {
         return name;
     }
 
-    public ModelEntity setName(String name) {
+    public ModelShowDetailView setName(String name) {
         this.name = name;
         return this;
     }
@@ -57,8 +57,17 @@ public class ModelEntity {
         return manufacturer;
     }
 
-    public ModelEntity setManufacturer(String manufacturer) {
+    public ModelShowDetailView setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
+        return this;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public ModelShowDetailView setDescription(String description) {
+        this.description = description;
         return this;
     }
 
@@ -66,7 +75,7 @@ public class ModelEntity {
         return zipModel;
     }
 
-    public ModelEntity setZipModel(ZipFileEntity zipModel) {
+    public ModelShowDetailView setZipModel(ZipFileEntity zipModel) {
         this.zipModel = zipModel;
         return this;
     }
@@ -75,7 +84,7 @@ public class ModelEntity {
         return imageModel;
     }
 
-    public ModelEntity setImageModel(ImageFileEntity imageModel) {
+    public ModelShowDetailView setImageModel(ImageFileEntity imageModel) {
         this.imageModel = imageModel;
         return this;
     }
@@ -84,7 +93,7 @@ public class ModelEntity {
         return likes;
     }
 
-    public ModelEntity setLikes(int likes) {
+    public ModelShowDetailView setLikes(int likes) {
         this.likes = likes;
         return this;
     }
@@ -93,8 +102,8 @@ public class ModelEntity {
         return downloaded;
     }
 
-    public ModelEntity setDownloaded(int sold) {
-        this.downloaded = sold;
+    public ModelShowDetailView setDownloaded(int downloaded) {
+        this.downloaded = downloaded;
         return this;
     }
 
@@ -102,7 +111,7 @@ public class ModelEntity {
         return category;
     }
 
-    public ModelEntity setCategory(CategoryModelEntity category) {
+    public ModelShowDetailView setCategory(CategoryModelEntity category) {
         this.category = category;
         return this;
     }
@@ -111,7 +120,7 @@ public class ModelEntity {
         return isApproved;
     }
 
-    public ModelEntity setApproved(boolean approved) {
+    public ModelShowDetailView setApproved(boolean approved) {
         isApproved = approved;
         return this;
     }
@@ -120,7 +129,7 @@ public class ModelEntity {
         return owner;
     }
 
-    public ModelEntity setOwner(UserEntity owner) {
+    public ModelShowDetailView setOwner(UserEntity owner) {
         this.owner = owner;
         return this;
     }
@@ -129,17 +138,8 @@ public class ModelEntity {
         return uploadedOn;
     }
 
-    public ModelEntity setUploadedOn(LocalDateTime uploadedOn) {
+    public ModelShowDetailView setUploadedOn(LocalDateTime uploadedOn) {
         this.uploadedOn = uploadedOn;
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public ModelEntity setDescription(String description) {
-        this.description = description;
         return this;
     }
 }

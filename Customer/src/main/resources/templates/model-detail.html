@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="ie ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <!--<![endif]-->
-<html lang="zxx">
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
 
 
 <!-- product-detail06:46-->
@@ -29,7 +31,6 @@
     <link rel="stylesheet" th:href="@{/libs/slider-range/css/jslider.css}">
 
 
-
     <!-- Template CSS -->
     <th:block th:insert="~{/fragments/templateCss}"></th:block>
 
@@ -37,47 +38,53 @@
 </head>
 
 <body id="product-detail">
-    <header>
-        <!-- header left mobie -->
-        <th:block th:insert="~{/fragments/header_left_mobile}"></th:block>
+<header>
+    <!-- header left mobie -->
+    <th:block th:insert="~{/fragments/header_left_mobile}"></th:block>
 
-        <!-- header desktop -->
-        <th:block th:insert="~{/fragments/header_desktop}"></th:block>
-    </header>
+    <!-- header desktop -->
+    <th:block th:insert="~{/fragments/header_desktop}"></th:block>
+</header>
 
-    <!-- main content -->
-    <div class="main-content">
-        <div id="wrapper-site">
-            <div id="content-wrapper">
-                <div id="main">
-                    <div class="page-home">
+<!-- main content -->
+<div class="main-content">
+    <div id="wrapper-site">
+        <div id="content-wrapper">
+            <div id="main">
+                <div class="page-home">
 
-                        <!-- breadcrumb -->
-                        <div class="container">
-                            <div class="content">
-                                <div class="row">
+                    <!-- breadcrumb -->
+                    <div class="container">
+                        <div class="content">
+                            <div class="row">
 
-                                    <div class="col-sm-8 col-lg-9 col-md-9">
+                                <div class="col-sm-8 col-lg-9 col-md-9">
+                                    <th:block th:object="${model}">
                                         <div class="main-product-detail">
-                                            <h2>Lorem ipsum dolor</h2>
+                                            <h2 th:text="*{name}">Lorem ipsum dolor</h2>
                                             <div class="product-single row">
                                                 <div class="product-detail col-xs-12 col-md-5 col-sm-5">
                                                     <div class="page-content" id="content">
                                                         <div class="images-container">
                                                             <div class="js-qv-mask mask tab-content border">
                                                                 <div id="item1" class="tab-pane fade active in show">
-                                                                    <img th:src="@{/images/product/1.jpg}" alt="img">
+                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
+                                                                         alt="img">
                                                                 </div>
                                                                 <div id="item2" class="tab-pane fade">
-                                                                    <img th:src="@{/images/product/2.jpg}" alt="img">
+                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
+                                                                         alt="img">
                                                                 </div>
                                                                 <div id="item3" class="tab-pane fade">
-                                                                    <img th:src="@{/images/product/3.jpg}" alt="img">
+                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
+                                                                         alt="img">
                                                                 </div>
                                                                 <div id="item4" class="tab-pane fade">
-                                                                    <img th:src="@{/images/product/5.jpg}" alt="img">
+                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
+                                                                         alt="img">
                                                                 </div>
-                                                                <div class="layer hidden-sm-down" data-toggle="modal" data-target="#product-modal">
+                                                                <div class="layer hidden-sm-down" data-toggle="modal"
+                                                                     data-target="#product-modal">
                                                                     <i class="fa fa-expand"></i>
                                                                 </div>
                                                             </div>
@@ -92,17 +99,25 @@
                                                                                     <div>
                                                                                         <div class="images-container">
                                                                                             <div class="js-qv-mask mask tab-content">
-                                                                                                <div id="modal-item1" class="tab-pane fade active in show">
-                                                                                                    <img th:src="@{/images/product/1.jpg}" alt="img">
+                                                                                                <div id="modal-item1"
+                                                                                                     class="tab-pane fade active in show">
+                                                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
+                                                                                                         alt="img">
                                                                                                 </div>
-                                                                                                <div id="modal-item2" class="tab-pane fade">
-                                                                                                    <img th:src="@{/images/product/2.jpg}" alt="img">
+                                                                                                <div id="modal-item2"
+                                                                                                     class="tab-pane fade">
+                                                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
+                                                                                                         alt="img">
                                                                                                 </div>
-                                                                                                <div id="modal-item3" class="tab-pane fade">
-                                                                                                    <img th:src="@{/images/product/3.jpg}" alt="img">
+                                                                                                <div id="modal-item3"
+                                                                                                     class="tab-pane fade">
+                                                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
+                                                                                                         alt="img">
                                                                                                 </div>
-                                                                                                <div id="modal-item4" class="tab-pane fade">
-                                                                                                    <img th:src="@{/images/product/5.jpg}" alt="img">
+                                                                                                <div id="modal-item4"
+                                                                                                     class="tab-pane fade">
+                                                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
+                                                                                                         alt="img">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -119,29 +134,60 @@
                                                 <div class="product-info col-xs-12 col-md-7 col-sm-7">
                                                     <div class="detail-description">
                                                         <div class="price-del">
-                                                            <span class="price">1 Credit</span>
+                                                            <span class="price">Download: 1 Credit</span>
+
                                                         </div>
+
                                                         <div class="option has-border d-lg-flex size-color">
                                                             <div class="product-description">Manufacturer:</div>
                                                             <div></div>
-                                                            <div class="product-description">GUCCI</div>
+                                                            <div class="product-description" th:text="*{manufacturer}">
+                                                                GUCCI
+                                                            </div>
                                                         </div>
                                                         <div class="has-border cart-area">
                                                             <div class="product-quantity">
                                                                 <div class="qty">
                                                                     <div class="input-group">
                                                                         <span class="add">
-                                                                               <button class="btn btn-primary add-to-cart add-item" data-button-action="add-to-cart" type="submit">
-                                                                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                                            <div>
+                                                                            <form th:action="@{/model-approve/{id}(id=${model.getId()})}">
+                                                                               <button sec:authorize="hasRole('MODERATOR')"
+                                                                                       th:if="*{approved==false}"
+                                                                                       class="btn btn-primary add-to-cart add-item"
+                                                                                       data-button-action="add-to-cart"
+                                                                                       type="submit">
+                                                                                <i class="fa fa-sign-in"
+                                                                                   aria-hidden="true"></i>
                                                                                 <span>Approove</span>
                                                                             </button>
-                                                                            <button class="btn btn-primary add-to-cart add-item" data-button-action="add-to-cart" type="submit">
-                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                                                </form>
+                                                                                </div>
+                                                                            <form th:action="@{/download-model-user/{id}(id=${model.getId()})}">
+                                                                            <button
+                                                                                    class="btn btn-primary add-to-cart add-item"
+                                                                                    data-button-action="add-to-cart"
+                                                                                    type="submit">
+                                                                                <i class="fa fa-shopping-cart"
+                                                                                   aria-hidden="true"></i>
                                                                                 <span>Download</span>
                                                                             </button>
-                                                                            <a class="addToWishlist" href="#">
-                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                                                                </form>
+                                                                                 <div>
+                                                                            <a class="addToWishlist"
+                                                                               th:href="@{/model-like/{id}(id=${model.getId()})}">
+                                                                                <i class="fa fa-heart"
+                                                                                   aria-hidden="true"></i>
                                                                             </a>
+                                                                                        <th:block th:object="${userCredits}">
+                                                                                        <div class="price-del"
+                                                                                             th:if="${userCredits!=null}">
+                                                                                         <span class="price"
+                                                                                               th:text="|Your Credits: *{credits} / 3|">1 Credit</span>
+                                                                                      </div>
+                                                                                            </th:block>
+
+                                                                                 </div>
                                                                         </span>
                                                                     </div>
                                                                 </div>
@@ -153,17 +199,17 @@
                                                         <div class="content">
                                                             <p>Categories :
                                                                 <span class="content2">
-                                                                    <a >Clothing</a>
+                                                                    <a th:text="*{category.name}">Clothing</a>
                                                                 </span>
                                                             </p>
                                                             <p>Likes :
                                                                 <span class="content2">
-                                                                    <a>1</a>
+                                                                    <a th:text="*{likes}">1</a>
                                                                 </span>
                                                             </p>
                                                             <p>Downloaded :
                                                                 <span class="content2">
-                                                                    <a>1</a>
+                                                                    <a th:text="*{downloaded}">1</a>
                                                                 </span>
                                                             </p>
                                                         </div>
@@ -174,27 +220,18 @@
                                             <div class="review">
                                                 <ul class="nav nav-tabs">
                                                     <li class="active">
-                                                        <a data-toggle="tab" href="#description" class="active show">Description</a>
+                                                        <a data-toggle="tab" class="active show">Description</a>
                                                     </li>
                                                 </ul>
 
                                                 <div class="tab-content">
                                                     <div id="description" class="tab-pane fade in active show">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                            eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                            ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                            tempor incididunt ut labore et dolore magna aliqua.
-                                                        </p>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                                                            eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem
-                                                            ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                                            tempor incididunt ut labore et dolore magna aliqua.
-                                                        </p>
+                                                        <p th:text="*{description}"></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </th:block>
                                 </div>
                             </div>
                         </div>
@@ -203,26 +240,26 @@
             </div>
         </div>
     </div>
+</div>
 
-    <!-- footer -->
-    <th:block th:insert="~{/fragments/footer}"></th:block>
+<!-- footer -->
+<th:block th:insert="~{/fragments/footer}"></th:block>
 
-    <!-- back top top -->
-    <th:block th:insert="~{/fragments/back_to_top}"></th:block>
+<!-- back top top -->
+<th:block th:insert="~{/fragments/back_to_top}"></th:block>
 
-    <!-- menu mobie left -->
-    <th:block th:insert="~{/fragments/menu_mobie_left}"></th:block>
+<!-- menu mobie left -->
+<th:block th:insert="~{/fragments/menu_mobie_left}"></th:block>
 
-    <!-- menu mobie right -->
-    <th:block th:insert="~{/fragments/menu_mobie_right}"></th:block>
+<!-- menu mobie right -->
+<th:block th:insert="~{/fragments/menu_mobie_right}"></th:block>
 
-    <!-- Vendor JS -->
-    <th:block th:insert="~{/fragments/vendor_Js_IndexPage}"></th:block>
+<!-- Vendor JS -->
+<th:block th:insert="~{/fragments/vendor_Js_IndexPage}"></th:block>
 
 
-
-    <!-- Template JS -->
-    <th:block th:insert="~{/fragments/template_Js}"></th:block>
+<!-- Template JS -->
+<th:block th:insert="~{/fragments/template_Js}"></th:block>
 
 
 </body>

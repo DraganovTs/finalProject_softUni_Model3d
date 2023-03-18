@@ -11,9 +11,9 @@ import java.util.Optional;
 
 public interface FileService {
 
-    ImageFileEntity saveImageFile(MultipartFile multipartFile) throws IOException;
+    ImageFileEntity saveImageFile(String contentType, String fileName , byte[] fileData) throws IOException;
 
-    ZipFileEntity saveZipFile(MultipartFile multipartFile) throws IOException;
+    ZipFileEntity saveZipFile(String contentType, String fileName , byte[] fileData) throws IOException;
 
 
     public Optional<FileDownloadModelDTO> getFileById(Long fileId);

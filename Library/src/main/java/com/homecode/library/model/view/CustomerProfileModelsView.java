@@ -8,7 +8,7 @@ public class CustomerProfileModelsView {
     private String description;
     private String image;
     private int likes;
-    private int sold;
+    private int downloaded;
 
     public CustomerProfileModelsView() {
     }
@@ -49,12 +49,12 @@ public class CustomerProfileModelsView {
         return this;
     }
 
-    public int getSold() {
-        return sold;
+    public int getDownloaded() {
+        return downloaded;
     }
 
-    public CustomerProfileModelsView setSold(int sold) {
-        this.sold = sold;
+    public CustomerProfileModelsView setDownloaded(int downloaded) {
+        this.downloaded = downloaded;
         return this;
     }
 

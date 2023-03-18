@@ -7,6 +7,7 @@ import com.homecode.library.model.dto.ModelUploadDTO;
 import com.homecode.library.model.dto.UserAddRolesDto;
 import com.homecode.library.model.dto.UserRegisterDTO;
 import com.homecode.library.model.enums.UserRoleEnum;
+import com.homecode.library.model.view.CustomerCreditsView;
 import com.homecode.library.repository.UserRepository;
 import com.homecode.library.service.CustomerUserService;
 import org.modelmapper.ModelMapper;
@@ -119,6 +120,25 @@ public class CustomerUserServiceImpl implements CustomerUserService {
             System.out.println(e);
         }
 
+    }
+
+    @Override
+    public boolean userDownloadModel(String username, Long modelID) {
+        UserEntity user = this.userRepository.findUserEntitiesByEmail(username).get();
+        if (user.getCredits() < 1) {
+            return false;
+        }
+        ModelEntity model = this.modelService.findById(modelID);
+        user.setCredits(user.getCredits() - 1);
+        user.addDownloadModel(model);
+        this.userRepository.save(user);
+        return true;
+    }
+
+    @Override
+    public CustomerCreditsView getUserCredits(String username) {
+        UserEntity user = findUserByUsername(username);
+        return this.modelMapper.map(user, CustomerCreditsView.class);
     }
 
 }

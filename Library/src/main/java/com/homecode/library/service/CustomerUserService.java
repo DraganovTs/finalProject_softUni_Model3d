@@ -6,9 +6,8 @@ import com.homecode.library.model.UserEntity;
 import com.homecode.library.model.dto.ModelUploadDTO;
 import com.homecode.library.model.dto.UserAddRolesDto;
 import com.homecode.library.model.dto.UserRegisterDTO;
-import com.homecode.library.model.view.CustomerProfileView;
+import com.homecode.library.model.view.CustomerCreditsView;
 
-import java.security.Principal;
 import java.util.List;
 
 public interface CustomerUserService {
@@ -34,4 +33,8 @@ public interface CustomerUserService {
 
 
     void userAddModel(String name, ModelUploadDTO modelUploadDTO);
+
+    boolean userDownloadModel(String username, Long modelID);
+
+    CustomerCreditsView getUserCredits(String username);
 }

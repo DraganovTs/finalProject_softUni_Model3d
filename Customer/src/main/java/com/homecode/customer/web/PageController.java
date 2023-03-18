@@ -4,6 +4,7 @@ import com.homecode.library.model.UserEntity;
 import com.homecode.library.model.dto.EmailDTO;
 import com.homecode.library.model.view.CustomerProfileModelsView;
 import com.homecode.library.model.view.CustomerProfileView;
+import com.homecode.library.model.view.ModelsShowAllView;
 import com.homecode.library.service.CustomerUserService;
 import com.homecode.library.service.impl.EmailServiceImpl;
 import com.homecode.library.service.impl.ModelServiceImpl;
@@ -30,6 +31,17 @@ public class PageController {
         this.emailService = emailService;
     }
 
+    @GetMapping("/")
+    public String home(Model model) {
+        List<ModelsShowAllView> allModelsView = this.modelService.getAllModels();
+        model.addAttribute("allModels", allModelsView);
+
+
+        //TODO need 2 list of models to get 2 rows in container
+        return "index";
+    }
+
+
     @GetMapping("/about-us")
     public String aboutUs() {
         return "about-us";
@@ -47,18 +59,19 @@ public class PageController {
         CustomerProfileView profileView = new CustomerProfileView()
                 .setEmail(user.getEmail())
                 .setFistName(user.getFirstName())
-                .setLastName(user.getLastName());
+                .setLastName(user.getLastName())
+                .setCredits(user.getCredits());
         model.addAttribute("userProfile", profileView);
 
         List<CustomerProfileModelsView> userModels = this.modelService.getUserModels(user.getUserUploadedModels());
         model.addAttribute("userModels", userModels);
 
-        List<CustomerProfileModelsView> userDownloadedModels = this.modelService.getUserModels(user.getPurchasedModels());
+        List<CustomerProfileModelsView> userDownloadedModels = this.modelService.getUserModels(user.getDownloadedModels());
         model.addAttribute("userDownloadedModels", userDownloadedModels);
 
         List<CustomerProfileModelsView> userLikedModels = this.modelService.getUserModels(user.getLikedModels());
         model.addAttribute("userLikedModels", userLikedModels);
-        //TODO refactoring get all from userService
+        //TODO refactoring get all info from userService
         return "/user-acount";
     }
 

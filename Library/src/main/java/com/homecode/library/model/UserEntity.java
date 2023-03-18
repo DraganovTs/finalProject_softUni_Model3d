@@ -29,7 +29,7 @@ public class UserEntity {
     @ManyToMany
     private List<ModelEntity> userUploadedModels = new ArrayList<>();
     @ManyToMany
-    private List<ModelEntity> purchasedModels = new ArrayList<>();
+    private List<ModelEntity> downloadedModels = new ArrayList<>();
     @ManyToMany
     private List<ModelEntity> likedModels = new ArrayList<>();
 
@@ -49,6 +49,10 @@ public class UserEntity {
 
     public UserEntity addUploadedModel(ModelEntity model) {
         this.userUploadedModels.add(model);
+        return this;
+    }
+    public UserEntity addDownloadModel(ModelEntity model) {
+        this.downloadedModels.add(model);
         return this;
     }
 
@@ -106,12 +110,12 @@ public class UserEntity {
         return this;
     }
 
-    public List<ModelEntity> getPurchasedModels() {
-        return purchasedModels;
+    public List<ModelEntity> getDownloadedModels() {
+        return downloadedModels;
     }
 
-    public UserEntity setPurchasedModels(List<ModelEntity> purchasedModels) {
-        this.purchasedModels = purchasedModels;
+    public UserEntity setDownloadedModels(List<ModelEntity> purchasedModels) {
+        this.downloadedModels = purchasedModels;
         return this;
     }
 

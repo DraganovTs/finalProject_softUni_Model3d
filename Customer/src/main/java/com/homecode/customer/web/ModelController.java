@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class ModelController {
@@ -54,6 +55,10 @@ public class ModelController {
                               @RequestParam("imageModel") MultipartFile imageModel,
                               @RequestParam("zipModel") MultipartFile zipModel) {
 
+        if (principal == null) {
+            return "redirect:/login";
+        }
+
         try {
             if (bindingResult.hasErrors()) {
                 redirectAttributes.addFlashAttribute("modelUploadDTO", modelUploadDTO);
@@ -75,7 +80,7 @@ public class ModelController {
             return "redirect:/add-model";
         }
 
-        this.customerUserService.userAddModel(principal.getName(),modelUploadDTO);
+        this.customerUserService.userAddModel(principal.getName(), modelUploadDTO);
         //TODO get send user to modelservice and send user to userService
         redirectAttributes.addFlashAttribute("success", "Your model is uploaded and waiting to be approved");
 
@@ -85,10 +90,14 @@ public class ModelController {
 
 
     @GetMapping("/models-all")
-    public String allModels(Model model) {
-        List<ModelsShowAllView> allModelsView = this.modelService.getAllModels();
+    public String allModels(Model model, @RequestParam Optional<String> keyword) {
+        List<ModelsShowAllView> allModelsView;
+
+            allModelsView = this.modelService.getAllModelsByKeyword(keyword.orElse("_"));
+
         model.addAttribute("modelsNumber", allModelsView.size());
         model.addAttribute("allModels", allModelsView);
+        System.out.println(allModelsView);
         return "model-all";
     }
 
@@ -107,9 +116,12 @@ public class ModelController {
     }
 
 
-    @GetMapping("/product-detail/{id}")
-    public String productDetail(@PathVariable(value = "id") Long id, Model model) {
-        model.addAttribute("product", this.modelService.findById(id));
+    @GetMapping("/model-detail/{id}")
+    public String productDetail(@PathVariable(value = "id") Long id, Model model, Principal principal) {
+        if (principal != null) {
+            model.addAttribute("userCredits", this.customerUserService.getUserCredits(principal.getName()));
+        }
+        model.addAttribute("model", this.modelService.showModelDetailById(id));
         return "model-detail";
     }
 
@@ -124,6 +136,23 @@ public class ModelController {
         this.customerUserService.likeModel(principal.getName(), model);
         this.modelService.likeModel(model);
         return "redirect:/models-all";
+    }
+
+
+    @GetMapping("/download-model-user/{id}")
+    public String UserDownloadModel(@PathVariable(value = "id") Long id, Principal principal) {
+
+        if (principal == null) {
+            return "redirect:/login";
+        }
+
+        if (!this.customerUserService.userDownloadModel(principal.getName(), id)) {
+            return "redirect:/model-detail/{id}";
+        }
+
+        this.modelService.modelDownloaded(id);
+
+        return "redirect:/download-model/{id}";
     }
 
     @ModelAttribute("modelUploadDTO")

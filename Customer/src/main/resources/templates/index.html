@@ -188,11 +188,10 @@
                                             <!-- column 4 -->
                                             <div class="flex-4 col-lg-4 flex-4">
                                                 <h2 class="title-block">
-                                                    <span class="sub-title">Latest models</span>Best Sellers
+                                                    <span class="sub-title">Model3d</span>Latest models
                                                 </h2>
                                                 <div class="content-text">
-                                                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                                        tempor incididunt ut labore dolore magna aliqua.
+                                                    <p> Check out our latest models
                                                     </p>
                                                     <div>
                                                         <a th:href="@{/models-all}"> View all product </a>
@@ -205,12 +204,13 @@
                                                 <div class="tab-content">
                                                     <div class="tab-pane fade in active show">
                                                         <div class="category-product-index owl-carousel owl-theme owl-loaded owl-drag">
+                                                            <th:block th:each="model :${allModels}">
                                                             <div class="item text-center">
                                                                 <div class="product-miniature js-product-miniature item-one first-item">
                                                                     <div class="thumbnail-container">
-                                                                        <a th:href="@{/products/detail}">
-                                                                            <img class="img-fluid image-cover" th:src="@{images/product/26.jpg}" alt="img">
-                                                                            <img class="img-fluid image-secondary" th:src="@{images/product/1.jpg}" alt="img">
+                                                                        <a th:href="@{/product-detail/{id}(id=${model.getId()})}">
+                                                                            <img class="img-fluid image-cover" th:src="@{/download-model/{id}(id=${model.getId()})}">
+                                                                            <img class="img-fluid image-secondary" th:src="@{/download-model/{id}(id=${model.getId()})}">
                                                                         </a>
                                                                         <div class="highlighted-informations">
                                                                             <div class="variant-links">
@@ -223,26 +223,20 @@
                                                                     <div class="product-description">
                                                                         <div class="product-groups">
                                                                             <div class="product-title">
-                                                                                <a th:href="@{/products/detail}">Nulla et justo non augue</a>
+                                                                                <a th:href="@{/product-detail/{id}(id=${model.getId()})}" th:text="*{name}">Nulla et justo non augue</a>
                                                                             </div>
                                                                             <div class="product-group-price">
                                                                                 <div class="product-price-and-shipping">
-                                                                                    <span class="price">£20.08</span>
-                                                                                    <del class="regular-price">£28.68</del>
+                                                                                    <span class="price">1 credit</span>
+                                                                                    <del class="regular-price">1 credit</del>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="product-buttons d-flex justify-content-center">
-                                                                            <form action="#" method="post" class="formAddToCart">
-                                                                                <input type="hidden" name="id_product" value="1">
-                                                                                <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                </a>
-                                                                            </form>
-                                                                            <a class="addToWishlist" href="#" data-rel="1" onclick="">
+                                                                            <a class="addToWishlist" th:href="@{/model-like/{id}(id=${model.getId()})}" data-rel="1" onclick="">
                                                                                 <i class="fa fa-heart" aria-hidden="true"></i>
                                                                             </a>
-                                                                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
+                                                                            <a th:href="@{/model-detail/{id}(id=${model.getId()})}" class="quick-view hidden-sm-down" data-link-action="quickview">
                                                                                 <i class="fa fa-eye" aria-hidden="true"></i>
                                                                             </a>
                                                                         </div>
@@ -292,176 +286,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="item text-center">
-                                                                <div class="product-miniature js-product-miniature item-one first-item">
-                                                                    <div class="thumbnail-container">
-                                                                        <a href="model-detail.html">
-                                                                            <img class="img-fluid image-cover" th:src="@{/images/product/10.jpg}" alt="img">
-                                                                            <img class="img-fluid image-secondary" th:src="@{/images/product/9.jpg}" alt="img">
-                                                                        </a>
-                                                                        <div class="highlighted-informations">
-                                                                            <div class="variant-links">
-                                                                                <a href="#" class="color beige" title="Beige"></a>
-                                                                                <a href="#" class="color orange" title="Orange"></a>
-                                                                                <a href="#" class="color green" title="Green"></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-description">
-                                                                        <div class="product-groups">
-                                                                            <div class="product-title">
-                                                                                <a href="model-detail.html">Nulla et justo non augue</a>
-                                                                            </div>
-                                                                            <div class="product-group-price">
-                                                                                <div class="product-price-and-shipping">
-                                                                                    <span class="price">£20.08</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="product-buttons d-flex justify-content-center">
-                                                                            <form action="#" method="post" class="formAddToCart">
-                                                                                <input type="hidden" name="id_product" value="1">
-                                                                                <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                </a>
-                                                                            </form>
-                                                                            <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                            </a>
-                                                                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-miniature js-product-miniature item-one first-item">
-                                                                    <div class="thumbnail-container">
-                                                                        <a href="model-detail.html">
-                                                                            <img class="img-fluid image-cover" th:src="@{/images/product/3.jpg}" alt="img">
-                                                                            <img class="img-fluid image-secondary" th:src="@{/images/product/9.jpg}" alt="img">
-                                                                        </a>
-                                                                        <div class="highlighted-informations">
-                                                                            <div class="variant-links">
-                                                                                <a href="#" class="color beige" title="Beige"></a>
-                                                                                <a href="#" class="color orange" title="Orange"></a>
-                                                                                <a href="#" class="color green" title="Green"></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-description">
-                                                                        <div class="product-groups">
-                                                                            <div class="product-title">
-                                                                                <a href="model-detail.html">Nulla et justo non augue</a>
-                                                                            </div>
-                                                                            <div class="product-group-price">
-                                                                                <div class="product-price-and-shipping">
-                                                                                    <span class="price">£20.08</span>
-                                                                                    <del class="regular-price">£28.68</del>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="product-buttons d-flex justify-content-center">
-                                                                            <form action="#" method="post" class="formAddToCart">
-                                                                                <input type="hidden" name="id_product" value="1">
-                                                                                <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                </a>
-                                                                            </form>
-                                                                            <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                            </a>
-                                                                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="item text-center">
-                                                                <div class="product-miniature js-product-miniature item-one first-item">
-                                                                    <div class="thumbnail-container">
-                                                                        <a href="model-detail.html">
-                                                                            <img class="img-fluid image-cover" th:src="@{/images/product/24.jpg}" alt="img">
-                                                                            <img class="img-fluid image-secondary" th:src="@{/images/product/3.jpg}" alt="img">
-                                                                        </a>
-                                                                        <div class="highlighted-informations">
-                                                                            <div class="variant-links">
-                                                                                <a href="#" class="color beige" title="Beige"></a>
-                                                                                <a href="#" class="color orange" title="Orange"></a>
-                                                                                <a href="#" class="color green" title="Green"></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-description">
-                                                                        <div class="product-groups">
-                                                                            <div class="product-title">
-                                                                                <a href="model-detail.html">Nulla et justo non augue</a>
-                                                                            </div>
-                                                                            <div class="product-group-price">
-                                                                                <div class="product-price-and-shipping">
-                                                                                    <span class="price">£20.08</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="product-buttons d-flex justify-content-center">
-                                                                            <form action="#" method="post" class="formAddToCart">
-                                                                                <input type="hidden" name="id_product" value="1">
-                                                                                <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                </a>
-                                                                            </form>
-                                                                            <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                            </a>
-                                                                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="product-miniature js-product-miniature item-one first-item">
-                                                                    <div class="thumbnail-container">
-                                                                        <a href="model-detail.html">
-                                                                            <img class="img-fluid image-cover" th:src="@{/images/product/23.jpg}" alt="img">
-                                                                            <img class="img-fluid image-secondary" th:src="@{/images/product/4.jpg}" alt="img">
-                                                                        </a>
-                                                                        <div class="highlighted-informations">
-                                                                            <div class="variant-links">
-                                                                                <a href="#" class="color beige" title="Beige"></a>
-                                                                                <a href="#" class="color orange" title="Orange"></a>
-                                                                                <a href="#" class="color green" title="Green"></a>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="product-description">
-                                                                        <div class="product-groups">
-                                                                            <div class="product-title">
-                                                                                <a href="model-detail.html">Nulla et justo non augue</a>
-                                                                            </div>
-                                                                            <div class="product-group-price">
-                                                                                <div class="product-price-and-shipping">
-                                                                                    <span class="price">£20.08</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="product-buttons d-flex justify-content-center">
-                                                                            <form action="#" method="post" class="formAddToCart">
-
-                                                                                <input type="hidden" name="id_product" value="1">
-                                                                                <a class="add-to-cart" href="#" data-button-action="add-to-cart">
-                                                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                                                </a>
-                                                                            </form>
-                                                                            <a class="addToWishlist" href="#" data-rel="1" onclick="">
-                                                                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                                                            </a>
-                                                                            <a href="#" class="quick-view hidden-sm-down" data-link-action="quickview">
-                                                                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            </th:block>
                                                         </div>
                                                     </div>
                                                 </div>

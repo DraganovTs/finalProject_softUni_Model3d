@@ -3,6 +3,7 @@ package com.homecode.library.service.impl;
 import com.homecode.library.model.*;
 import com.homecode.library.model.dto.ModelUploadDTO;
 import com.homecode.library.model.view.CustomerProfileModelsView;
+import com.homecode.library.model.view.ModelShowDetailView;
 import com.homecode.library.model.view.ModelsShowAllView;
 import com.homecode.library.repository.ModelRepository;
 import com.homecode.library.service.FileService;
@@ -45,21 +46,18 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public boolean isExistInDB(ModelUploadDTO modelUploadDTO) {
-        if (this.modelRepository.findByNameAndManufacturer(modelUploadDTO.getName(), modelUploadDTO.getManufacturer()).isPresent()) {
-            return false;
-        }
-        return true;
+        return this.modelRepository.findByNameAndManufacturer(modelUploadDTO.getName(), modelUploadDTO.getManufacturer()).isEmpty();
     }
 
     @Override
-    public ModelEntity uploadModel(MultipartFile imageModel, MultipartFile zipModel, ModelUploadDTO modelUploadDTO, UserEntity user) throws IOException {
+    public void uploadModel(MultipartFile imageModel, MultipartFile zipModel, ModelUploadDTO modelUploadDTO, UserEntity user) throws IOException {
 
         try {
 
 
             CategoryModelEntity category = this.categoryModelService.findCategoryByName(modelUploadDTO.getCategory());
-            ImageFileEntity image = this.fileService.saveImageFile(imageModel);
-            ZipFileEntity zip = this.fileService.saveZipFile(zipModel);
+            ImageFileEntity image = this.fileService.saveImageFile(imageModel.getContentType(),imageModel.getOriginalFilename(), imageModel.getBytes());
+            ZipFileEntity zip = this.fileService.saveZipFile(zipModel.getContentType(),zipModel.getOriginalFilename(), zipModel.getBytes());
 
             ModelEntity modelToSave = new ModelEntity()
                     .setName(modelUploadDTO.getName())
@@ -68,9 +66,8 @@ public class ModelServiceImpl implements ModelService {
                     .setDescription(modelUploadDTO.getDescription())
                     .setZipModel(zip)
                     .setImageModel(image)
-                    .setOwner(user)
-                    .setApproved(true);
-            //TODO dont set it to approved
+                    .setOwner(user);
+
 
 
             this.modelRepository.save(modelToSave);
@@ -80,12 +77,22 @@ public class ModelServiceImpl implements ModelService {
 
         }
 
-        return this.modelRepository.findByNameAndManufacturer(modelUploadDTO.getName(), modelUploadDTO.getManufacturer()).get();
     }
 
     @Override
     public List<ModelsShowAllView> getAllModels() {
-        return this.modelRepository.findAll().stream().filter(ModelEntity::isApproved).map(m -> this.modelMapper.map(m, ModelsShowAllView.class)).collect(Collectors.toList());
+        return this.modelRepository.findAllModels().stream().map(m -> this.modelMapper.map(m, ModelsShowAllView.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ModelsShowAllView> getAllModelsByKeyword(String keyword) {
+        return this.modelRepository.findAllModelsByKeyword(keyword).stream().map(m -> this.modelMapper.map(m, ModelsShowAllView.class)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ModelsShowAllView> getAllModelsForModerator() {
+        return this.modelRepository.getAllModelsForModerator().stream().map(m -> this.modelMapper.map(m, ModelsShowAllView.class)).collect(Collectors.toList());
+
     }
 
 
@@ -103,4 +110,26 @@ public class ModelServiceImpl implements ModelService {
     public ModelEntity findByModelNameAndManufacturer(ModelUploadDTO modelUploadDTO) {
         return this.modelRepository.findByNameAndManufacturer(modelUploadDTO.getName(), modelUploadDTO.getManufacturer()).orElseThrow();
     }
+
+    @Override
+    public ModelShowDetailView showModelDetailById(Long id) {
+        ModelEntity model = this.modelRepository.findById(id).get();
+        return this.modelMapper.map(model, ModelShowDetailView.class);
+    }
+
+    @Override
+    public void approveModelById(Long id) {
+        ModelEntity model = this.modelRepository.findById(id).get();
+        model.setApproved(true);
+        this.modelRepository.save(model);
+    }
+
+    @Override
+    public void modelDownloaded(Long id) {
+        ModelEntity model = findById(id);
+        model.setDownloaded(model.getDownloaded() + 1);
+        this.modelRepository.save(model);
+    }
+
+
 }
