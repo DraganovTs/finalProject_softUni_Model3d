@@ -145,7 +145,7 @@ public class ModelController {
         if (principal == null) {
             return "redirect:/login";
         }
-
+     //TODO show low credit message
         if (!this.customerUserService.userDownloadModel(principal.getName(), id)) {
             return "redirect:/model-detail/{id}";
         }
