@@ -3,10 +3,7 @@ package com.homecode.customer.init;
 
 import com.homecode.library.model.*;
 import com.homecode.library.model.enums.UserRoleEnum;
-import com.homecode.library.repository.AdminRepository;
-import com.homecode.library.repository.CategoryRepository;
-import com.homecode.library.repository.ModelRepository;
-import com.homecode.library.repository.UserRepository;
+import com.homecode.library.repository.*;
 import com.homecode.library.service.impl.CategoryModelServiceImpl;
 import com.homecode.library.service.impl.FileServiceImpl;
 import com.homecode.library.service.impl.RoleServiceImpl;
@@ -15,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +29,10 @@ public class CustomerInit {
     private final ModelRepository modelRepository;
 
     private final FileServiceImpl fileService;
+    private final CommentRepository commentRepository;
 
 
-    public CustomerInit(RoleServiceImpl roleService, UserRepository userRepository, PasswordEncoder passwordEncoder, CategoryModelServiceImpl categoryModelService, AdminRepository adminRepository, CategoryRepository categoryRepository, ModelRepository modelRepository, FileServiceImpl fileService) {
+    public CustomerInit(RoleServiceImpl roleService, UserRepository userRepository, PasswordEncoder passwordEncoder, CategoryModelServiceImpl categoryModelService, AdminRepository adminRepository, CategoryRepository categoryRepository, ModelRepository modelRepository, FileServiceImpl fileService, CommentRepository commentRepository) {
         this.roleService = roleService;
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -41,8 +40,8 @@ public class CustomerInit {
         this.adminRepository = adminRepository;
         this.categoryRepository = categoryRepository;
         this.modelRepository = modelRepository;
-
         this.fileService = fileService;
+        this.commentRepository = commentRepository;
     }
 
 
@@ -64,7 +63,68 @@ public class CustomerInit {
         if (this.modelRepository.count() == 0) {
             initModels();
         }
+        if (this.commentRepository.count() == 0) {
+            initComments();
+        }
 
+
+    }
+
+    private void initComments() {
+
+
+        var comment1 = new CommentEntity()
+                .setCreated(LocalDateTime.now())
+                .setModel(this.modelRepository.findById(1L).get())
+                .setAuthor(this.userRepository.findUserEntitiesByEmail("moderator@example.com").get())
+                .setApproved(true)
+                .setText("Look great for project");
+
+        var comment2 = new CommentEntity()
+                .setCreated(LocalDateTime.now())
+                .setModel(this.modelRepository.findById(1L).get())
+                .setAuthor(this.userRepository.findUserEntitiesByEmail("user@example.com").get())
+                .setApproved(true)
+                .setText("Perfectly modeled, great texture. It is like real table");
+
+        var comment3 = new CommentEntity()
+                .setCreated(LocalDateTime.now())
+                .setModel(this.modelRepository.findById(2L).get())
+                .setAuthor(this.userRepository.findUserEntitiesByEmail("moderator@example.com").get())
+                .setApproved(true)
+                .setText("Red velvet material is great");
+
+        var comment4 = new CommentEntity()
+                .setCreated(LocalDateTime.now())
+                .setModel(this.modelRepository.findById(2L).get())
+                .setAuthor(this.userRepository.findUserEntitiesByEmail("user@example.com").get())
+                .setApproved(true)
+                .setText("This model is awesome :)");
+
+        var comment5 = new CommentEntity()
+                .setCreated(LocalDateTime.now())
+                .setModel(this.modelRepository.findById(3L).get())
+                .setAuthor(this.userRepository.findUserEntitiesByEmail("moderator@example.com").get())
+                .setApproved(true)
+                .setText("Great model, perfect texturing");
+
+        var comment6 = new CommentEntity()
+                .setCreated(LocalDateTime.now())
+                .setModel(this.modelRepository.findById(3L).get())
+                .setAuthor(this.userRepository.findUserEntitiesByEmail("user@example.com").get())
+                .setApproved(true)
+                .setText("This model is awesome :) ... keep going");
+
+
+        List<CommentEntity> commentEntities = new ArrayList<>();
+        commentEntities.add(comment1);
+        commentEntities.add(comment2);
+        commentEntities.add(comment3);
+        commentEntities.add(comment4);
+        commentEntities.add(comment5);
+        commentEntities.add(comment6);
+
+        this.commentRepository.saveAll(commentEntities);
 
     }
 
@@ -256,7 +316,6 @@ public class CustomerInit {
                 .setDescription("Classic style table lamp")
                 .setZipModel(zip9)
                 .setImageModel(image9)
-                .setApproved(true)
                 .setOwner(this.userRepository.findUserEntitiesByEmail("user@example.com").get());
 
         ZipFileEntity zip10 = this.fileService.saveZipFile("application/x-zip-compressed", "14.zip", this.getClass().getClassLoader().getResourceAsStream("static/images/product/14.zip").readAllBytes());
@@ -269,7 +328,6 @@ public class CustomerInit {
                 .setDescription("Big red vase is perfect accessory for yor table")
                 .setZipModel(zip10)
                 .setImageModel(image10)
-                .setApproved(true)
                 .setOwner(this.userRepository.findUserEntitiesByEmail("user@example.com").get());
 
 
@@ -284,7 +342,6 @@ public class CustomerInit {
         modelsToSave.add(model08);
         modelsToSave.add(model09);
         modelsToSave.add(model10);
-
 
 
         this.modelRepository.saveAll(modelsToSave);

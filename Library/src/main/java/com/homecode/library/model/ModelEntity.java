@@ -3,6 +3,8 @@ package com.homecode.library.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "models", uniqueConstraints = @UniqueConstraint(columnNames = {"name", "manufacturer"}))
@@ -31,6 +33,8 @@ public class ModelEntity {
     private UserEntity owner;
     private LocalDateTime uploadedOn = LocalDateTime.now();
 
+    @OneToMany(targetEntity = CommentEntity.class, mappedBy = "model", cascade = CascadeType.ALL)
+    private Set<CommentEntity> comments = new HashSet<>();
 
     public ModelEntity() {
     }
@@ -140,6 +144,15 @@ public class ModelEntity {
 
     public ModelEntity setDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    public Set<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public ModelEntity setComments(Set<CommentEntity> comments) {
+        this.comments = comments;
         return this;
     }
 }

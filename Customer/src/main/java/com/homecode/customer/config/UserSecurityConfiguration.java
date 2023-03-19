@@ -26,7 +26,8 @@ public class UserSecurityConfiguration {
 
         http.
                 authorizeHttpRequests().
-                requestMatchers("/", "/login", "/register", "/error", "/about-us","/model-all","/product-detail").permitAll().
+                requestMatchers("/", "/login", "/register", "/error", "/about-us","/model-all","/product-detail"
+                ,"/api/**").permitAll().
                 anyRequest().permitAll().
                 and().
                 formLogin()
@@ -40,9 +41,9 @@ public class UserSecurityConfiguration {
                 logoutUrl("/logout").
                 logoutSuccessUrl("/").
                 deleteCookies("JSESSIONID").
-                clearAuthentication(true)
-                .and()
-                .csrf().disable();
+                clearAuthentication(true);
+
+
 
         return http.build();
     }

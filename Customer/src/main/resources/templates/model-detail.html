@@ -13,6 +13,8 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Furnitica - Minimalist Furniture HTML Template</title>
 
     <meta name="keywords" content="Furniture, Decor, Interior">
@@ -60,7 +62,7 @@
 
                                 <div class="col-sm-8 col-lg-9 col-md-9">
                                     <th:block th:object="${model}">
-                                        <div class="main-product-detail">
+                                        <div class="main-product-detail" id="modelId" th:value="*{id}">
                                             <h2 th:text="*{name}">Lorem ipsum dolor</h2>
                                             <div class="product-single row">
                                                 <div class="product-detail col-xs-12 col-md-5 col-sm-5">
@@ -97,30 +99,6 @@
                                                                             <div class="modal-body">
                                                                                 <div class="product-detail">
                                                                                     <div>
-                                                                                        <div class="images-container">
-                                                                                            <div class="js-qv-mask mask tab-content">
-                                                                                                <div id="modal-item1"
-                                                                                                     class="tab-pane fade active in show">
-                                                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
-                                                                                                         alt="img">
-                                                                                                </div>
-                                                                                                <div id="modal-item2"
-                                                                                                     class="tab-pane fade">
-                                                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
-                                                                                                         alt="img">
-                                                                                                </div>
-                                                                                                <div id="modal-item3"
-                                                                                                     class="tab-pane fade">
-                                                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
-                                                                                                         alt="img">
-                                                                                                </div>
-                                                                                                <div id="modal-item4"
-                                                                                                     class="tab-pane fade">
-                                                                                                    <img th:src="@{/download-model/{id}(id=${model.getId()})}"
-                                                                                                         alt="img">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -167,7 +145,10 @@
                                                                             <button
                                                                                     class="btn btn-primary add-to-cart add-item"
                                                                                     data-button-action="add-to-cart"
-                                                                                    type="submit">
+                                                                                    type="submit"
+                                                                                    id="myButton"
+                                                                                    name="myButton"
+                                                                                    >
                                                                                 <i class="fa fa-shopping-cart"
                                                                                    aria-hidden="true"></i>
                                                                                 <span>Download</span>
@@ -179,7 +160,8 @@
                                                                                 <i class="fa fa-heart"
                                                                                    aria-hidden="true"></i>
                                                                             </a>
-                                                                                        <th:block th:object="${userCredits}">
+                                                                                        <th:block
+                                                                                                th:object="${userCredits}">
                                                                                         <div class="price-del"
                                                                                              th:if="${userCredits!=null}">
                                                                                          <span class="price"
@@ -220,16 +202,58 @@
                                             <div class="review">
                                                 <ul class="nav nav-tabs">
                                                     <li class="active">
-                                                        <a data-toggle="tab" class="active show">Description</a>
+                                                        <a data-toggle="tab" href="#description" class="active show">Description</a>
+                                                    </li>
+                                                    <li>
+                                                        <a data-toggle="tab" href="#review">Comments</a>
                                                     </li>
                                                 </ul>
 
                                                 <div class="tab-content">
                                                     <div id="description" class="tab-pane fade in active show">
-                                                        <p th:text="*{description}"></p>
+                                                        <p th:text="*{description}">
+                                                        </p>
+                                                    </div>
+
+                                                    <div id="review" class="tab-pane fade">
+                                                        <div class="spr-form">
+                                                            <div class="user-comment">
+                                                                <div class="spr-review">
+                                                                    <span id="comments"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <form method="post" action="#" class="new-review-form"
+                                                              id="commentForm">
+                                                            <input type="hidden" name="review[rating]" value="3">
+                                                            <input type="hidden" name="product_id">
+                                                            <h3 class="spr-form-title">Write a review</h3>
+                                                            <fieldset>
+                                                                <div class="spr-form-review-body">
+                                                                    <div class="spr-form-input">
+                                                                        <textarea id="message"
+                                                                                  class="spr-form-input-textarea"
+                                                                                  rows="10"
+                                                                                  placeholder="Write your comments here"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                            <div class="submit">
+                                                                <input type="submit" name="addComment"
+                                                                       id="submitComment" class="btn btn-default"
+                                                                       value="Submit Review">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div id="tag" class="tab-pane fade in">
+                                                        <p>
+                                                        </p>
+                                                        <p>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </th:block>
                                 </div>
@@ -240,28 +264,28 @@
             </div>
         </div>
     </div>
+
+    <!-- footer -->
+    <th:block th:insert="~{/fragments/footer}"></th:block>
+
+    <!-- back top top -->
+    <th:block th:insert="~{/fragments/back_to_top}"></th:block>
+
+    <!-- menu mobie left -->
+    <th:block th:insert="~{/fragments/menu_mobie_left}"></th:block>
+
+    <!-- menu mobie right -->
+    <th:block th:insert="~{/fragments/menu_mobie_right}"></th:block>
+
+    <!-- Vendor JS -->
+    <th:block th:insert="~{/fragments/vendor_Js_IndexPage}"></th:block>
+
+
+    <!-- Template JS -->
+    <th:block th:insert="~{/fragments/template_Js}"></th:block>
+    <script th:src="@{/js/comments.js}"></script>
+    <script th:src="@{/js/button.js}"></script>
 </div>
-
-<!-- footer -->
-<th:block th:insert="~{/fragments/footer}"></th:block>
-
-<!-- back top top -->
-<th:block th:insert="~{/fragments/back_to_top}"></th:block>
-
-<!-- menu mobie left -->
-<th:block th:insert="~{/fragments/menu_mobie_left}"></th:block>
-
-<!-- menu mobie right -->
-<th:block th:insert="~{/fragments/menu_mobie_right}"></th:block>
-
-<!-- Vendor JS -->
-<th:block th:insert="~{/fragments/vendor_Js_IndexPage}"></th:block>
-
-
-<!-- Template JS -->
-<th:block th:insert="~{/fragments/template_Js}"></th:block>
-
-
 </body>
 
 

@@ -96,7 +96,7 @@ public class ModelController {
 
         model.addAttribute("modelsNumber", allModelsView.size());
         model.addAttribute("allModels", allModelsView);
-        System.out.println(allModelsView);
+
         return "model-all";
     }
 
