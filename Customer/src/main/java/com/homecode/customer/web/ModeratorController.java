@@ -31,7 +31,7 @@ public class ModeratorController {
     @GetMapping("/model-approve/{id}")
     public String approveModel(@PathVariable(value = "id") Long id) {
         this.modelService.approveModelById(id);
-        return "all-models-moderator";
+        return "redirect:/all-models-moderator";
     }
 
     @ModelAttribute("emailDTO")
