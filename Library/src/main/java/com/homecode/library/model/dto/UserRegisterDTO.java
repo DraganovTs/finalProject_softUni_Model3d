@@ -1,5 +1,6 @@
 package com.homecode.library.model.dto;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 
 public class UserRegisterDTO {
@@ -13,7 +14,6 @@ public class UserRegisterDTO {
     private String password;
     @Size(min = 3, max = 10, message = "invalid password(Must be between 5 and 14 characters")
     private String repeatPassword;
-
     public UserRegisterDTO() {
     }
 

@@ -1,8 +1,12 @@
 package com.homecode.library.model.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class AdminRegisterDTO {
+    @Email
+    @NotBlank
     @Size(min = 3, max = 20, message = "invalid username!(Must be between 3 and 20 characters")
     private String email;
     @Size(min = 3, max = 10, message = "invalid first name!(Must be between 3 and 10 characters")

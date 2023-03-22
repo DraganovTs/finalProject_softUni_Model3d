@@ -32,6 +32,8 @@ public class CommentRestController {
     public ResponseEntity<CommentDisplayView> createComment(@PathVariable("modelId") Long modelId,
                                                             @AuthenticationPrincipal UserDetails userDetails,
                                                             @RequestBody CommentMessageDto commentDto) {
+
+
         CommentCreatedDTO commentCreationDto = new CommentCreatedDTO().setUsername(userDetails.getUsername()).setModelId(modelId).setMessage(commentDto.getMessage());
 
         CommentDisplayView comment = commentService.createComment(commentCreationDto);

@@ -1,6 +1,7 @@
 package com.homecode.customer.config;
 
 import com.homecode.library.repository.UserRepository;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,8 +27,9 @@ public class UserSecurityConfiguration {
 
         http.
                 authorizeHttpRequests().
-                requestMatchers("/", "/login", "/register", "/error", "/about-us","/model-all","/product-detail"
-                ,"/api/**").permitAll().
+                requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
+                requestMatchers("/libs/**").permitAll()
+                .requestMatchers("/", "/login", "/register", "/error", "/about-us", "/model-all", "/product-detail").permitAll().
                 anyRequest().permitAll().
                 and().
                 formLogin()
@@ -44,15 +46,9 @@ public class UserSecurityConfiguration {
                 clearAuthentication(true);
 
 
-
         return http.build();
     }
 
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.ignoring()
-                .requestMatchers("/css/**", "/js/**", "/images/**", "/libs/**","/upload/**");
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

@@ -34,7 +34,7 @@ public class AdminAuthController {
 //    public String register() {
 //        return "/user-register";
 //    }
-
+//
 //    @PostMapping("/register")
 //    public String adminRegister(@Valid AdminRegisterDTO adminRegisterDTO,
 //                                BindingResult bindingResult,

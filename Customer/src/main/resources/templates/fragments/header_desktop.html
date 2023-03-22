@@ -42,8 +42,8 @@
                     </form>
 
                     <!-- acount  -->
-                    <th:block sec:authorize="isAnonymous()" th:insert="~{/fragments/accountNotLogged}"/>
-                    <th:block sec:authorize="isAuthenticated()" th:insert="~{/fragments/accounLogged}"/>
+                    <th:block sec:authorize="isAnonymous()" th:insert="~{fragments/accountNotLogged}"/>
+                    <th:block sec:authorize="isAuthenticated()" th:insert="~{fragments/accounLogged}"/>
 
                 </div>
             </div>

@@ -30,6 +30,7 @@ public class AdminSecurityConfiguration {
         http.
                 authorizeHttpRequests().
                 requestMatchers(STATIC_URL_PERMIT).permitAll().
+                requestMatchers(STATIC_RESOURCES).permitAll().
                 anyRequest().authenticated().
                 and().
                 formLogin()
@@ -50,11 +51,11 @@ public class AdminSecurityConfiguration {
         return http.build();
     }
 
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return web -> web.ignoring()
-                .requestMatchers(STATIC_RESOURCES);
-    }
+//    @Bean
+//    public WebSecurityCustomizer webSecurityCustomizer() {
+//        return web -> web.ignoring()
+//                .requestMatchers(STATIC_RESOURCES);
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){

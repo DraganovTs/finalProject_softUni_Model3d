@@ -26,11 +26,11 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
 
   <!-- libs CSS -->
-  <th:block th:insert="~{/fragments/libsCss}"></th:block>
+  <th:block th:insert="~{fragments/libsCss}"></th:block>
 
 
   <!-- Template CSS -->
-  <th:block th:insert="~{/fragments/templateCss}"></th:block>
+  <th:block th:insert="~{fragments/templateCss}"></th:block>
 
 </head>
 
@@ -39,7 +39,7 @@
   <!-- header left mobie -->
 
   <!-- header desktop -->
-  <th:block th:insert="~{/fragments/header_desktop}"></th:block>
+  <th:block th:insert="~{fragments/header_desktop}"></th:block>
 
 </header>
 
@@ -102,12 +102,12 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New Category</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Enter User ip</h5>
         </div>
         <div class="modal-body">
 
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Name:</label>
+            <label for="recipient-name" class="col-form-label">ip</label>
             <input type="text" class="form-control" th:field = "*{ipAddress}" id="recipient-name">
           </div>
         </div>
@@ -130,14 +130,14 @@
 <!-- menu mobie right -->
 
 <!-- Page Loader -->
-<th:block th:insert="~{/fragments/page_loader}"></th:block>
+<th:block th:insert="~{fragments/page_loader}"></th:block>
 
 <!-- Vendor JS -->
-<th:block th:insert="~{/fragments/vendor_Js}"></th:block>
+<th:block th:insert="~{fragments/vendor_Js}"></th:block>
 
 
 <!-- Template JS -->
-<th:block th:insert="~{/fragments/template_Js}"></th:block>
+<th:block th:insert="~{fragments/template_Js}"></th:block>
 
 </body>
 

@@ -29,12 +29,12 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
 
     <!-- Vendor CSS -->
-    <th:block th:insert="~{/fragments/vendorCss}"></th:block>
+    <th:block th:insert="~{fragments/vendorCss}"></th:block>
     <link rel="stylesheet" th:href="@{/libs/slider-range/css/jslider.css}">
 
 
     <!-- Template CSS -->
-    <th:block th:insert="~{/fragments/templateCss}"></th:block>
+    <th:block th:insert="~{fragments/templateCss}"></th:block>
 
 
 </head>
@@ -42,10 +42,10 @@
 <body id="product-detail">
 <header>
     <!-- header left mobie -->
-    <th:block th:insert="~{/fragments/header_left_mobile}"></th:block>
+    <th:block th:insert="~{fragments/header_left_mobile}"></th:block>
 
     <!-- header desktop -->
-    <th:block th:insert="~{/fragments/header_desktop}"></th:block>
+    <th:block th:insert="~{fragments/header_desktop}"></th:block>
 </header>
 
 <!-- main content -->
@@ -148,7 +148,7 @@
                                                                                     type="submit"
                                                                                     id="myButton"
                                                                                     name="myButton"
-                                                                                    >
+                                                                            >
                                                                                 <i class="fa fa-shopping-cart"
                                                                                    aria-hidden="true"></i>
                                                                                 <span>Download</span>
@@ -227,23 +227,27 @@
                                                               id="commentForm">
                                                             <input type="hidden" name="review[rating]" value="3">
                                                             <input type="hidden" name="product_id">
-                                                            <h3 class="spr-form-title">Write a review</h3>
-                                                            <fieldset>
-                                                                <div class="spr-form-review-body">
-                                                                    <div class="spr-form-input">
+                                                            <th:block sec:authorize="isAuthenticated()">
+                                                                <h3 class="spr-form-title">Write a Comment</h3>
+                                                                <fieldset>
+                                                                    <div class="spr-form-review-body">
+                                                                        <div class="spr-form-input">
                                                                         <textarea id="message"
                                                                                   class="spr-form-input-textarea"
                                                                                   rows="10"
-                                                                                  placeholder="Write your comments here"></textarea>
+                                                                                  placeholder="Write your comments here"
+                                                                        ></textarea>
+                                                                        </div>
                                                                     </div>
+                                                                </fieldset>
+                                                                <div class="submit">
+                                                                    <input type="submit" name="addComment"
+                                                                           id="submitComment" class="btn btn-default"
+                                                                           value="Submit Comment">
                                                                 </div>
-                                                            </fieldset>
-                                                            <div class="submit">
-                                                                <input type="submit" name="addComment"
-                                                                       id="submitComment" class="btn btn-default"
-                                                                       value="Submit Review">
-                                                            </div>
+                                                            </th:block>
                                                         </form>
+
                                                     </div>
                                                     <div id="tag" class="tab-pane fade in">
                                                         <p>
@@ -266,23 +270,23 @@
     </div>
 
     <!-- footer -->
-    <th:block th:insert="~{/fragments/footer}"></th:block>
+    <th:block th:insert="~{fragments/footer}"></th:block>
 
     <!-- back top top -->
-    <th:block th:insert="~{/fragments/back_to_top}"></th:block>
+    <th:block th:insert="~{fragments/back_to_top}"></th:block>
 
     <!-- menu mobie left -->
-    <th:block th:insert="~{/fragments/menu_mobie_left}"></th:block>
+    <th:block th:insert="~{fragments/menu_mobie_left}"></th:block>
 
     <!-- menu mobie right -->
-    <th:block th:insert="~{/fragments/menu_mobie_right}"></th:block>
+    <th:block th:insert="~{fragments/menu_mobie_right}"></th:block>
 
     <!-- Vendor JS -->
-    <th:block th:insert="~{/fragments/vendor_Js_IndexPage}"></th:block>
+    <th:block th:insert="~{fragments/vendor_Js_IndexPage}"></th:block>
 
 
     <!-- Template JS -->
-    <th:block th:insert="~{/fragments/template_Js}"></th:block>
+    <th:block th:insert="~{fragments/template_Js}"></th:block>
     <script th:src="@{/js/comments.js}"></script>
     <script th:src="@{/js/button.js}"></script>
 </div>
