@@ -20,10 +20,11 @@ public interface ModelRepository extends JpaRepository<ModelEntity, Long> {
     @Query(value = "select m from ModelEntity m where m.isApproved = true and m.category.isActive order by m.uploadedOn desc ")
     List<ModelEntity> findAllModels();
 
-    @Query(value = "select m from ModelEntity m where m.isApproved = false and m.category.isActive order by m.uploadedOn asc")
+    @Query(value = "select m from ModelEntity m where m.isApproved = false and m.category.isActive order by m.uploadedOn desc ")
     List<ModelEntity> getAllModelsForModerator();
 
-    @Query("select m from ModelEntity m where m.name like %?1% or m.manufacturer like %?1% or m.category.name like %?1%")
+    @Query("select m from ModelEntity m where m.isApproved =true and m.name like %?1% or m.manufacturer like %?1% or m.category.name like %?1%")
     List<ModelEntity> findAllModelsByKeyword(String keyword);
+
 
 }

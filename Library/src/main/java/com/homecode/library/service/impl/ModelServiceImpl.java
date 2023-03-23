@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -51,7 +50,7 @@ public class ModelServiceImpl implements ModelService {
     }
 
     @Override
-    public void uploadModel(MultipartFile imageModel, MultipartFile zipModel, ModelUploadDTO modelUploadDTO, UserEntity user)  {
+    public void uploadModel(MultipartFile imageModel, MultipartFile zipModel, ModelUploadDTO modelUploadDTO, UserEntity user) throws IOException {
 
         try {
 
@@ -99,7 +98,7 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public ModelEntity findById(Long id) {
-        return this.modelRepository.findById(id).orElseThrow(()-> new ModelNotFoundException(id));
+        return this.modelRepository.findById(id).orElseThrow();
     }
 
     @Override
@@ -109,7 +108,7 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public ModelEntity findByModelNameAndManufacturer(ModelUploadDTO modelUploadDTO) {
-        return this.modelRepository.findByNameAndManufacturer(modelUploadDTO.getName(), modelUploadDTO.getManufacturer()).orElseThrow(()-> new ModelNotFoundException(null));
+        return this.modelRepository.findByNameAndManufacturer(modelUploadDTO.getName(), modelUploadDTO.getManufacturer()).orElseThrow();
     }
 
     @Override
@@ -131,6 +130,8 @@ public class ModelServiceImpl implements ModelService {
         model.setDownloaded(model.getDownloaded() + 1);
         this.modelRepository.save(model);
     }
+
+
 
 
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.security.Principal;
 import java.util.List;
 
+
 @Controller
 public class PageController {
 
@@ -36,8 +37,6 @@ public class PageController {
         List<ModelsShowAllView> allModelsView = this.modelService.getAllModels();
         model.addAttribute("allModels", allModelsView);
 
-
-        //TODO need 2 list of models to get 2 rows in container
         return "index";
     }
 
@@ -50,6 +49,7 @@ public class PageController {
 
     @GetMapping("/user-acount")
     public String accountUser(Principal principal, Model model) {
+
 
         if (principal == null) {
             return "redirect:/login";
@@ -71,7 +71,7 @@ public class PageController {
 
         List<CustomerProfileModelsView> userLikedModels = this.modelService.getUserModels(user.getLikedModels());
         model.addAttribute("userLikedModels", userLikedModels);
-        //TODO refactoring get all info from userService
+
         return "/user-acount";
     }
 

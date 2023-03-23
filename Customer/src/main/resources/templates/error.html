@@ -11,7 +11,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <title>Furnitica - Minimalist Furniture HTML Template</title>
+    <title>Furnitica - Minimalist Furniture HTML Template</title>
     <meta name="_csrf" th:content="${_csrf.token}" />
     <meta name="_csrf_header" th:content="${_csrf.headerName}" />
     <meta name="keywords" content="Furniture, Decor, Interior">
@@ -26,53 +26,53 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet">
 
     <!-- Vendor CSS -->
-    <th:block th:insert="~{fragments/vendorCss}"></th:block>
+    <th:block th:insert="~{/fragments/vendorCss}"></th:block>
 
     <!-- Template CSS -->
-    <th:block th:insert="~{fragments/templateCss}"></th:block>
+    <th:block th:insert="~{/fragments/templateCss}"></th:block>
 </head>
 
 <body id="page-404" class="blog">
 
-    <!-- main content -->
-    <div class="main-content">
-        <div id="wrapper-site">
-            <div id="content-wrapper">
-                <section class="page-home">
-                    <div class="container">
-                        <div class="row center">
-                            <div class="content-404 col-lg-6 col-sm-6 text-center">
-                                <div class="image">
-                                    <img class="img-fluid" th:src="@{images/other/image-404.png}" alt="Image 404">
-                                </div>
-                                <h2 class="h4">We're sorry — something has gone wrong on our end.</h2>
-                                <div class="info">
-                                    <p>If difficulties persist, please contact the System Administrator of this site and report
-                                        the error below.</p>
-                                </div>
-                                <a class="btn btn-default" th:href="@{/}">
-                                    <i class="fa fa-home" aria-hidden="true"></i>
-                                    <span>Back to homepage</span>
-                                </a>
+<!-- main content -->
+<div class="main-content">
+    <div id="wrapper-site">
+        <div id="content-wrapper">
+            <section class="page-home">
+                <div class="container">
+                    <div class="row center">
+                        <div class="content-404 col-lg-6 col-sm-6 text-center">
+                            <div class="image">
+                                <img class="img-fluid" th:src="@{images/other/image-404.png}" alt="Image 404">
                             </div>
-                            <div class="content-right-404 col-lg-6 col-sm-6 text-center">
-                                <a href="#">
-                                    <img class="img-fluid" th:src="@{/images/other/background.jpg}" alt="image 404 right">
-                                </a>
+                            <h2 class="h4">We're sorry — something has gone wrong on our end.</h2>
+                            <div class="info">
+                                <p>If difficulties persist, please contact the System Administrator of this site and report
+                                    the error below.</p>
                             </div>
+                            <a class="btn btn-default" th:href="@{/}">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <span>Back to homepage</span>
+                            </a>
+                        </div>
+                        <div class="content-right-404 col-lg-6 col-sm-6 text-center">
+                            <a href="#">
+                                <img class="img-fluid" th:src="@{images/other/background.jpg}" alt="image 404 right">
+                            </a>
                         </div>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </div>
     </div>
+</div>
 
 
-    <!-- Vendor JS -->
-    <th:block th:insert="~{fragments/vendor_Js}"></th:block>
+<!-- Vendor JS -->
+<th:block th:insert="~{/fragments/vendor_Js}"></th:block>
 
-    <!-- Template JS -->
-    <th:block th:insert="~{fragments/template_Js}"></th:block>
+<!-- Template JS -->
+<th:block th:insert="~{/fragments/template_Js}"></th:block>
 </body>
 
 

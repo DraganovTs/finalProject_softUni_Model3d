@@ -29,7 +29,7 @@ public class FileServiceImpl implements FileService {
 
 
     @Override
-    public ImageFileEntity saveImageFile(String contentType, String fileName , byte[] fileData) throws IOException {
+    public ImageFileEntity saveImageFile(String contentType, String fileName, byte[] fileData) throws IOException {
 
 
         ImageFileEntity fileImage = new ImageFileEntity()
@@ -44,7 +44,7 @@ public class FileServiceImpl implements FileService {
 
 
     @Override
-    public ZipFileEntity saveZipFile(String contentType, String fileName , byte[] fileData) throws IOException {
+    public ZipFileEntity saveZipFile(String contentType, String fileName, byte[] fileData) throws IOException {
         ZipFileEntity fileZip = new ZipFileEntity()
                 .setContentType(fileName)
                 .setFileName(contentType)
@@ -53,7 +53,6 @@ public class FileServiceImpl implements FileService {
 
         return this.zipFileRepository.save(fileZip);
     }
-
 
 
     @Override
@@ -70,5 +69,14 @@ public class FileServiceImpl implements FileService {
 
     }
 
+    @Override
+    public Optional<FileDownloadModelDTO> getFileZipFileById(Long fileId) {
+        var file = this.zipFileRepository.findById(fileId).orElseThrow();
 
+        return Optional.of(new FileDownloadModelDTO(
+                file.getFileData(),
+                file.getContentType(),
+                file.getFileName()
+        ));
+    }
 }

@@ -7,6 +7,7 @@ import com.homecode.library.model.dto.ModelUploadDTO;
 import com.homecode.library.model.dto.UserAddRolesDto;
 import com.homecode.library.model.dto.UserRegisterDTO;
 import com.homecode.library.model.view.CustomerCreditsView;
+import com.homecode.library.model.view.CustomerProfileView;
 
 import java.util.List;
 
@@ -37,4 +38,6 @@ public interface CustomerUserService {
     boolean userDownloadModel(String username, Long modelID);
 
     CustomerCreditsView getUserCredits(String username);
+
+
 }

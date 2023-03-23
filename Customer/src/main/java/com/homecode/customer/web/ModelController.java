@@ -25,6 +25,7 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
+
 @Controller
 public class ModelController {
 
@@ -81,7 +82,6 @@ public class ModelController {
         }
 
         this.customerUserService.userAddModel(principal.getName(), modelUploadDTO);
-        //TODO get send user to modelservice and send user to userService
         redirectAttributes.addFlashAttribute("success", "Your model is uploaded and waiting to be approved");
 
 

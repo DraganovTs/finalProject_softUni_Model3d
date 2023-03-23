@@ -105,7 +105,9 @@ public class CustomerUserServiceImpl implements CustomerUserService {
     @Override
     public void likeModel(String username, ModelEntity model) {
         UserEntity user = this.userRepository.findUserEntitiesByEmail(username).get();
+        if (!user.getLikedModels().contains(model)){
         this.userRepository.save(user.addLikedModel(model));
+        }
     }
 
     @Override
