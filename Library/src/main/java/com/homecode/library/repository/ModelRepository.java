@@ -22,7 +22,7 @@ public interface ModelRepository extends JpaRepository<ModelEntity, Long> {
     List<ModelEntity> getAllModelsForModerator();
 
     @Query("select m from ModelEntity m where m.isApproved =true and m.name like %?1% or m.manufacturer like %?1% or m.category.name like %?1%")
-    Page<ModelEntity> findAllModelsByKeyword(String keyword);
+    List<ModelEntity> findAllModelsByKeyword(String keyword);
 
 
 }
