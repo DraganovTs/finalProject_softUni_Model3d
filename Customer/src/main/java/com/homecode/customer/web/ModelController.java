@@ -10,6 +10,7 @@ import com.homecode.library.service.impl.CategoryModelServiceImpl;
 import com.homecode.library.service.impl.CustomerUserServiceImpl;
 import com.homecode.library.service.impl.ModelServiceImpl;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -24,6 +25,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+
+import static com.homecode.customer.constants.Messages.*;
 
 
 @Controller
@@ -68,7 +71,7 @@ public class ModelController {
                 return "redirect:/add-model";
             }
             if (!this.modelService.isExistInDB(modelUploadDTO)) {
-                redirectAttributes.addFlashAttribute("alreadyInDb", "This model is already uploaded!");
+                redirectAttributes.addFlashAttribute("alreadyInDb", MODEL_ALREADY_IN_DB);
                 return "redirect:/add-model";
             }
 
@@ -77,12 +80,12 @@ public class ModelController {
 
 
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("failed", "Server is down!");
+            redirectAttributes.addFlashAttribute("failed", SERVER_IS_DOWN);
             return "redirect:/add-model";
         }
 
         this.customerUserService.userAddModel(principal.getName(), modelUploadDTO);
-        redirectAttributes.addFlashAttribute("success", "Your model is uploaded and waiting to be approved");
+        redirectAttributes.addFlashAttribute("success", MODEL_UPLOADED_SUCCESSFULLY);
 
 
         return "redirect:/add-model";

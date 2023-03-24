@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import static com.homecode.customer.constants.Messages.PASSWORD_NOT_SAME;
+import static com.homecode.customer.constants.Messages.SERVER_IS_DOWN;
+
 @Controller
 public class AuthController {
 
@@ -54,9 +57,7 @@ public class AuthController {
                         new FieldError(
                                 "differentConfirmPassword",
                                 "repeatPassword",
-                                "Passwords must be the same."));
-
-                System.out.println("Passwords must be the same.");
+                                PASSWORD_NOT_SAME));
 
             }
 
@@ -65,13 +66,11 @@ public class AuthController {
             if (bindingResult.hasErrors() || !this.customerUserService.register(registerDTO)) {
                 redirectAttributes.addFlashAttribute("registerDTO", registerDTO);
                 redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.registerDTO", bindingResult);
-                System.out.println("Errors");
                 return "redirect:/register";
             }
 
         } catch (Exception e) {
-            System.out.println("server error");
-            redirectAttributes.addAttribute("errors", "The server has been down!");
+            redirectAttributes.addAttribute("errors", SERVER_IS_DOWN);
         }
 
 

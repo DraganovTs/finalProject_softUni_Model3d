@@ -5,12 +5,14 @@ package com.homecode.library.model.dto;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import static com.homecode.library.constatnts.Messages.INVALID_CATEGORY_NAME;
+
 
 public class CategoryDTO {
 
     private Long id;
     @NotNull
-    @Size(min = 3,max = 20 , message = "name must be between 3 and 20 chars")
+    @Size(min = 3,max = 20 , message = INVALID_CATEGORY_NAME )
     private String name;
 
     private boolean isDeleted ;

@@ -4,18 +4,20 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import static com.homecode.library.constatnts.Messages.*;
+
 public class AdminRegisterDTO {
     @Email
     @NotBlank
-    @Size(min = 3, max = 20, message = "invalid username!(Must be between 3 and 20 characters")
+    @Size(min = 3, max = 20, message = INVALID_USERNAME)
     private String email;
-    @Size(min = 3, max = 10, message = "invalid first name!(Must be between 3 and 10 characters")
+    @Size(min = 3, max = 10, message = INVALID_FIRST_NAME)
     private String firstName;
-    @Size(min = 3, max = 10, message = "invalid last name!(Must be between 3 and 10 characters")
+    @Size(min = 3, max = 10, message = INVALID_LAST_NAME)
     private String lastName;
-    @Size(min = 3, max = 10, message = "invalid password(Must be between 5 and 14 characters")
+    @Size(min = 3, max = 10, message = INVALID_PASSWORD)
     private String password;
-    @Size(min = 3, max = 10, message = "invalid password(Must be between 5 and 14 characters")
+    @Size(min = 3, max = 10, message = INVALID_PASSWORD)
     private String repeatPassword;
 
     public AdminRegisterDTO() {

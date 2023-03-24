@@ -5,13 +5,15 @@ import com.homecode.library.model.UserRoleEntity;
 import com.homecode.library.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 
 import java.util.List;
+
+import static com.homecode.customer.constants.Messages.ROLE_;
+import static com.homecode.customer.constants.Messages.USERNAME_NOT_FOUND;
 
 
 public class CustomerUserDetailsService implements UserDetailsService {
@@ -27,7 +29,7 @@ public class CustomerUserDetailsService implements UserDetailsService {
 
         return userRepository.findUserEntitiesByEmail(username)
                 .map(this::map)
-                .orElseThrow(() -> new UsernameNotFoundException("username not found!"));
+                .orElseThrow(() -> new UsernameNotFoundException(USERNAME_NOT_FOUND));
     }
 
 
@@ -49,6 +51,6 @@ public class CustomerUserDetailsService implements UserDetailsService {
     }
 
     private GrantedAuthority mapRole(UserRoleEntity userRoleEntity) {
-        return new SimpleGrantedAuthority("ROLE_" + userRoleEntity.getRole().name());
+        return new SimpleGrantedAuthority(ROLE_ + userRoleEntity.getRole().name());
     }
 }

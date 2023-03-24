@@ -11,13 +11,14 @@ import java.util.Optional;
 
 public interface FileService {
 
-    ImageFileEntity saveImageFile(String contentType, String fileName , byte[] fileData) throws IOException;
+    ImageFileEntity saveImageFile(String contentType, String fileName, byte[] fileData) throws IOException;
 
-    ZipFileEntity saveZipFile(String contentType, String fileName , byte[] fileData) throws IOException;
+    ZipFileEntity saveZipFile(String contentType, String fileName, byte[] fileData) throws IOException;
 
 
-    public Optional<FileDownloadModelDTO> getFileById(Long fileId);
-    public Optional<FileDownloadModelDTO> getFileZipFileById(Long fileId);
+    Optional<FileDownloadModelDTO> getFileById(Long fileId);
+
+    Optional<FileDownloadModelDTO> getFileZipFileById(Long fileId);
 
 
 }

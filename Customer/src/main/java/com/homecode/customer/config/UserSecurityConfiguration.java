@@ -12,6 +12,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static com.homecode.customer.constants.UrlConstants.STATIC_RESOURCES;
+import static com.homecode.customer.constants.UrlConstants.STATIC_URL_PERMIT;
+
 @Configuration
 public class UserSecurityConfiguration {
 
@@ -27,9 +30,8 @@ public class UserSecurityConfiguration {
 
         http.
                 authorizeHttpRequests().
-                requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
-                requestMatchers("/libs/**").permitAll()
-                .requestMatchers("/", "/login", "/register", "/error", "/about-us", "/model-all", "/product-detail").permitAll().
+                requestMatchers(STATIC_RESOURCES).permitAll()
+                .requestMatchers(STATIC_URL_PERMIT).permitAll().
                 anyRequest().permitAll().
                 and().
                 formLogin()

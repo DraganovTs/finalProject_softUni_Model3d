@@ -5,15 +5,17 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.springframework.web.multipart.MultipartFile;
 
+import static com.homecode.library.constatnts.Messages.*;
+
 public class ModelUploadDTO {
-    @Size(min = 2, max = 20, message = "name must be between 2 and 20 characters")
+    @Size(min = 2, max = 20, message = INVALID_MODEL_NAME)
     @NotBlank
     private String name;
-    @Size(min = 2, max = 20, message = "name must be between 2 and 20 characters")
+    @Size(min = 2, max = 20, message = INVALID_MODEL_MANUFACTURER)
     @NotBlank
     private String manufacturer;
 
-    @Size(min = 5, max = 50,message = "description must be between 5 and 50 characters")
+    @Size(min = 5, max = 50,message = INVALID_MODEL_DESCRIPTION )
     private String description;
     @NotNull
     private String category;
