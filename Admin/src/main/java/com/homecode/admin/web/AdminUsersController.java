@@ -27,9 +27,6 @@ public class AdminUsersController {
 
     @GetMapping("/user-roles-admin")
     public String userRolesAdmin(Model model, Principal principal) {
-        if (principal == null) {
-            return "redirect:/login";
-        }
         model.addAttribute("userAdmins", this.adminService.findAllAdmins());
 
         return "user-roles-admin";
@@ -51,7 +48,7 @@ public class AdminUsersController {
 
         return "redirect:/user-roles-admin";
     }
-    @GetMapping("delete-admin-from-list/{id}")
+    @GetMapping("/delete-admin-from-list/{id}")
     public String deleteAdmin(@PathVariable(value = "id") Long id){
         this.adminService.deleteAdminRole(id);
         return "redirect:/user-roles-admin";
@@ -59,15 +56,12 @@ public class AdminUsersController {
 
     @GetMapping("/user-roles-moderator")
     public String userRolesModerator(Model model, Principal principal) {
-        if (principal == null) {
-            return "redirect:/login";
-        }
         model.addAttribute("usersModerators",this.customerUserService.findAllModerators());
         return "user-roles-moderator";
     }
     @PostMapping("/user-roles-moderator")
     public String editModeratorRoles(UserAddRolesDto userAddRolesDto,
-                                RedirectAttributes redirectAttributes) {
+                                     RedirectAttributes redirectAttributes) {
         try {
             if (this.customerUserService.findUserByUsername(userAddRolesDto)) {
                 redirectAttributes.addFlashAttribute("existModerator", USER_ALREADY_MODERATOR);
@@ -82,7 +76,7 @@ public class AdminUsersController {
         return "redirect:/user-roles-moderator";
     }
 
-    @GetMapping("delete-moderator-from-list/{id}")
+    @GetMapping("/delete-moderator-from-list/{id}")
     public String deleteModerator(@PathVariable(value = "id") Long id){
         this.customerUserService.deleteModeratorRoleById(id);
         return "redirect:/user-roles-moderator";

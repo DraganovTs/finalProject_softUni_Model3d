@@ -50,11 +50,6 @@ public class PageController {
     @GetMapping("/user-acount")
     public String accountUser(Principal principal, Model model) {
 
-
-        if (principal == null) {
-            return "redirect:/login";
-        }
-
         UserEntity user = this.customerUserService.findUserByUsername(principal.getName());
         CustomerProfileView profileView = new CustomerProfileView()
                 .setEmail(user.getEmail())

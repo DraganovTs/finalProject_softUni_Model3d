@@ -25,9 +25,6 @@ public class AdminIpController {
 
     @GetMapping("/user-ban")
     public String banUsers(Model model, Principal principal){
-        if (principal == null) {
-            return "redirect:/login";
-        }
         model.addAttribute("addresses", this.blackListService.findAll());
         return "user-ban";
     }

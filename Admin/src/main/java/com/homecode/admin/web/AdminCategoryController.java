@@ -24,10 +24,7 @@ public class AdminCategoryController {
     }
 
     @GetMapping("/categories")
-    public String categories(Model model, Principal principal) {
-        if (principal == null) {
-            return "redirect:/login";
-        }
+    public String categories(Model model) {
         model.addAttribute("categories", this.categoryService.findAll());
         return "categories";
     }

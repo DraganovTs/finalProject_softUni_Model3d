@@ -27,7 +27,7 @@ public class AdminAuthController {
 
     @GetMapping("/login")
     public String login() {
-        return "/user-login";
+        return "user-login";
     }
 
 //    @GetMapping("/register")
