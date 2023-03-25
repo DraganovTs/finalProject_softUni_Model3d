@@ -55,6 +55,7 @@ public class ModelControllerIT {
     }
 
     @Test
+    @WithMockUser(username = "user@example.com")
     void testGetModelDetail() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/model-detail/1"))

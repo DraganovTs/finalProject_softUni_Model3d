@@ -32,7 +32,7 @@ public class UserSecurityConfiguration {
                 authorizeHttpRequests().
                 requestMatchers(STATIC_RESOURCES).permitAll()
                 .requestMatchers(STATIC_URL_PERMIT).permitAll().
-                anyRequest().permitAll().
+                anyRequest().authenticated().
                 and().
                 formLogin()
                 .loginPage("/login")
