@@ -130,9 +130,7 @@ public class ModelController {
     @GetMapping("/model-like/{modelId}")
     public String likeModel(Principal principal, @PathVariable(value = "modelId") Long modelId) {
 
-        if (principal == null) {
-            return "redirect:/login";
-        }
+
 
         ModelEntity model = this.modelService.findById(modelId);
         this.customerUserService.likeModel(principal.getName(), model);
@@ -144,10 +142,8 @@ public class ModelController {
     @GetMapping("/download-model-user/{id}")
     public String UserDownloadModel(@PathVariable(value = "id") Long id, Principal principal) {
 
-        if (principal == null) {
-            return "redirect:/login";
-        }
-     //TODO show low credit message
+
+
         if (!this.customerUserService.userDownloadModel(principal.getName(), id)) {
             return "redirect:/model-detail/{id}";
         }

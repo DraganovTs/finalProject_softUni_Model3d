@@ -201,17 +201,10 @@
                                                                 <div class="item text-center">
                                                                     <div class="product-miniature js-product-miniature item-one first-item">
                                                                         <div class="thumbnail-container">
-                                                                            <a th:href="@{/product-detail/{id}(id=${model.getId()})}">
+                                                                            <a th:href="@{/model-detail/{id}(id=${model.getId()})}">
                                                                                 <img class="img-fluid image-cover" th:src="@{/download-model/{id}(id=${model.getId()})}">
                                                                                 <img class="img-fluid image-secondary" th:src="@{/download-model/{id}(id=${model.getId()})}">
                                                                             </a>
-                                                                            <div class="highlighted-informations">
-                                                                                <div class="variant-links">
-                                                                                    <a href="#" class="color beige" title="Beige"></a>
-                                                                                    <a href="#" class="color orange" title="Orange"></a>
-                                                                                    <a href="#" class="color green" title="Green"></a>
-                                                                                </div>
-                                                                            </div>
                                                                         </div>
                                                                         <div class="product-description">
                                                                             <div class="product-groups">
@@ -221,7 +214,6 @@
                                                                                 <div class="product-group-price">
                                                                                     <div class="product-price-and-shipping">
                                                                                         <span class="price">1 credit</span>
-                                                                                        <del class="regular-price">1 credit</del>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
