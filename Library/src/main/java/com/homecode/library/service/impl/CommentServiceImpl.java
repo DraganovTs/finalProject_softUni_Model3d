@@ -7,7 +7,6 @@ import com.homecode.library.model.dto.CommentCreatedDTO;
 import com.homecode.library.model.view.CommentDisplayView;
 import com.homecode.library.repository.CommentRepository;
 import com.homecode.library.service.CommentService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

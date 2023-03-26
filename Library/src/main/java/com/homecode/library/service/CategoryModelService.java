@@ -9,9 +9,10 @@ public interface CategoryModelService {
 
     boolean isEmpty();
 
-    void initCategories();
+
 
     List<CategoryDTO> findAll();
+    List<CategoryDTO> findAllForAdminPanel();
 
     CategoryModelEntity save(CategoryDTO categoryDTO);
 

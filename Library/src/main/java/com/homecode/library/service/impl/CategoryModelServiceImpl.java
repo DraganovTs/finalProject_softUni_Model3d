@@ -29,25 +29,29 @@ public class CategoryModelServiceImpl implements CategoryModelService {
         return this.categoryRepository.count() == 0;
     }
 
-    @Override
-    public void initCategories() {
 
-
-
-    }
 
     @Override
     public List<CategoryDTO> findAll() {
 
-        //TODO filter only active categories
         return this.categoryRepository
                 .findAll()
                 .stream()
+                .filter(CategoryModelEntity::isActive)
                 .map(c -> this.modelMapper.map(c, CategoryDTO.class))
                 .collect(Collectors.toList());
 
 
         }
+
+    @Override
+    public List<CategoryDTO> findAllForAdminPanel() {
+        return this.categoryRepository
+                .findAll()
+                .stream()
+                .map(c -> this.modelMapper.map(c, CategoryDTO.class))
+                .collect(Collectors.toList());
+    }
 
 
     @Override

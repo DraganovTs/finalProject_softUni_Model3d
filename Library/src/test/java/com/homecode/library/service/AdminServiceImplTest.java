@@ -1,8 +1,11 @@
 package com.homecode.library.service;
 
 import com.homecode.library.model.AdminEntity;
+import com.homecode.library.model.UserEntity;
+import com.homecode.library.model.UserRoleEntity;
 import com.homecode.library.model.dto.AdminRegisterDTO;
 import com.homecode.library.model.dto.UserAddRolesDto;
+import com.homecode.library.model.enums.UserRoleEnum;
 import com.homecode.library.repository.AdminRepository;
 import com.homecode.library.service.impl.AdminServiceImpl;
 import com.homecode.library.service.impl.CustomerUserServiceImpl;
@@ -18,6 +21,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -80,10 +84,10 @@ public class AdminServiceImplTest {
         Mockito.verify(mockAdminRepository).save(adminEntityArgumentCaptor.capture());
 
         AdminEntity savedAdmin = adminEntityArgumentCaptor.getValue();
-        Assertions.assertEquals(savedAdmin.getEmail(),testAdminRegisterDTO.getEmail());
-        Assertions.assertEquals(savedAdmin.getFirstName(),testAdminRegisterDTO.getFirstName());
-        Assertions.assertEquals(savedAdmin.getLastName(),testAdminRegisterDTO.getLastName());
-        Assertions.assertEquals(savedAdmin.getPassword(),testAdminRegisterDTO.getPassword());
+        Assertions.assertEquals(savedAdmin.getEmail(), testAdminRegisterDTO.getEmail());
+        Assertions.assertEquals(savedAdmin.getFirstName(), testAdminRegisterDTO.getFirstName());
+        Assertions.assertEquals(savedAdmin.getLastName(), testAdminRegisterDTO.getLastName());
+        Assertions.assertEquals(savedAdmin.getPassword(), testAdminRegisterDTO.getPassword());
 
     }
 
@@ -124,5 +128,39 @@ public class AdminServiceImplTest {
         Assertions.assertTrue(true);
     }
 
+    @Test
+    void testAddAdminRole() {
+        UserAddRolesDto userAddRolesDto = new UserAddRolesDto()
+                .setEmail("test@test.com")
+                .setId(1L)
+                .setFirstName("test")
+                .setLastName("testov");
+
+        UserEntity user = new UserEntity()
+                .setEmail("test@test.com")
+                .setId(1L)
+                .setFirstName("test")
+                .setLastName("testov")
+                .setPassword("12345");
+
+        when(mockCustomerUserService.findUserByUsername("test@test.com"))
+                .thenReturn(user);
+
+        UserRoleEntity role1 = new UserRoleEntity().setRole(UserRoleEnum.ADMIN).setId(1L);
+        UserRoleEntity role2 = new UserRoleEntity().setRole(UserRoleEnum.MODERATOR).setId(2L);
+
+        when(mockRoleService.findAll())
+                .thenReturn(List.of(role1,role2));
+
+        toTest.addAdminRole(userAddRolesDto);
+
+        Mockito.verify(mockAdminRepository).save(adminEntityArgumentCaptor.capture());
+
+        AdminEntity savedAdmin = adminEntityArgumentCaptor.getValue();
+        Assertions.assertEquals(savedAdmin.getEmail(), userAddRolesDto.getEmail());
+        Assertions.assertEquals(savedAdmin.getFirstName(), userAddRolesDto.getFirstName());
+        Assertions.assertEquals(savedAdmin.getLastName(), userAddRolesDto.getLastName());
+
+    }
 
 }

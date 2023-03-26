@@ -1,6 +1,5 @@
 package com.homecode.library.model.dto;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 
 import static com.homecode.library.constatnts.Messages.*;

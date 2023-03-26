@@ -17,6 +17,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
+
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -114,4 +115,6 @@ public class CustomerUserServiceImplTest {
         Assertions.assertEquals(testUserEntity.getFirstName(),"user");
         Assertions.assertEquals(testUserEntity.getLastName(),"userov");
     }
+
+
 }

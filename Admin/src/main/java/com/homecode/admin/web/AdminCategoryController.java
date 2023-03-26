@@ -10,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.security.Principal;
 
 import static com.homecode.admin.constants.Messages.*;
 
@@ -25,7 +24,7 @@ public class AdminCategoryController {
 
     @GetMapping("/categories")
     public String categories(Model model) {
-        model.addAttribute("categories", this.categoryService.findAll());
+        model.addAttribute("categories", this.categoryService.findAllForAdminPanel());
         return "categories";
     }
 

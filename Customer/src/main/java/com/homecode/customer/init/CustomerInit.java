@@ -50,10 +50,6 @@ public class CustomerInit {
         if (this.roleService.isEmpty()) {
             this.roleService.initRoles();
         }
-        if (this.categoryModelService.isEmpty()) {
-            this.categoryModelService.initCategories();
-        }
-
         if (this.userRepository.count() == 0) {
             initUsers();
         }

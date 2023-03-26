@@ -7,6 +7,7 @@ import com.homecode.library.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,8 +31,12 @@ public class RoleServiceImpl implements RoleService {
             var moderatorRole = new UserRoleEntity().setRole(UserRoleEnum.MODERATOR);
             var adminRole = new UserRoleEntity().setRole(UserRoleEnum.ADMIN);
 
-            roleRepository.save(adminRole);
-            roleRepository.save(moderatorRole);
+            List<UserRoleEntity> rolesToSave = new ArrayList<>();
+            rolesToSave.add(moderatorRole);
+            rolesToSave.add(adminRole);
+
+            roleRepository.saveAll(rolesToSave);
+            ;
 
     }
 

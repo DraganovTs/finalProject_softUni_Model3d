@@ -1,7 +1,6 @@
 package com.homecode.library.service;
 
 import com.homecode.library.model.dto.IpAddressDTO;
-import com.homecode.library.repository.IpBlacklistRepository;
 
 import java.util.List;
 
