@@ -86,7 +86,7 @@ public class ModelServiceImpl implements ModelService {
 
     @Override
     public List<ModelsShowAllView> getAllModelsByKeyword(String keyword) {
-        return this.modelRepository.findAllModelsByKeyword(keyword).stream().map(m -> this.modelMapper.map(m, ModelsShowAllView.class)).collect(Collectors.toList());
+        return this.modelRepository.findAllModelsByKeyword(keyword).stream().filter(ModelEntity::isApproved).map(m -> this.modelMapper.map(m, ModelsShowAllView.class)).collect(Collectors.toList());
     }
 
     @Override
