@@ -2,11 +2,11 @@
 finalProject_softUni
 
 
-It is a small commercial project for selling 3D models online in three modules. At this point, the application uses credits to download models rather than real money.One model, one credit; every user has three credits daily, and every day at midnight, user credits are reset.
+It is a small commercial project for selling 3D models online in three modules. At this point, the application uses credits to download models rather than real money.One model, one credit and every user has three credits daily, and every day at midnight, user credits are reset.
  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Module Admin:
     It starts at http://localhost:8081/admin/ since I want it to run independently from the Customer module.
-    The register endpoint in this module is disabled for security reasons, but you can sign in with Email: admin@example.com and Password: admin.
+    The register endpoint in this module is disabled for security reasons, but you can sign in with email: admin@example.com and pass: admin.
     An admin user can add other admins, but they need to have registration like a customer or moderator in the Customer module.
     An admin user can add moderators, but they need to have registration like customers in the Customer module.
     Admin users can ban IP addresses for users who don't want to visit our website.
