@@ -7,8 +7,8 @@ It is a small commercial project for selling 3D models online in three modules. 
 Module Admin:
     It starts at http://localhost:8081/admin/ since I want it to run independently from the Customer module.
     The register endpoint in this module is disabled for security reasons, but you can sign in with Email: admin@example.com and Password: admin.
-    An admin user can add other admins, but for now they need to have registration like a customer or moderator in the Customer module.
-    An admin user can add moderators, but for now they need to have registration like customers in the Customer module.
+    An admin user can add other admins, but they need to have registration like a customer or moderator in the Customer module.
+    An admin user can add moderators, but they need to have registration like customers in the Customer module.
     Admin users can ban IP addresses for users who don't want to visit our website.
     The admin user can add new categories of 3D models or enable or disable existing ones.
     The admin module has two scheduled jobs. The first is to reset credits for all users, and the second is to send emails to all subscribers on our app.
