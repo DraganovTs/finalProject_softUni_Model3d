@@ -29,7 +29,7 @@ public interface CustomerUserService {
 
     void dailyResetCredits();
 
-    void likeModel(String username, ModelEntity model);
+    boolean likeModel(String username, ModelEntity model);
 
 
     void userAddModel(String name, ModelUploadDTO modelUploadDTO);

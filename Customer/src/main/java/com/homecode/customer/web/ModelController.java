@@ -131,17 +131,16 @@ public class ModelController {
     public String likeModel(Principal principal, @PathVariable(value = "modelId") Long modelId) {
 
 
-
         ModelEntity model = this.modelService.findById(modelId);
-        this.customerUserService.likeModel(principal.getName(), model);
-        this.modelService.likeModel(model);
+        if (this.customerUserService.likeModel(principal.getName(), model)) {
+            this.modelService.likeModel(model);
+        }
         return "redirect:/models-all";
     }
 
 
     @GetMapping("/download-model-user/{id}")
     public String UserDownloadModel(@PathVariable(value = "id") Long id, Principal principal) {
-
 
 
         if (!this.customerUserService.userDownloadModel(principal.getName(), id)) {
