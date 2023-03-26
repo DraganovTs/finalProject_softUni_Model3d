@@ -1,8 +1,6 @@
 # finalProject_softUni_Model3d
 finalProject_softUni
-
-
-It is a small commercial project for selling 3D models online in three modules. At this point, the application uses credits to download models rather than real money.One model, one credit and every user has three credits daily, and every day at midnight, user credits are reset.
+     It is a small commercial project for selling 3D models online in three modules. At this point, the application uses credits to download models rather than real money.One model, one credit and every user has three credits daily, and every day at midnight, user credits are reset.
  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Module Admin:
     It starts at http://localhost:8081/admin/ since I want it to run independently from the Customer module.
@@ -18,8 +16,8 @@ Module Admin:
    A not-logged user has access to some endpoints and can subscribe via email for app newsletters.
    The app has two users configured.One regular user (email: user@example.com, pass: user) and one moderator (email:moderator@example.com, pass: moderator),
    but every customer can register a new one.
-   Regular users can upload their own models, but after successful uploading, the model waits for the moderator to approve the quality of the uploaded model. If a model    is accepted, it will be added to the All Models section.Every user can like or download a model, and that will be recorded in their account.
+   Regular users can upload their own models, but after successful uploading, the model waits for the moderator to approve the quality of the uploaded model. If a model      is accepted, it will be added to the All Models section.Every user can like or download a model, and that will be recorded in their account.
  -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
  Module Library:
     This module contains all of the services, repositories, entities, DTOs, and views required for the Model 3D app to function normally.
-     
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
