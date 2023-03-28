@@ -14,13 +14,13 @@ public interface ModelRepository extends JpaRepository<ModelEntity, Long> {
 
     Optional<ModelEntity> findByNameAndManufacturer(String name, String manufacturer);
 
-    @Query(value = "select * from models m where m.is_approved = true and category_id  order by m.uploaded_on asc " , nativeQuery = true)
+    @Query("select m from ModelEntity m where m.isApproved = true and m.category.isActive  order by m.uploadedOn asc ")
     List<ModelEntity> findAllModels();
 
     @Query("select m from ModelEntity m where m.isApproved = false and m.category.isActive order by m.uploadedOn desc ")
     List<ModelEntity> getAllModelsForModerator();
 
-    @Query("select m from ModelEntity m where  m.name like %?1% or m.manufacturer like %?1% or m.category.name like %?1% order by m.uploadedOn desc ")
+    @Query("select m from ModelEntity m where  m.name like %?1% or m.manufacturer like %?1% or m.category.name like %?1%")
     List<ModelEntity> findAllModelsByKeyword(String keyword);
 
 
