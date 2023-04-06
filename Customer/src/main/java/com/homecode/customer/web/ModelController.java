@@ -139,6 +139,7 @@ public class ModelController {
         ModelEntity model = this.modelService.findById(modelId);
         if (this.customerUserService.likeModel(principal.getName(), model)) {
             this.modelService.likeModel(model);
+            envMessage("Model downloaded successfully model whit id: " + model.getId());
         }
         return "redirect:/models-all";
     }
@@ -153,7 +154,7 @@ public class ModelController {
         }
 
         this.modelService.modelDownloaded(id);
-        envMessage("Model downloaded successfully model whit id:" + id);
+        envMessage("Model downloaded successfully model whit id: " + id);
         return "redirect:/download-model/{id}";
     }
 
