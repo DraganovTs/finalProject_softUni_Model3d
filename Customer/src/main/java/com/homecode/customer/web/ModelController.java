@@ -139,7 +139,7 @@ public class ModelController {
         ModelEntity model = this.modelService.findById(modelId);
         if (this.customerUserService.likeModel(principal.getName(), model)) {
             this.modelService.likeModel(model);
-            envMessage("Model downloaded successfully model whit id: " + model.getId());
+            envMessage("liked model whit id: " + model.getId());
         }
         return "redirect:/models-all";
     }
