@@ -118,7 +118,7 @@ public class ModelController {
         headers.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileDownloadModel.getFileName());
         headers.setContentLength(fileDownloadModel.getFileData().length);
 
-        envMessage("Model downloaded successfully" + fileDownloadModel.getFileName());
+
         return new HttpEntity<>(fileDownloadModel.getFileData(), headers);
     }
 
@@ -153,7 +153,7 @@ public class ModelController {
         }
 
         this.modelService.modelDownloaded(id);
-
+        envMessage("Model downloaded successfully model whit id:" + id);
         return "redirect:/download-model/{id}";
     }
 
