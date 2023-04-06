@@ -10,10 +10,10 @@ import com.homecode.library.service.impl.CategoryModelServiceImpl;
 import com.homecode.library.service.impl.CustomerUserServiceImpl;
 import com.homecode.library.service.impl.ModelServiceImpl;
 import jakarta.validation.Valid;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MimeTypeUtils;
@@ -21,6 +21,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+
 
 import java.security.Principal;
 import java.util.List;
@@ -36,12 +38,15 @@ public class ModelController {
     private final CategoryModelServiceImpl categoryModelService;
     private final FileService fileService;
 
+    private final KafkaTemplate<String, String> kafkaTemplate;
+
     private final CustomerUserServiceImpl customerUserService;
 
-    public ModelController(ModelServiceImpl modelService, CategoryModelServiceImpl categoryModelService, FileService fileService, CustomerUserServiceImpl customerUserService) {
+    public ModelController(ModelServiceImpl modelService, CategoryModelServiceImpl categoryModelService, FileService fileService, KafkaTemplate<String, String> kafkaTemplate, CustomerUserServiceImpl customerUserService) {
         this.modelService = modelService;
         this.categoryModelService = categoryModelService;
         this.fileService = fileService;
+        this.kafkaTemplate = kafkaTemplate;
         this.customerUserService = customerUserService;
     }
 
@@ -87,7 +92,7 @@ public class ModelController {
         this.customerUserService.userAddModel(principal.getName(), modelUploadDTO);
         redirectAttributes.addFlashAttribute("success", MODEL_UPLOADED_SUCCESSFULLY);
 
-
+        envMessage("Model added successfully" + modelUploadDTO.getName());
         return "redirect:/add-model";
     }
 
@@ -113,7 +118,7 @@ public class ModelController {
         headers.set(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + fileDownloadModel.getFileName());
         headers.setContentLength(fileDownloadModel.getFileData().length);
 
-
+        envMessage("Model downloaded successfully" + fileDownloadModel.getFileName());
         return new HttpEntity<>(fileDownloadModel.getFileData(), headers);
     }
 
@@ -162,5 +167,8 @@ public class ModelController {
         return new EmailDTO();
     }
 
+    private void envMessage(String massage){
+        kafkaTemplate.send("my-topic",massage);
+    }
 
 }
